@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:foreground="?android:attr/selectableItemBackground"
     android:orientation="vertical">
 
     <simplifii.framework.widgets.CustomFontTextView
@@ -9,10 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_20dp"
         android:background="@color/gray"
-        android:gravity="center"
         android:elevation="@dimen/height_1dp"
-        android:visibility="gone"
-        android:text="Choose from these places" />
+        android:gravity="center"
+        android:text="Choose from these places"
+        android:visibility="gone" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,17 +24,17 @@
             android:id="@+id/iv_item_list_pic"
             android:layout_width="@dimen/width_24dp"
             android:layout_height="@dimen/height_24dp"
-            android:layout_marginLeft="@dimen/margin_4dp"
             android:layout_alignParentLeft="true"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/margin_4dp" />
 
         <simplifii.framework.widgets.CustomFontTextView
             android:id="@+id/tv_item_list_text"
             style="@style/eveation_link"
-            android:layout_toRightOf="@id/iv_item_list_pic"
             android:layout_centerVertical="true"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv_item_list_pic"
             android:text="Burj khailfa"
             android:textColor="@color/black"
             android:textSize="12dp" />

@@ -40,6 +40,7 @@ public class SubscribeMembershipActivity extends BaseActivity implements CustomL
     private View footerView;
     private String text;
     private RelativeLayout rlDrinksMerchants;
+    private MembershipPlansResponse plan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,12 +57,11 @@ public class SubscribeMembershipActivity extends BaseActivity implements CustomL
         footerView.setVisibility(View.GONE);
         lv_cart.addFooterView(footerView);
         lv_cart.setAdapter(customListAdapter);
-        getCartData();
         rlDrinksMerchants.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(AppConstants.BUNDLE_KEYS.MERCHANT_TYPE, getString(R.string.drink));
+                bundle.putSerializable(AppConstants.BUNDLE_KEYS.MERCHANT_TYPE, plan);
                 FusedLocationService.MyLocation location = FusedLocationService.getLatestLocation();
                 if (location != null) {
                     bundle.putDouble("latitude", location.getLatitude());
@@ -71,6 +71,12 @@ public class SubscribeMembershipActivity extends BaseActivity implements CustomL
             }
         });
         setOnClickListener(R.id.tv_subscribe);
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        getCartData();
     }
 
     @Override
@@ -147,7 +153,7 @@ public class SubscribeMembershipActivity extends BaseActivity implements CustomL
         } else {
             holder = (Holder) convertView.getTag();
         }
-        final MembershipPlansResponse plan = planList.get(position);
+        plan = planList.get(position);
 
         if (!TextUtils.isEmpty(plan.getName()))
             holder.tvTitle.setText(plan.getName());
@@ -181,7 +187,7 @@ public class SubscribeMembershipActivity extends BaseActivity implements CustomL
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(AppConstants.BUNDLE_KEYS.MERCHANT_TYPE, plan.getName());
+                bundle.putSerializable(AppConstants.BUNDLE_KEYS.MERCHANT_TYPE, plan);
                 FusedLocationService.MyLocation location = FusedLocationService.getLatestLocation();
                 if (location != null) {
                     bundle.putDouble("latitude", location.getLatitude());

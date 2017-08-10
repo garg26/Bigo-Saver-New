@@ -1,7 +1,6 @@
 package com.bigosaver.neerajyadav.bigosaver.fragment;
 
 
-import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -26,11 +25,13 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bigosaver.neerajyadav.bigosaver.activity.CashCardCodeActivity;
 import com.bigosaver.neerajyadav.bigosaver.activity.EULA;
 import com.bigosaver.neerajyadav.bigosaver.activity.SubscribeMembershipActivity;
 import com.bigosaver.neerajyadav.bigosaver.model.RedeemResponse.RedeemResponse;
@@ -42,7 +43,7 @@ import com.bigosaver.neerajyadav.bigosaver.model.merchants.merchantoffer.Merchan
 import com.bigosaver.neerajyadav.bigosaver.model.merchants.merchantoffer.Transaction;
 import com.bigosaver.neerajyadav.bigosaver.model.merchants.merchantoffer.TransactionMap;
 import com.bigosaver.neerajyadav.bigosaver.model.offers.FilterOfferResponse;
-import com.daimajia.slider.library.Animations.DescriptionAnimation;
+import com.clevertap.android.sdk.CleverTapAPI;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
@@ -54,10 +55,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.bigosaver.neerajyadav.bigosaver.model.AdditionalDetails;
-import com.dpizarro.pinview.library.PinView;
-import com.dpizarro.pinview.library.PinViewSettings;
-import com.gun0912.tedpermission.PermissionListener;
-import com.gun0912.tedpermission.TedPermission;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
@@ -103,6 +100,10 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
     private List<In_plan> signatureList = new ArrayList<>();
     private List<In_plan> platinumList = new ArrayList<>();
     private String dialogTitle = "";
+    private CleverTapAPI cleverTap;
+    private String saving = "";
+    private TextView tvTrial, tvGold, tvPlatinum, tvSignature;
+    private ImageView ivDefault, ivGold, ivPlatinum, ivSignature;
 
 
     public boolean isFav() {
@@ -123,12 +124,13 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
         this.url = url;
     }
 
-    public static MerchantOffersTab getInstance(String offerId, String category, double latitude, double longitude) {
+    public static MerchantOffersTab getInstance(String offerId, String category, double latitude, double longitude, CleverTapAPI cleverTap) {
         MerchantOffersTab merchantOffersTab = new MerchantOffersTab();
         merchantOffersTab.merchantId = offerId;
         merchantOffersTab.categoryImage = category;
         merchantOffersTab.latitiude = latitude;
         merchantOffersTab.longitude = longitude;
+        merchantOffersTab.cleverTap = cleverTap;
         return merchantOffersTab;
     }
 
@@ -145,10 +147,16 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
     @Override
     public void initViews() {
         loadData();
-        sliderOffres = (SliderLayout) findView(R.id.slider_offer);
-        sliderOffres.setPresetTransformer(SliderLayout.Transformer.Accordion);
-        sliderOffres.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-        sliderOffres.setCustomAnimation(new DescriptionAnimation());
+
+        tvTrial = (TextView) findView(R.id.tv_default_membership);
+        tvGold = (TextView) findView(R.id.tv_gold_membership);
+        tvPlatinum = (TextView) findView(R.id.tv_platinum_membership);
+        tvSignature = (TextView) findView(R.id.tv_signature_membership);
+
+        ivDefault = (ImageView) findView(R.id.iv_default);
+        ivGold = (ImageView) findView(R.id.iv_gold);
+        ivPlatinum = (ImageView) findView(R.id.iv_platinum);
+        ivSignature = (ImageView) findView(R.id.iv_signature);
 
         fabCall = (com.getbase.floatingactionbutton.FloatingActionButton) findView(R.id.action_call);
 //        fabShare = (com.getbase.floatingactionbutton.FloatingActionButton) findView(R.id.action_share);
@@ -175,28 +183,20 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
         ll_sMembership = (LinearLayout) findView(R.id.ll_signature_membrshp);
 
         setOnClickListener(R.id.action_call, R.id.action_heart, R.id.action_website);
-
-        askPermissions();
         getDetailData();
+        applySlider();
     }
 
-
-    private void askPermissions() {
-        new TedPermission(getActivity())
-                .setPermissions(Manifest.permission.CALL_PHONE)
-                .setPermissionListener(new PermissionListener() {
-                    @Override
-                    public void onPermissionGranted() {
-
-                    }
-
-
-                    @Override
-                    public void onPermissionDenied(ArrayList<String> deniedPermissions) {
-
-                    }
-                }).check();
+    private void applySlider() {
+        sliderOffres = (SliderLayout) findView(R.id.slider_offer);
+        sliderOffres.setPresetTransformer(SliderLayout.Transformer.Fade);
+        sliderOffres.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+//        sliderOffres.setCustomAnimation(new DescriptionAnimation());
+        sliderOffres.setDuration(8000);
+        sliderOffres.setSliderTransformDuration(3000, null);
+//        sliderOffres.stopAutoCycle();
     }
+
 
     @Override
     public void onClick(View v) {
@@ -264,7 +264,7 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
     }
 
     private void callMerchant(String phone) {
-        Intent intent = new Intent(Intent.ACTION_CALL);
+        Intent intent = new Intent(Intent.ACTION_DIAL);
         if (!TextUtils.isEmpty(phone)) {
             intent.setData(Uri.parse(phone));
             startActivity(intent);
@@ -307,19 +307,20 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
                 if (null != fr) {
                     setFav(true);
                     fabHeart.setIcon(R.drawable.isfav);
-                    showToast(fr.getMerchant_name() + " has been added to your favourites.");
+                    showToast(fr.getMerchant_name() + getString(R.string.added_favourites));
                 }
                 break;
             case AppConstants.TASKCODES.REMOVEFAVOURITE:
                 setFav(false);
                 fabHeart.setIcon(R.drawable.not_fav);
-                showToast(mdr.getName() + " has been removed from your favourites.");
+                showToast(mdr.getName() + getString(R.string.removed_favourites));
                 break;
             case AppConstants.TASKCODES.REDEEMOFFER:
                 RedeemResponse redeemResponse = (RedeemResponse) response;
                 if (redeemResponse != null) {
                     showConfirmationDialog(R.layout.dialog_bigo_offer, redeemResponse, detail);
                 }
+                sendTrialOverEvent();
                 break;
             case AppConstants.TASKCODES.MERCHANTDETAIL:
                 MerchantDetailResponse mdr = (MerchantDetailResponse) response;
@@ -334,6 +335,15 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
                     setData(mdr);
                 }
                 break;
+        }
+    }
+
+    private void sendTrialOverEvent() {
+        if (user.getTotal_redemption() == 2 && user.getMembership_type().toLowerCase().compareTo("default") == 0) {
+            HashMap<String, Object> trialExpired = new HashMap<String, Object>();
+            trialExpired.put("userevent", "trial_over");
+            trialExpired.put("pagename", "sp");
+            cleverTap.event.push("Trial over", trialExpired);
         }
     }
 
@@ -435,57 +445,17 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
                 defaultList.add(inPlanList.get(i));
             } else if (inPlanList.get(i).getType().contains(AppConstants.HASHKEY.GOLD)) {
                 goldList.add(inPlanList.get(i));
+
             } else if (inPlanList.get(i).getType().contains(AppConstants.HASHKEY.PLATINUM)) {
                 platinumList.add(inPlanList.get(i));
+
             } else if (inPlanList.get(i).getType().contains(AppConstants.HASHKEY.SIGNATURE)) {
                 signatureList.add(inPlanList.get(i));
+
             }
         }
 
         setMembershipTypeData(defaultList, goldList, signatureList, platinumList);
-
-//        for (int i = 0; i < in_plan.size(); i++) {
-//            List<TransactionMap> transactionDefault = new ArrayList<>();
-//            List<TransactionMap> transactionGold = new ArrayList<>();
-//            List<TransactionMap> transactionPlatinum = new ArrayList<>();
-//            List<TransactionMap> transactionSignature = new ArrayList<>();
-//            if (hashMapRedeemed.get(AppConstants.HASHKEY.DEFAULTTRANSACTION) != null)
-//                transactionDefault.addAll(hashMapRedeemed.get(AppConstants.HASHKEY.DEFAULTTRANSACTION));
-//            if (hashMapRedeemed.get(AppConstants.HASHKEY.GOLDTRANSACTION) != null)
-//                transactionGold.addAll(hashMapRedeemed.get(AppConstants.HASHKEY.GOLDTRANSACTION));
-//            if (hashMapRedeemed.get(AppConstants.HASHKEY.PLATINUMTRANSACTION) != null)
-//                transactionPlatinum.addAll(hashMapRedeemed.get(AppConstants.HASHKEY.PLATINUMTRANSACTION));
-//            if (hashMapRedeemed.get(AppConstants.HASHKEY.SIGNATURETRANSACTION) != null)
-//                transactionSignature.addAll(hashMapRedeemed.get(AppConstants.HASHKEY.SIGNATURETRANSACTION));
-//
-//            In_plan merchantResponse = in_plan.get(i);
-//            TransactionMap transactionMap = new TransactionMap();
-//            for (int j = 0; j < merchantResponse.getTransactions().size(); j++) {
-//                if (merchantResponse.getTransactions().get(j).getType().toLowerCase().contains("default")) {
-//                    transactionMap.setTransaction(merchantResponse.getTransactions().get(j));
-//                    transactionMap.setOfferId(merchantResponse.getId());
-//                    transactionDefault.add(transactionMap);
-//                } else if (merchantResponse.getTransactions().get(j).getType().toLowerCase().contains("gold")) {
-//                    transactionMap.setTransaction(merchantResponse.getTransactions().get(j));
-//                    transactionMap.setOfferId(merchantResponse.getId());
-//                    transactionGold.add(transactionMap);
-//                } else if (merchantResponse.getTransactions().get(j).getType().toLowerCase().contains("platinum")) {
-//                    transactionMap.setTransaction(merchantResponse.getTransactions().get(j));
-//                    transactionMap.setOfferId(merchantResponse.getId());
-//                    transactionPlatinum.add(transactionMap);
-//                } else if (merchantResponse.getTransactions().get(j).getType().toLowerCase().contains("signature")) {
-//                    transactionMap.setTransaction(merchantResponse.getTransactions().get(j));
-//                    transactionMap.setOfferId(merchantResponse.getId());
-//                    transactionSignature.add(transactionMap);
-//                }
-//            }
-//            hashMapRedeemed.put(AppConstants.HASHKEY.DEFAULTTRANSACTION, transactionDefault);
-//            hashMapRedeemed.put(AppConstants.HASHKEY.GOLDTRANSACTION, transactionGold);
-//            hashMapRedeemed.put(AppConstants.HASHKEY.PLATINUMTRANSACTION, transactionPlatinum);
-//            hashMapRedeemed.put(AppConstants.HASHKEY.SIGNATURETRANSACTION, transactionSignature);
-//        }
-
-//        setMembershipData(in_plan);
 
     }
 
@@ -537,173 +507,52 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
         }
     }
 
-//    private void setMembershipData(List<In_plan> morInPlan) {
-//        for (int i = 0; i < morInPlan.size(); i++) {
-//            List<In_plan> offerDefault = new ArrayList<>();
-//            List<In_plan> offerGold = new ArrayList<>();
-//            List<In_plan> offerPlatinum = new ArrayList<>();
-//            List<In_plan> offerSignature = new ArrayList<>();
-//            List<TransactionMap> transactionDefault = new ArrayList<>();
-//            List<TransactionMap> transactionGold = new ArrayList<>();
-//            List<TransactionMap> transactionPlatinum = new ArrayList<>();
-//            List<TransactionMap> transactionSignature = new ArrayList<>();
-//
-//            In_plan merchantOfferResponse = morInPlan.get(i);
-//
-//            if (hashMapRedeemed.get(AppConstants.HASHKEY.DEFAULTTRANSACTION) != null)
-//                transactionDefault.addAll(hashMapRedeemed.get(AppConstants.HASHKEY.DEFAULTTRANSACTION));
-//            if (hashMapOffers.get(AppConstants.HASHKEY.DEFAULT) != null)
-//                offerDefault.addAll(hashMapOffers.get(AppConstants.HASHKEY.DEFAULT));
-//            for (int j = 0; j < merchantOfferResponse.getDefault_number_offer(); j++) {
-//                In_plan merchant = merchantOfferResponse.clone();
-////                offerDefault.add(merchant);
-////                int position = offerDefault.size();
-//                int listSize = transactionDefault.size();
-//                for (int k = 0; k < listSize; k++) {
-//                    TransactionMap tMap = transactionDefault.get(k);
-//                    if (merchant.getId().compareTo(tMap.getOfferId()) == 0) {
-//                        merchant.setRedeemed(true);
-//                        merchant.setRedeemptionDate(Util.convertDateFormat(transactionDefault.get(0).getTransaction().getDate(),
-//                                Util.DISCVER_SERVER_DATE_PATTERN, "dd-MMM-yyyy").replace("-", " "));
-//                        merchant.setType(AppConstants.HASHKEY.DEFAULT);
-//                        offerDefault.add(merchant);
-//                        transactionDefault.remove(tMap);
-//                        listSize = transactionDefault.size();
-//                    } else {
-//                        offerSignature.add(merchant);
-//                    }
-//                }
-//
-////                if (listSize > 0) {
-////                    offerDefault.get(position - 1).setRedeemed(true);
-////                    offerDefault.get(position - 1).setRedeemptionDate(Util.convertDateFormat(transactionDefault.get(0).getTransaction().getDate(),
-////                            Util.DISCVER_SERVER_DATE_PATTERN, "dd-MMM-yyyy").replace("-", " "));
-////                    transactionDefault.remove(0);
-////                    hashMapRedeemed.put(AppConstants.HASHKEY.DEFAULTTRANSACTION, transactionDefault);
-////                }
-//            }
-//            hashMapOffers.put(AppConstants.HASHKEY.DEFAULT, offerDefault);
-//
-//            if (hashMapRedeemed.get(AppConstants.HASHKEY.GOLDTRANSACTION) != null)
-//                transactionGold.addAll(hashMapRedeemed.get(AppConstants.HASHKEY.GOLDTRANSACTION));
-//            if (hashMapOffers.get(AppConstants.HASHKEY.GOLD) != null)
-//                offerGold.addAll(hashMapOffers.get(AppConstants.HASHKEY.GOLD));
-//            for (int j = 0; j < merchantOfferResponse.getGold_number_offer(); j++) {
-//                In_plan merchant = merchantOfferResponse.clone();
-////                offerGold.add(merchant);
-////                int position = offerGold.size();
-////                int listSize = transactionGold.size();
-////                if (listSize > 0) {
-////                    offerGold.get(position - 1).setRedeemed(true);
-////                    offerGold.get(position - 1).setRedeemptionDate(Util.convertDateFormat(transactionGold.get(0).getTransaction().getDate(),
-////                            Util.DISCVER_SERVER_DATE_PATTERN, "dd-MMM-yyyy").replace("-", " "));
-////                    transactionGold.remove(0);
-////                    hashMapRedeemed.put(AppConstants.HASHKEY.GOLDTRANSACTION, transactionGold);
-////                }
-//                int listSize = transactionGold.size();
-//                for (int k = 0; k < listSize; k++) {
-//                    TransactionMap tMap = transactionGold.get(k);
-//                    if (merchant.getId().compareTo(tMap.getOfferId()) == 0) {
-//                        merchant.setRedeemed(true);
-//                        merchant.setRedeemptionDate(Util.convertDateFormat(transactionGold.get(0).getTransaction().getDate(),
-//                                Util.DISCVER_SERVER_DATE_PATTERN, "dd-MMM-yyyy").replace("-", " "));
-//                        merchant.setType(AppConstants.HASHKEY.GOLD);
-//                        offerGold.add(merchant);
-//                        transactionGold.remove(tMap);
-//                        listSize = transactionGold.size();
-//                    } else {
-//                        offerGold.add(merchant);
-//                    }
-//                }
-//
-//            }
-//            hashMapOffers.put(AppConstants.HASHKEY.GOLD, offerGold);
-//
-//            if (hashMapRedeemed.get(AppConstants.HASHKEY.PLATINUMTRANSACTION) != null)
-//                transactionPlatinum.addAll(hashMapRedeemed.get(AppConstants.HASHKEY.PLATINUMTRANSACTION));
-//            if (hashMapOffers.get(AppConstants.HASHKEY.PLATINUM) != null)
-//                offerPlatinum.addAll(hashMapOffers.get(AppConstants.HASHKEY.PLATINUM));
-//            for (int j = 0; j < merchantOfferResponse.getPlatinum_number_offer(); j++) {
-//                In_plan merchant = merchantOfferResponse.clone();
-//                offerPlatinum.add(merchant);
-////                int position = offerPlatinum.size();
-////                int listSize = transactionPlatinum.size();
-////                if (listSize > 0) {
-////                    offerPlatinum.get(position - 1).setRedeemed(true);
-////                    offerPlatinum.get(position - 1).setRedeemptionDate(Util.convertDateFormat(transactionPlatinum.get(0).getTransaction().getDate(),
-////                            Util.DISCVER_SERVER_DATE_PATTERN, "dd-MMM-yyyy").replace("-", " "));
-////                    transactionPlatinum.remove(0);
-////                    hashMapRedeemed.put(AppConstants.HASHKEY.PLATINUMTRANSACTION, transactionPlatinum);
-////                }
-//                int listSize = transactionPlatinum.size();
-//                for (int k = 0; k < listSize; k++) {
-//                    TransactionMap tMap = transactionPlatinum.get(k);
-//                    if (merchant.getId().compareTo(tMap.getOfferId()) == 0) {
-//                        merchant.setRedeemed(true);
-//                        merchant.setRedeemptionDate(Util.convertDateFormat(transactionPlatinum.get(0).getTransaction().getDate(),
-//                                Util.DISCVER_SERVER_DATE_PATTERN, "dd-MMM-yyyy").replace("-", " "));
-//                        merchant.setType(AppConstants.HASHKEY.PLATINUM);
-//                        offerPlatinum.add(merchant);
-//                        transactionPlatinum.remove(tMap);
-//                        listSize = transactionPlatinum.size();
-//                    } else {
-//                        offerPlatinum.add(merchant);
-//                    }
-//                }
-//            }
-//            hashMapOffers.put(AppConstants.HASHKEY.PLATINUM, offerPlatinum);
-//
-//            if (hashMapRedeemed.get(AppConstants.HASHKEY.SIGNATURETRANSACTION) != null)
-//                transactionSignature.addAll(hashMapRedeemed.get(AppConstants.HASHKEY.SIGNATURETRANSACTION));
-//            if (hashMapOffers.get(AppConstants.HASHKEY.SIGNATURE) != null)
-//                offerSignature.addAll(hashMapOffers.get(AppConstants.HASHKEY.SIGNATURE));
-//            for (int j = 0; j < merchantOfferResponse.getSignature_number_offer(); j++) {
-//                In_plan merchant = merchantOfferResponse.clone();
-////                offerSignature.add(merchant);
-////                int position = offerSignature.size();
-////                int listSize = transactionSignature.size();
-////                if (listSize > 0) {
-////                    offerSignature.get(position - 1).setRedeemed(true);
-////                    offerSignature.get(position - 1).setRedeemptionDate(Util.convertDateFormat(transactionSignature.get(0).getTransaction().getDate(),
-////                            Util.DISCVER_SERVER_DATE_PATTERN, "dd-MMM-yyyy").replace("-", " "));
-////                    transactionSignature.remove(0);
-////                    hashMapRedeemed.put(AppConstants.HASHKEY.SIGNATURETRANSACTION, transactionSignature);
-////                }
-//                for (int k = 0; k < transactionSignature.size(); k++) {
-//                    TransactionMap tMap = transactionSignature.get(k);
-//                    if (merchant.getId().compareTo(tMap.getOfferId()) == 0) {
-//                        merchant.setRedeemed(true);
-//                        merchant.setRedeemptionDate(Util.convertDateFormat(transactionSignature.get(0).getTransaction().getDate(),
-//                                Util.DISCVER_SERVER_DATE_PATTERN, "dd-MMM-yyyy").replace("-", " "));
-//                        merchant.setType(AppConstants.HASHKEY.SIGNATURE);
-//                        offerSignature.add(merchant);
-//                        transactionSignature.remove(tMap);
-//                    } else {
-//                        offerSignature.add(merchant);
-//                    }
-//                }
-//            }
-//            hashMapOffers.put(AppConstants.HASHKEY.SIGNATURE, offerSignature);
-//        }
-//        setMembershipTypeData();
-//    }
 
     private void setMembershipTypeData(List<In_plan> defaultList, List<In_plan> goldList, List<In_plan> signatureList, List<In_plan> platinumList) {
         user = UpdateProfileResponse.getRunningInstance();
+
         if (user.getMembership_type().toLowerCase().contains("signature")) {
-            setSignatureData(signatureList, 0);
+
+            tvSignature.setText(R.string.offer_available);
+            ivSignature.setVisibility(View.GONE);
+
+            setSignatureData(signatureList, 0, true);
         } else if (user.getMembership_type().toLowerCase().contains("platinum")) {
-            setSignatureData(signatureList, 1);
-            setDataPltnum(platinumList, 0);
+
+            tvPlatinum.setText(R.string.offer_available);
+            tvSignature.setText("Unlock Signature Offers");
+            ivPlatinum.setVisibility(View.GONE);
+            ivSignature.setVisibility(View.VISIBLE);
+
+            setSignatureData(signatureList, 1, false);
+            setDataPltnum(platinumList, 0, true);
         } else if (user.getMembership_type().toLowerCase().contains("gold")) {
-            setSignatureData(signatureList, 1);
-            setDataPltnum(platinumList, 1);
-            setDataGold(goldList, 0);
+
+            tvGold.setText(R.string.offer_available);
+            tvPlatinum.setText("Unlock Platinum Offers");
+            tvSignature.setText("Unlock Signature Offers");
+            ivGold.setVisibility(View.GONE);
+            ivPlatinum.setVisibility(View.VISIBLE);
+            ivSignature.setVisibility(View.VISIBLE);
+
+            setSignatureData(signatureList, 1, false);
+            setDataPltnum(platinumList, 1, false);
+            setDataGold(goldList, 0, true);
         } else {
-            setDefaultData(defaultList, 0);
-            setSignatureData(signatureList, 1);
-            setDataPltnum(platinumList, 1);
-            setDataGold(goldList, 1);
+
+            tvTrial.setText(R.string.offer_available);
+            tvGold.setText("Unlock Gold Offers");
+            tvPlatinum.setText("Unlock Platinum Offers");
+            tvSignature.setText("Unlock Signature Offers");
+            ivDefault.setVisibility(View.GONE);
+            ivGold.setVisibility(View.VISIBLE);
+            ivPlatinum.setVisibility(View.VISIBLE);
+            ivSignature.setVisibility(View.VISIBLE);
+
+            setDefaultData(defaultList, 0, true);
+            setSignatureData(signatureList, 1, false);
+            setDataPltnum(platinumList, 1, false);
+            setDataGold(goldList, 1, false);
         }
     }
 
@@ -754,7 +603,9 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
         } else if (details.getOffer_type().compareTo("B1G1") == 0) {
             stringBuilder.append("Buy 1 Get 1");
         } else if (details.getOffer_type().contains("OFF")) {
-            stringBuilder.append(details.getSavings()).append(" OFF");
+            stringBuilder.append(details.getDiscount()).append("% OFF");
+        } else {
+            stringBuilder.append("DEALS");
         }
         if (stringBuilder != null) {
             return stringBuilder.toString();
@@ -762,23 +613,41 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
         return null;
     }
 
-    private void setDefaultData(List<In_plan> defaultMor, final int action) {
+    private void setDefaultData(List<In_plan> defaultMor, final int action, boolean b) {
         if (defaultMor == null || defaultMor.size() == 0) {
             ll_default.setVisibility(View.GONE);
             return;
         }
+
         cardView.setVisibility(View.VISIBLE);
         ll_default.setVisibility(View.VISIBLE);
         for (int y = 0; y < defaultMor.size(); y++) {
             final In_plan details = defaultMor.get(y);
             if (details != null) {
+
+                if (details.getIs_default_limit_exceeded()){
+                    tvTrial.setText("Trials Expired");
+                    b = false;
+                    ivDefault.setVisibility(View.VISIBLE);
+                } else {
+                    tvTrial.setText(getString(R.string.offer_available));
+                    b = true;
+                    ivDefault.setVisibility(View.GONE);
+                }
+
                 View view = inflater.inflate(R.layout.row_offers, null);
                 LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.ll_card_envelope);
+                FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.frame_lock);
+                if (b == true) {
+                    frameLayout.setVisibility(View.GONE);
+                } else {
+                    frameLayout.setVisibility(View.VISIBLE);
+                }
                 if (!TextUtils.isEmpty(details.getTitle()))
                     setText(R.id.tv_offer_name, details.getTitle(), view);
                 if (user.getMembership_type().toLowerCase().contains(AppConstants.HASHKEY.DEFAULT)) {
                     ImageView iv = (ImageView) findView(R.id.iv_default);
-                    iv.setImageResource(R.drawable.appicon);
+                    iv.setImageResource(R.drawable.lock);
                     if (!details.getRedeemed() || details.getOffer_option().toLowerCase().contains(getString(R.string.monthly))) {
                         if (details.getIs_blackout_day()) {
                             setText(R.id.tv_desc, getString(R.string.not_avaliable_today), view);
@@ -799,6 +668,8 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
                     view.findViewById(R.id.iv_medal).setBackgroundResource(R.drawable.bigodefault);
                 } else if (details.getOffer_type().contains(getString(R.string.off))) {
                     view.findViewById(R.id.iv_medal).setBackgroundResource(R.drawable.offdefault);
+                } else {
+                    view.findViewById(R.id.iv_medal).setBackgroundResource(R.mipmap.deals_blue);
                 }
 
                 String type = findDialogTitle(details);
@@ -812,15 +683,18 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
                         if (details.getIs_blackout_day())
                             showToast(getString(R.string.not_avaliable_today));
                         else if (details.getOffer_option().toLowerCase().contains(getString(R.string.drink))) {
-                            if (details.getNeed_activate_bigo())
-                                showToast(getString(R.string.activate_bigo_drinks));
-                            else {
+                            if (details.getNeed_activate_bigo()) {
+//                                showToast(getString(R.string.activate_bigo_drinks));
+                                showDrinksDialog();
+                            } else {
                                 dialogTitle = findDialogTitle(details);
-                                showDialog(R.layout.redeem_pizza_offer, details, action, dialogTitle);
+                                saving = findDialogSaving(details);
+                                showDialog(R.layout.redeem_pizza_offer, details, action, dialogTitle, saving);
                             }
                         } else {
                             dialogTitle = findDialogTitle(details);
-                            showDialog(R.layout.redeem_pizza_offer, details, action, dialogTitle);
+                            saving = findDialogSaving(details);
+                            showDialog(R.layout.redeem_pizza_offer, details, action, dialogTitle, saving);
                         }
                     }
                 });
@@ -831,7 +705,25 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
         }
     }
 
-    private void setDataGold(List<In_plan> goldMor, final int action) {
+    private String findDialogSaving(In_plan details) {
+        final StringBuilder stringBuilder = new StringBuilder();
+        if (details.getOffer_type().compareTo("B2G2") == 0) {
+            stringBuilder.append("INR ").append(details.getSavings());
+        } else if (details.getOffer_type().compareTo("B1G1") == 0) {
+            stringBuilder.append("INR ").append(details.getSavings());
+        } else if (details.getOffer_type().contains("OFF")) {
+            String savings = details.getSavings();
+            if (!TextUtils.isEmpty(savings)) {
+                stringBuilder.append("INR ").append(savings).append(" (").append(details.getDiscount()).append("%)");
+            }
+        }
+        if (stringBuilder != null) {
+            return stringBuilder.toString();
+        }
+        return null;
+    }
+
+    private void setDataGold(List<In_plan> goldMor, final int action, boolean b) {
         if (goldMor == null || goldMor.size() == 0) {
             ll_gold.setVisibility(View.GONE);
             return;
@@ -843,11 +735,17 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
             if (details != null) {
                 View view = inflater.inflate(R.layout.row_offers, null);
                 LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.ll_card_envelope);
+                FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.frame_lock);
+                if (b == true) {
+                    frameLayout.setVisibility(View.GONE);
+                } else {
+                    frameLayout.setVisibility(View.VISIBLE);
+                }
                 if (!TextUtils.isEmpty(details.getTitle()))
                     setText(R.id.tv_offer_name, details.getTitle(), view);
                 if (user.getMembership_type().toLowerCase().contains("gold")) {
                     ImageView iv = (ImageView) findView(R.id.iv_gold);
-                    iv.setImageResource(R.drawable.appicon);
+                    iv.setImageResource(R.drawable.appiconlogo);
                     if (!details.getRedeemed() || details.getOffer_option().toLowerCase().contains(getString(R.string.monthly))) {
                         if (details.getIs_blackout_day()) {
                             setText(R.id.tv_desc, getString(R.string.not_avaliable_today), view);
@@ -868,6 +766,8 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
                     view.findViewById(R.id.iv_medal).setBackgroundResource(R.drawable.bigogold);
                 } else if (details.getOffer_type().contains(getString(R.string.off))) {
                     view.findViewById(R.id.iv_medal).setBackgroundResource(R.drawable.offgold);
+                } else {
+                    view.findViewById(R.id.iv_medal).setBackgroundResource(R.mipmap.deals_blue);
                 }
 
                 String type = findDialogTitle(details);
@@ -881,15 +781,18 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
                         if (details.getIs_blackout_day())
                             showToast(getString(R.string.not_avaliable_today));
                         else if (details.getOffer_option().toLowerCase().contains("drink")) {
-                            if (details.getNeed_activate_bigo())
-                                showToast(getString(R.string.activate_bigo_drinks));
-                            else {
+                            if (details.getNeed_activate_bigo()) {
+//                                showToast(getString(R.string.activate_bigo_drinks));
+                                showDrinksDialog();
+                            } else {
                                 dialogTitle = findDialogTitle(details);
-                                showDialog(R.layout.redeem_pizza_offer, details, action, dialogTitle);
+                                saving = findDialogSaving(details);
+                                showDialog(R.layout.redeem_pizza_offer, details, action, dialogTitle, saving);
                             }
                         } else {
                             dialogTitle = findDialogTitle(details);
-                            showDialog(R.layout.redeem_pizza_offer, details, action, dialogTitle);
+                            saving = findDialogSaving(details);
+                            showDialog(R.layout.redeem_pizza_offer, details, action, dialogTitle, saving);
                         }
                     }
                 });
@@ -900,7 +803,7 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
         }
     }
 
-    private void setDataPltnum(List<In_plan> platMor, final int action) {
+    private void setDataPltnum(List<In_plan> platMor, final int action, boolean b) {
         if (platMor == null || platMor.size() == 0) {
             ll_platinum.setVisibility(View.GONE);
             return;
@@ -912,12 +815,18 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
             if (details != null) {
                 View view = inflater.inflate(R.layout.row_offers, null);
                 LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.ll_card_envelope);
+                FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.frame_lock);
+                if (b == true) {
+                    frameLayout.setVisibility(View.GONE);
+                } else {
+                    frameLayout.setVisibility(View.VISIBLE);
+                }
                 if (!TextUtils.isEmpty(details.getTitle()))
                     setText(R.id.tv_offer_name, details.getTitle(), view);
 
                 if (user.getMembership_type().toLowerCase().contains("platinum")) {
                     ImageView iv = (ImageView) findView(R.id.iv_platinum);
-                    iv.setImageResource(R.drawable.appicon);
+                    iv.setImageResource(R.drawable.appiconlogo);
                     if (!details.getRedeemed() || details.getOffer_option().toLowerCase().contains(getString(R.string.monthly))) {
                         if (details.getIs_blackout_day()) {
                             setText(R.id.tv_desc, getString(R.string.not_avaliable_today), view);
@@ -938,6 +847,8 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
                     view.findViewById(R.id.iv_medal).setBackgroundResource(R.drawable.bigoplatinum);
                 } else if (details.getOffer_type().contains(getString(R.string.off))) {
                     view.findViewById(R.id.iv_medal).setBackgroundResource(R.drawable.offplatinum);
+                } else {
+                    view.findViewById(R.id.iv_medal).setBackgroundResource(R.mipmap.deals_blue);
                 }
 
                 String type = findDialogTitle(details);
@@ -951,15 +862,16 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
                         if (details.getIs_blackout_day())
                             showToast(getString(R.string.not_avaliable_today));
                         else if (details.getOffer_option().toLowerCase().contains("drink")) {
-                            if (details.getNeed_activate_bigo())
-                                showToast(getString(R.string.activate_bigo_drinks));
-                            else {
+                            if (details.getNeed_activate_bigo()) {
+                                showDrinksDialog();
+//                                showToast(getString(R.string.activate_bigo_drinks));
+                            } else {
                                 dialogTitle = findDialogTitle(details);
-                                showDialog(R.layout.redeem_pizza_offer, details, action, dialogTitle);
+                                showDialog(R.layout.redeem_pizza_offer, details, action, dialogTitle, saving);
                             }
                         } else {
                             dialogTitle = findDialogTitle(details);
-                            showDialog(R.layout.redeem_pizza_offer, details, action, dialogTitle);
+                            showDialog(R.layout.redeem_pizza_offer, details, action, dialogTitle, saving);
                         }
                     }
                 });
@@ -970,7 +882,7 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
         }
     }
 
-    private void setSignatureData(List<In_plan> signatureMor, final int action) {
+    private void setSignatureData(List<In_plan> signatureMor, final int action, boolean b) {
         if (signatureMor == null || signatureMor.size() == 0) {
             ll_signature.setVisibility(View.GONE);
             return;
@@ -982,11 +894,17 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
             if (details != null) {
                 View view = inflater.inflate(R.layout.row_offers, null);
                 LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.ll_card_envelope);
+                FrameLayout frameLayout = (FrameLayout) view.findViewById(R.id.frame_lock);
+                if (b == true) {
+                    frameLayout.setVisibility(View.GONE);
+                } else {
+                    frameLayout.setVisibility(View.VISIBLE);
+                }
                 if (!TextUtils.isEmpty(details.getTitle()))
                     setText(R.id.tv_offer_name, details.getTitle(), view);
                 if (user.getMembership_type().toLowerCase().contains("signature")) {
                     ImageView iv = (ImageView) findView(R.id.iv_signature);
-                    iv.setImageResource(R.drawable.appicon);
+                    iv.setImageResource(R.drawable.appiconlogo);
                     if (!details.getRedeemed() || details.getOffer_option().toLowerCase().contains(getString(R.string.monthly))) {
                         if (details.getIs_blackout_day()) {
                             setText(R.id.tv_desc, getString(R.string.not_avaliable_today), view);
@@ -1007,6 +925,8 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
                     view.findViewById(R.id.iv_medal).setBackgroundResource(R.drawable.bigosignature);
                 } else if (details.getOffer_type().contains(getString(R.string.off))) {
                     view.findViewById(R.id.iv_medal).setBackgroundResource(R.drawable.offsignature);
+                } else {
+                    view.findViewById(R.id.iv_medal).setBackgroundResource(R.mipmap.deals_blue);
                 }
 
                 String type = findDialogTitle(details);
@@ -1020,15 +940,18 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
                         if (details.getIs_blackout_day())
                             showToast(getString(R.string.not_avaliable_today));
                         else if (details.getOffer_option().toLowerCase().contains("drink")) {
-                            if (details.getNeed_activate_bigo())
-                                showToast(getString(R.string.activate_bigo_drinks));
-                            else {
+                            if (details.getNeed_activate_bigo()) {
+                                showDrinksDialog();
+//                                showToast(getString(R.string.activate_bigo_drinks));
+                            } else {
                                 dialogTitle = findDialogTitle(details);
-                                showDialog(R.layout.redeem_pizza_offer, details, action, dialogTitle);
+                                saving = findDialogSaving(details);
+                                showDialog(R.layout.redeem_pizza_offer, details, action, dialogTitle, saving);
                             }
                         } else {
                             dialogTitle = findDialogTitle(details);
-                            showDialog(R.layout.redeem_pizza_offer, details, action, dialogTitle);
+                            saving = findDialogSaving(details);
+                            showDialog(R.layout.redeem_pizza_offer, details, action, dialogTitle, saving);
                         }
                     }
                 });
@@ -1039,7 +962,53 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
         }
     }
 
-    private void showDialog(int redeem_offer, final In_plan details, final int action, final String dialogTitle) {
+    private void showDrinksDialog() {
+        final Dialog dialog = new Dialog(getActivity());
+        dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.setContentView(R.layout.dialog_subscribe_bigo_drinks);
+
+        Button btnRedeem = (Button) dialog.findViewById(R.id.btn_subscribe_drinks);
+        TextView tv_tnc = (TextView) dialog.findViewById(R.id.font_tv_footer);
+        ImageView closeButton = (ImageView) dialog.findViewById(R.id.iv_cancel_redeem);
+
+        SpannableString spannableString = new SpannableString(getString(R.string.offers_are_sub));
+        ClickableSpan clickableSpan = new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+                Bundle bundle = new Bundle();
+                bundle.putBoolean(AppConstants.BUNDLE_KEYS.RULES, true);
+                startNextActivity(bundle, EULA.class);
+            }
+
+        };
+        spannableString.setSpan(new UnderlineSpan(), 24, 42, 0);
+        spannableString.setSpan(clickableSpan, 24, 42, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(new ForegroundColorSpan(getResources().getColor(R.color.white)), 24, 42, 0);
+        tv_tnc.setMovementMethod(LinkMovementMethod.getInstance());
+        tv_tnc.setText(spannableString);
+
+        btnRedeem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                bundle.putBoolean(AppConstants.BUNDLE_KEYS.DRINKS, true);
+                startNextActivity(bundle, CashCardCodeActivity.class);
+                getActivity().finish();
+            }
+        });
+
+        closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
+    }
+
+    private void showDialog(int redeem_offer, final In_plan details, final int action,
+                            final String dialogTitle, String saving) {
         final Dialog dialog = new Dialog(getActivity());
         dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -1082,11 +1051,11 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
 
         if (!TextUtils.isEmpty(details.getMerchant_logo()))
             Picasso.with(getActivity()).load(AppConstants.PAGE_URL.PHOTO_URL + details.getMerchant_logo())
-                    .placeholder(R.drawable.appicon)
+                    .placeholder(R.drawable.appiconlogo)
                     .into(ivMerchant);
 
-        if (!TextUtils.isEmpty(details.getSavings()))
-            tvSaving.setText(details.getSavings());
+        if (!TextUtils.isEmpty(saving))
+            tvSaving.setText(saving);
         else tvSaving.setVisibility(View.GONE);
 
         if (!TextUtils.isEmpty(details.getEnd_date()))
@@ -1196,7 +1165,7 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
 
         if (!TextUtils.isEmpty(details.getMerchant_logo()))
             Picasso.with(getActivity()).load(AppConstants.PAGE_URL.PHOTO_URL + details.getMerchant_logo())
-                    .placeholder(R.drawable.appicon)
+                    .placeholder(R.drawable.appiconlogo)
                     .into(ivMerchant);
 
         if (!TextUtils.isEmpty(details.getSavings()))
@@ -1284,7 +1253,7 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
 
         if (!TextUtils.isEmpty(details.getMerchant_logo()))
             Picasso.with(getActivity()).load(AppConstants.PAGE_URL.PHOTO_URL + details.getMerchant_logo())
-                    .placeholder(R.drawable.appicon)
+                    .placeholder(R.drawable.appiconlogo)
                     .into(ivMerchant);
 
         if (!TextUtils.isEmpty(redeemResponse.getReference_number()))
@@ -1361,4 +1330,5 @@ public class MerchantOffersTab extends BaseFragment implements ViewPagerEx.OnPag
     public void onSliderClick(BaseSliderView slider) {
 
     }
+
 }

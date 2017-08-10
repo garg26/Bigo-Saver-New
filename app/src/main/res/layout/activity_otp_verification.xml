@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerVertical="true"
+    tools:context="com.bigosaver.neerajyadav.bigosaver.activity.MobileNumberConfirmationActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="@dimen/padding_16dp"
+        android:orientation="vertical">
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_32dp"
+            android:text="Enter the 4-digit code sent to"
+            android:textSize="@dimen/text_16dp"
+            android:textColor="@color/black"/>
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:id="@+id/tv_number"
+            android:layout_marginLeft="@dimen/margin_4dp"
+            android:layout_marginTop="@dimen/margin_12dp"
+            android:text="+919411049464"/>
+
+        <simplifii.framework.widgets.CustomFontEditText
+            android:layout_width="120dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_otp"
+            android:layout_marginTop="@dimen/margin_6dp"
+            android:hint="OTP"
+            android:inputType="number"
+            android:maxLength="4"
+            android:gravity="center"
+            android:textColor="@color/black"/>
+
+        <simplifii.framework.widgets.CustomFontButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_submit_pin"
+            android:background="@drawable/btn_send_otp"
+            android:text="continue"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/margin_32dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="10">
+
+            <simplifii.framework.widgets.CustomFontButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_resend_otp"
+                android:background="@drawable/btn_background"
+                android:text="Resend OTP"
+                android:layout_marginRight="4dp"
+                android:textColor="@color/white"
+                android:layout_weight="5"
+                android:layout_marginTop="@dimen/margin_32dp"/>
+
+            <simplifii.framework.widgets.CustomFontButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/btn_edit_mobile_number"
+                android:layout_marginLeft="4dp"
+                android:background="@drawable/btn_background_yellow"
+                android:text="Edit Number"
+                android:layout_weight="5"
+                android:textColor="@color/white"
+                android:layout_marginTop="@dimen/margin_32dp"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

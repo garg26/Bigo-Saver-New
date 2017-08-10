@@ -27,73 +27,54 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_160dp"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/black_tab">
+        android:layout_alignParentBottom="true">
 
         <LinearLayout
             android:id="@+id/ll_signup"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="@dimen/ht_home_actions"
             android:layout_above="@+id/ll_already_acc"
-            android:layout_marginBottom="@dimen/margin_20dp"
+            android:layout_marginBottom="@dimen/margin_2dp"
             android:layout_marginTop="@dimen/margin_4dp"
-            android:background="@mipmap/home_bottom">
+            android:background="@mipmap/home_bottom"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp">
 
-            <RelativeLayout
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_home_signup"
+                style="@style/tv_signup_saving"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="@string/text_signup_saving"
+                android:textSize="@dimen/text_22dp" />
 
-                <simplifii.framework.widgets.CustomFontTextView
-                    android:id="@+id/tv_home_signup"
-                    style="@style/tv_signup_saving"
-                    android:text="@string/text_signup_saving"
-                    android:textSize="@dimen/text_22dp" />
 
-                <simplifii.framework.widgets.CustomFontTextView
-                    android:id="@+id/tv_text"
-                    style="@style/tv_signup_saving"
-                    android:layout_toRightOf="@+id/tv_home_signup"
-                    android:text=" AND START SAVING"
-                    android:textSize="@dimen/text_22dp" />
-
-            </RelativeLayout>
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/ll_already_acc"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="@dimen/ht_home_actions"
             android:layout_above="@+id/ll_take"
-            android:layout_marginBottom="@dimen/margin_20dp"
-            android:background="@mipmap/home_bottom">
+            android:layout_marginBottom="@dimen/margin_2dp"
+            android:background="@mipmap/home_bottom"
+            android:paddingBottom="4dp"
+            android:paddingTop="4dp">
 
-            <RelativeLayout
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_already_account"
                 style="@style/tv_signup_saving"
                 android:layout_width="match_parent"
                 android:layout_gravity="center"
-                android:layout_marginBottom="@dimen/margin_4dp"
-                android:layout_marginTop="@dimen/margin_4dp"
-                android:gravity="center">
+                android:gravity="center"
+                android:text="@string/already_account"
+                android:textSize="@dimen/text_16dp"
+                android:textStyle="bold" />
 
-                <simplifii.framework.widgets.CustomFontTextView
-                    android:id="@+id/tv_already_account"
-                    style="@style/tv_signup_saving"
-                    android:layout_centerVertical="true"
-                    android:text="@string/already_account"
-                    android:textSize="@dimen/text_16dp"
-                    android:textStyle="bold" />
 
-                <simplifii.framework.widgets.CustomFontTextView
-                    android:id="@+id/tv_signin_home"
-                    style="@style/tv_signup_saving"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/margin_4dp"
-                    android:layout_toRightOf="@+id/tv_already_account"
-                    android:text="@string/tv_sign_in"
-                    android:textSize="@dimen/text_16dp" />
-
-            </RelativeLayout>
         </LinearLayout>
 
         <!--<View-->
@@ -108,16 +89,15 @@
         <LinearLayout
             android:id="@+id/ll_take"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="@dimen/ht_home_actions"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp"
             android:background="@mipmap/home_bottom"
             android:gravity="center">
 
             <simplifii.framework.widgets.CustomFontTextView
                 android:id="@+id/tv_take_tour"
                 style="@style/tv_signup_saving"
-                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
                 android:text="@string/take_a_tour"
                 android:textSize="@dimen/text_16dp" />
         </LinearLayout>

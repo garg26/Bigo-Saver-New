@@ -59,7 +59,7 @@
     <dimen name="margin_10dp">10dp</dimen>
     <dimen name="margin_6dp">6dp</dimen>
     <dimen name="iv_32dp">32dp</dimen>
-    <dimen name="iv_24dp">24dp</dimen>
+    <dimen name="iv_24dp">32dp</dimen>
     <dimen name="padding_16dp">16dp</dimen>
     <dimen name="iv_16dp">16dp</dimen>
     <dimen name="iv_20dp">20dp</dimen>
@@ -103,5 +103,12 @@
     <dimen name="width_96dp">96dp</dimen>
     <dimen name="size_18dp">18dp</dimen>
     <dimen name="text_15dp">15dp</dimen>
-    >>>>>>> 11325a114979c6bb521837af88880a0bb6e0fbd7
+    <dimen name="ht_home_actions">40dp</dimen>
+    <dimen name="elevation_4dp">4dp</dimen>
+    <dimen name="height_48dp">48dp</dimen>
+    <dimen name="margin_128dp">128dp</dimen>
+    <dimen name="margin_24p">24dp</dimen>
+    <dimen name="margin_248dp">248dp</dimen>
+    <dimen name="margin_200dp">200dp</dimen>
+    <dimen name="margin_160dp">160dp</dimen>
 </resources>

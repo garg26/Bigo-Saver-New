@@ -20,7 +20,7 @@
             android:layout_height="match_parent"
             android:layout_margin="4dp"
             android:scaleType="centerInside"
-            android:src="@drawable/appicon" />
+            android:src="@drawable/appiconlogo" />
 
     </RelativeLayout>
 

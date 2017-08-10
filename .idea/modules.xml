@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/bigo-saver-new.iml" filepath="$PROJECT_DIR$/bigo-saver-new.iml" />
       <module fileurl="file://$PROJECT_DIR$/customBrowser/customBrowser.iml" filepath="$PROJECT_DIR$/customBrowser/customBrowser.iml" />
       <module fileurl="file://$PROJECT_DIR$/framework/framework.iml" filepath="$PROJECT_DIR$/framework/framework.iml" />
+      <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
       <module fileurl="file://$PROJECT_DIR$/sdkui/sdkui.iml" filepath="$PROJECT_DIR$/sdkui/sdkui.iml" />
     </modules>
   </component>

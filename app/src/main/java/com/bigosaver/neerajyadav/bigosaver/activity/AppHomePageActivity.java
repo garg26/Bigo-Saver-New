@@ -19,13 +19,13 @@ public class AppHomePageActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_home_page);
-        tvSignIn = (TextView) findViewById(R.id.tv_signin_home);
-        tvTakeATour = (TextView) findViewById(R.id.tv_take_tour);
-        tvSignUp = (TextView) findViewById(R.id.tv_home_signup);
+//        tvSignIn = (TextView) findViewById(R.id.tv_signin_home);
+//        tvTakeATour = (TextView) findViewById(R.id.tv_take_tour);
+//        tvSignUp = (TextView) findViewById(R.id.tv_home_signup);
 
-        tvSignIn.setPaintFlags(tvSignIn.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        tvTakeATour.setPaintFlags(tvTakeATour.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        tvSignUp.setPaintFlags(tvSignUp.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+//        tvSignIn.setPaintFlags(tvSignIn.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+//        tvTakeATour.setPaintFlags(tvTakeATour.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+//        tvSignUp.setPaintFlags(tvSignUp.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         if (Preferences.isUserLoggerIn()) {
             startNextActivity(MenuActivity.class);

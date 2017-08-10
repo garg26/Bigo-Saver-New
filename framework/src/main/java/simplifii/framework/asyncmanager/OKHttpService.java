@@ -28,6 +28,7 @@ public class OKHttpService extends GenericService {
     public Object getData(Object... params) throws JSONException, SQLException, NullPointerException, RestException, ClassCastException, IOException {
         if (params != null && params.length > 0) {
             HttpParamObject param = (HttpParamObject) params[0];
+            Log.i("","");
             final OkHttpClient client = new OkHttpClient();
 
             final MediaType mediaType = MediaType.parse(param.getContentType());

@@ -4,8 +4,7 @@
 
     <item
         android:id="@+id/tv_done"
-        app:showAsAction="always"
         android:title="APPLY"
-        />
+        app:showAsAction="always" />
 
 </menu>

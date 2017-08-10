@@ -26,6 +26,7 @@ import com.bigosaver.neerajyadav.bigosaver.model.commonmodels.Cuisine;
 import com.bigosaver.neerajyadav.bigosaver.model.merchants.MerchantTimingResponse;
 import com.bigosaver.neerajyadav.bigosaver.model.merchants.merchantdetail.MerchantDetailResponse;
 import com.bigosaver.neerajyadav.bigosaver.model.merchants.merchantdetail.More_information;
+import com.clevertap.android.sdk.CleverTapAPI;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.plumillonforge.android.chipview.Chip;
@@ -165,11 +166,15 @@ public class MerchantDetailTab extends BaseFragment {
         if (mdr.getRecommendation() != null && !TextUtils.isEmpty(mdr.getRecommendation())) {
             String[] knownForList = mdr.getRecommendation().split(",");
             for (String name : knownForList) {
-                View view = inflater.inflate(R.layout.row_item_list_eveattion, null);
-                ImageView imageView = (ImageView) view.findViewById(R.id.iv_item_list_pic);
-                imageView.setVisibility(View.GONE);
-                setText(R.id.tv_item_list_text, name, view);
-                llKnownfor.addView(view);
+                if (name.compareTo("null") != 0) {
+                    View view = inflater.inflate(R.layout.row_item_list_eveattion, null);
+                    ImageView imageView = (ImageView) view.findViewById(R.id.iv_item_list_pic);
+                    imageView.setVisibility(View.GONE);
+                    setText(R.id.tv_item_list_text, name, view);
+                    llKnownfor.addView(view);
+                }else{
+
+                }
             }
         } else
             findView(R.id.ll_known_for).setVisibility(View.GONE);
@@ -185,7 +190,7 @@ public class MerchantDetailTab extends BaseFragment {
                     setText(R.id.tv_item_list_text, more_information.getValue(), view);
                 if (!TextUtils.isEmpty(more_information.getImage()))
                     Picasso.with(getActivity()).load(AppConstants.PAGE_URL.PHOTO_URL + more_information.getImage()).
-                            placeholder(R.drawable.appicon).into(imageView);
+                            placeholder(R.drawable.appiconlogo).into(imageView);
                 llMoreInformation.addView(view);
             }
         else
@@ -375,7 +380,7 @@ public class MerchantDetailTab extends BaseFragment {
 //        return merchant_detailFragment;
 //    }
 
-    public static MerchantDetailTab getInstance(String id) {
+    public static MerchantDetailTab getInstance(String id, CleverTapAPI cleverTap) {
         MerchantDetailTab merchant_detailFragment = new MerchantDetailTab();
         merchant_detailFragment.merchantId = id;
 //        merchant_detailFragment.offerResponse = merchantData;
@@ -441,6 +446,4 @@ public class MerchantDetailTab extends BaseFragment {
             return convertView;
         }
     }
-
-
 }

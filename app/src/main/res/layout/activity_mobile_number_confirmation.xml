@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerVertical="true"
+    tools:context="com.bigosaver.neerajyadav.bigosaver.activity.MobileNumberConfirmationActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="@dimen/padding_16dp"
+        android:orientation="vertical">
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/margin_32dp"
+            android:text="Confirm Your Mobile Number"
+            android:textSize="@dimen/text_16dp"
+            android:textColor="@color/black"/>
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_4dp"
+            android:layout_marginTop="@dimen/margin_12dp"
+            android:text="India +91"/>
+
+        <simplifii.framework.widgets.CustomFontEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/et_mobile"
+            android:layout_marginTop="@dimen/margin_6dp"
+            android:inputType="number"
+            android:maxLength="10"
+            android:hint="Mobile Number"
+            android:textColor="@color/black"/>
+
+        <simplifii.framework.widgets.CustomFontButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/btn_submit_pin"
+            android:background="@drawable/btn_send_otp"
+            android:text="Send Confirmation Code"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/margin_32dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

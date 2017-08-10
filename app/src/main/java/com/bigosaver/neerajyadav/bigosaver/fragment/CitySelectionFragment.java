@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
@@ -27,11 +28,17 @@ import com.bigosaver.neerajyadav.bigosaver.model.CategoryAPI;
 import com.bigosaver.neerajyadav.bigosaver.model.CityData;
 import com.bigosaver.neerajyadav.bigosaver.model.interfaces.FragmentChangeListener;
 import com.bigosaver.neerajyadav.bigosaver.model.merchants.MerchantData;
+import com.bumptech.glide.Glide;
+import com.ecloud.pulltozoomview.PullToZoomScrollViewEx;
 import com.google.android.gms.common.ConnectionResult;
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+import com.google.gson.reflect.TypeToken;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 import com.squareup.picasso.Picasso;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,6 +46,7 @@ import simplifii.framework.asyncmanager.HttpParamObject;
 import simplifii.framework.fragments.BaseFragment;
 import simplifii.framework.utility.AppConstants;
 import simplifii.framework.utility.FusedLocationService;
+import simplifii.framework.utility.JsonUtil;
 import simplifii.framework.utility.Preferences;
 import simplifii.framework.utility.Util;
 
@@ -63,10 +71,15 @@ public class CitySelectionFragment extends BaseFragment implements DialogLocatio
     boolean isLocationAsked = false;
     private FusedLocationListener fusedLocationService;
     private FusedLocationService.MyLocation location;
+    private String categoryId = "";
+    private PullToZoomScrollViewEx scrollView;
+    private boolean showCity;
 
-    public static CitySelectionFragment getInstance(FragmentChangeListener listener) {
+    public static CitySelectionFragment getInstance(FragmentChangeListener listener, String categoryId, String savedCity) {
         CitySelectionFragment f = new CitySelectionFragment();
         f.listener = listener;
+        f.categoryId = categoryId;
+        f.savedCity = savedCity;
         return f;
     }
 
@@ -75,10 +88,10 @@ public class CitySelectionFragment extends BaseFragment implements DialogLocatio
     public void initViews() {
         findViews();
         savedCity = Preferences.getData(AppConstants.PREF_KEYS.SELECTED_CITY, "");
+        checkGpsService();
         Intent i = new Intent(getActivity(), GetUpdatedDataService.class);
         getActivity().startService(i);
         setOnClickListener(R.id.tv_select_city);
-        checkGpsService();
     }
 
     private void setSelecteCity(String savedCity) {
@@ -93,6 +106,10 @@ public class CitySelectionFragment extends BaseFragment implements DialogLocatio
                 break;
             }
         }
+        if (!TextUtils.isEmpty(categoryId)) {
+            onListItemClicked(findCategoryPosition(categoryId, list), 2);
+        }
+
     }
 
     private void getCitiesList() {
@@ -103,6 +120,7 @@ public class CitySelectionFragment extends BaseFragment implements DialogLocatio
     }
 
     private void findViews() {
+//        scrollView = (PullToZoomScrollViewEx) findView(R.id.scroll_view);
         civ_food = (ImageView) findView(R.id.civ_Food);
         civ_health = (ImageView) findView(R.id.civ_health);
         civ_things = (ImageView) findView(R.id.civ_things);
@@ -151,10 +169,16 @@ public class CitySelectionFragment extends BaseFragment implements DialogLocatio
             case AppConstants.TASKCODES.CITIES:
                 List<CityData> citiesList = (List<CityData>) response;
                 if (citiesList != null && citiesList.size() > 0) {
-                    this.cities.addAll(citiesList);
+                    List<CityData> cityDatas = filterCityList(citiesList);
+                    if (cityDatas != null) {
+                        this.cities.addAll(cityDatas);
+                    }
                     setCategoryList();
-                    if (!TextUtils.isEmpty(savedCity))
+                    if (!TextUtils.isEmpty(savedCity)) {
                         setSelecteCity(savedCity);
+                    } else {
+                        showCity = true;
+                    }
                 }
                 hideProgressBar();
                 break;
@@ -167,6 +191,16 @@ public class CitySelectionFragment extends BaseFragment implements DialogLocatio
                 showPopularMerchants();
                 break;
         }
+    }
+
+    private List<CityData> filterCityList(List<CityData> citiesList) {
+        List<CityData> cityDatas = new ArrayList<>();
+        for (CityData cityData : citiesList){
+            if (cityData.is_active()){
+                cityDatas.add(cityData);
+            }
+        }
+        return cityDatas;
     }
 
     private void showPopularMerchants() {
@@ -188,7 +222,7 @@ public class CitySelectionFragment extends BaseFragment implements DialogLocatio
         ImageView imageView = (ImageView) v.findViewById(R.id.iv_place);
         ImageView ivCat = (ImageView) v.findViewById(R.id.iv_cat_icon);
         ImageView ivPlaceType = (ImageView) v.findViewById(R.id.iv_place_type);
-        final String categoryImage = findCategory(data, list);
+        final String categoryImage = findCategory(data.getCategory(), list);
 
         if (!TextUtils.isEmpty(data.getPlace_type_name())) {
             if (data.getPlace_type_name().toLowerCase().compareTo("hotel") == 0)
@@ -206,7 +240,7 @@ public class CitySelectionFragment extends BaseFragment implements DialogLocatio
         if (!TextUtils.isEmpty(data.getPlace_name().toString()))
             setText(R.id.tv_location, data.getPlace_name(), v);
         else
-            v.findViewById(R.id.ll_place).setVisibility(View.INVISIBLE);
+            v.findViewById(R.id.ll_place).setVisibility(View.GONE);
 
         StringBuilder area = new StringBuilder();
         if (!TextUtils.isEmpty(data.getArea_name()))
@@ -223,9 +257,9 @@ public class CitySelectionFragment extends BaseFragment implements DialogLocatio
             Picasso.with(getActivity()).load(Util.getImageUrl(categoryImage)).into(ivCat);
 
         if (!TextUtils.isEmpty(data.getImages().get(0).getImage()))
-            Picasso.with(getActivity()).load(Util.getImageUrl(data.getImages().get(0).getImage())).placeholder(R.drawable.appicon).into(imageView);
+            Picasso.with(getActivity()).load(Util.getImageUrl(data.getImages().get(0).getImage())).placeholder(R.drawable.appiconlogo).into(imageView);
 
-        tvMore.setOnClickListener(new View.OnClickListener() {
+        v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), MerchantActivity.class);
@@ -240,18 +274,29 @@ public class CitySelectionFragment extends BaseFragment implements DialogLocatio
         return v;
     }
 
-    private String findCategory(MerchantData data, List<CategoryAPI> list) {
+    private String findCategory(String data, List<CategoryAPI> list) {
         for (CategoryAPI c : list) {
-            if (c.getId().equals(data.getCategory())) {
+            if (c.getId().equals(data)) {
                 return c.getMobileImage();
             }
         }
         return "";
     }
 
+    private int findCategoryPosition(String data, List<CategoryAPI> list) {
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getId().equals(data)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
 
     private void setCategoryList() {
         if (list != null && list.size() == 5) {
+            Gson gson = new Gson();
+            Preferences.saveData(AppConstants.PREF_KEYS.CATEGORY_LIST, gson.toJson(list));
             Picasso.with(getActivity()).load(Util.getImageUrl(list.get(0).getMobileImage())).into(civ_food);
             tv_food.setText(list.get(0).getDisplay_name());
             Picasso.with(getActivity()).load(Util.getImageUrl(list.get(1).getMobileImage())).into(civ_health);
@@ -278,39 +323,54 @@ public class CitySelectionFragment extends BaseFragment implements DialogLocatio
                 showCityDialog();
                 break;
             case R.id.rl_1:
-                onListItemClicked(0);
+                onListItemClicked(0, 0);
                 break;
             case R.id.rl_2:
-                onListItemClicked(1);
+                onListItemClicked(1, 0);
                 break;
             case R.id.rl_3:
-                onListItemClicked(2);
+                onListItemClicked(2, 0);
                 break;
             case R.id.rl_4:
-                onListItemClicked(3);
+                onListItemClicked(3, 0);
                 break;
             case R.id.rl_5:
-                onListItemClicked(4);
+                onListItemClicked(4, 0);
                 break;
 
         }
     }
 
-    private void onListItemClicked(int position) {
+    public void openCorrespondingCategory(String cid) {
+        int position = -1;
+        position = findCategoryPosition(cid, list);
+        onListItemClicked(position, 2);
+    }
+
+    private void onListItemClicked(int position, int tab) {
         if (selectedCity == null) {
             showToast(getString(R.string.select_your_city));
+            if (showCity == true){
+                showCityDialog();
+            }
         } else {
-            OfferTabFragment f = OfferTabFragment.getInstance(list.get(position), selectedCity, null);
+            CategoryAPI categoryAPI = list.get(position);
+            OfferTabFragment f;
+            if (categoryAPI.isShowAllCities() == true){
+                boolean allCity = true;
+                f = OfferTabFragment.getInstance(categoryAPI, selectedCity, null, allCity);
+            } else {
+                f = OfferTabFragment.getInstance(categoryAPI, selectedCity, null, false);
+            }
             if (listener != null) {
                 listener.changeFragment(f);
             }
         }
     }
 
-
     private void showCityDialog() {
         DialogLocationFragment f = DialogLocationFragment.getInstance(savedCity, cities, this);
-        f.show(getChildFragmentManager(), "Location");
+        f.show(getActivity().getSupportFragmentManager(), "Location");
     }
 
     @Override
@@ -324,7 +384,7 @@ public class CitySelectionFragment extends BaseFragment implements DialogLocatio
         Preferences.saveData(AppConstants.PREF_KEYS.SELECTED_CITY, selectedCity.getName());
         setText(R.id.tv_select_city, city.getName());
         if (!TextUtils.isEmpty(selectedCity.getImage()))
-            Picasso.with(getActivity()).load(Util.getImageUrl(selectedCity.getImage())).
+            Glide.with(getActivity()).load(Util.getImageUrl(selectedCity.getImage())).
                     placeholder(R.drawable.california_tree).into(ivCityBg);
         getPopularMerchants(selectedCity.getId());
     }

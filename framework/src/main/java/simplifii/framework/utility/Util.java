@@ -351,36 +351,8 @@ public class Util {
 
 
     public static String getAndroidId(Activity ctx) {
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            if (ctx.checkSelfPermission(Manifest.permission.READ_PHONE_STATE)
-                    != PackageManager.PERMISSION_GRANTED) {
-                ctx.requestPermissions(new String[]{Manifest.permission.READ_PHONE_STATE}, PERMISSIONS_REQUEST_READ_PHONE_STATE);
-            } else {
-                String identifier = null;
-                TelephonyManager tm = (TelephonyManager) ctx
-                        .getSystemService(Context.TELEPHONY_SERVICE);
-                if (tm != null)
-                    identifier = tm.getDeviceId();
-                if (identifier == null || identifier.length() == 0)
-                    identifier = Secure.getString(ctx.getContentResolver(),
-                            Secure.ANDROID_ID);
-                return identifier;
-            }
-            return null;
-        } else {
-            String identifier = null;
-            TelephonyManager tm = (TelephonyManager) ctx
-                    .getSystemService(Context.TELEPHONY_SERVICE);
-            if (tm != null)
-                identifier = tm.getDeviceId();
-            if (identifier == null || identifier.length() == 0)
-                identifier = Secure.getString(ctx.getContentResolver(),
-                        Secure.ANDROID_ID);
-            return identifier;
-        }
-
-
+        return Secure.getString(ctx.getContentResolver(),
+                Secure.ANDROID_ID);
     }
 
     public static boolean isValidEmail(String email) {
@@ -576,7 +548,7 @@ public class Util {
             SpannableString spannableString = new SpannableString(text);
             int i = text.indexOf(subtext);
             if (i >= 0) {
-                spannableString.setSpan(new UnderlineSpan(),i, subtext.length() + i, 0);
+                spannableString.setSpan(new UnderlineSpan(), i, subtext.length() + i, 0);
                 spannableString.setSpan(new ForegroundColorSpan(ctx.getResources().getColor(color)), i, subtext.length() + i, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             }
             view.setText(spannableString);
@@ -605,7 +577,7 @@ public class Util {
         SpannableString spannableString = new SpannableString(text);
         int i = text.indexOf(subtext);
         if (i >= 0) {
-            spannableString.setSpan(new UnderlineSpan(),i, subtext.length() + i, 0);
+            spannableString.setSpan(new UnderlineSpan(), i, subtext.length() + i, 0);
             spannableString.setSpan(new ForegroundColorSpan(ctx.getResources().getColor(color)), i, subtext.length() + i, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         }
         view.setText(spannableString);

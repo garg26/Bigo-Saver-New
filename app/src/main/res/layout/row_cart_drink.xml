@@ -68,12 +68,12 @@
                     android:src="@drawable/bigo_red_drinks" />
 
                 <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_alcoholic_offers"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/margin_4dp"
                     android:gravity="start"
                     android:text="300"
-                    android:id="@+id/tv_alcoholic_offers"
                     android:textColor="@color/color_red"
                     android:textSize="@dimen/text_12dp" />
 
@@ -88,10 +88,10 @@
         </LinearLayout>
 
         <RelativeLayout
+            android:id="@+id/rl_drinks_merchants"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:id="@+id/rl_drinks_merchants"
             android:layout_marginLeft="@dimen/margin_12dp"
             android:layout_weight="70">
 
@@ -199,16 +199,16 @@
 
     <simplifii.framework.widgets.CustomFontTextView
         android:id="@+id/tv_subscribe"
-        android:layout_marginTop="@dimen/margin_20dp"
-        android:padding="@dimen/padding_10dp"
-        android:layout_marginLeft="@dimen/margin_20dp"
-        android:layout_marginRight="@dimen/margin_20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_20dp"
+        android:layout_marginRight="@dimen/margin_20dp"
+        android:layout_marginTop="@dimen/margin_20dp"
         android:background="@drawable/tv_new_drinks"
         android:gravity="center"
+        android:padding="@dimen/padding_10dp"
         android:text="Activate BIGO Drinks"
-        android:textColor="@color/red_cb" />
+        android:textColor="@color/white" />
 
     <simplifii.framework.widgets.CustomFontTextView
         android:id="@+id/tv_footer"

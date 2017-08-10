@@ -10,15 +10,16 @@ import android.renderscript.RenderScript;
 import android.renderscript.ScriptIntrinsicBlur;
 import android.support.annotation.RequiresApi;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 
-import com.bigosaver.Util.BlurUtility;
 import com.bigosaver.Util.ImageUploadTask;
 import com.bigosavers.R;
 import com.bigosaver.neerajyadav.bigosaver.model.User.UpdateProfileResponse;
+import com.fivehundredpx.android.blur.BlurringView;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 import com.squareup.picasso.Picasso;
@@ -39,20 +40,23 @@ import simplifii.framework.utility.Util;
  */
 
 public class MyProfileFragment extends BaseFragment {
-    private ImageView iv_background, ivProfilePic;
+    private ImageView ivBackground, ivProfilePic;
     private LinearLayout llAddr;
     private MediaFragment imagePicker;
     private Bitmap profileBitmap;
     private UpdateProfileResponse profile;
     private static final float BLUR_RADIUS = 25f;
+    private BlurringView mBlurringView;
 
     @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public void initViews() {
-        iv_background = (ImageView) findView(R.id.iv_background);
+        ivBackground = (ImageView) findView(R.id.iv_background);
         llAddr = (LinearLayout) findView(R.id.ll_address);
         ivProfilePic = (ImageView) findView(R.id.iv_profile);
         imagePicker = new MediaFragment();
+        mBlurringView = (BlurringView) findView(R.id.blurring_view);
+        mBlurringView.setBlurredView(ivBackground);
         getChildFragmentManager().beginTransaction().add(imagePicker, "Image Picker").commit();
         getProfileData();
         setOnClickListener(R.id.iv_profile);
@@ -64,7 +68,8 @@ public class MyProfileFragment extends BaseFragment {
         switch (v.getId()) {
             case R.id.iv_profile:
                 new TedPermission(getActivity())
-                        .setPermissions(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
+                        .setPermissions(Manifest.permission.CAMERA,
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
                         .setPermissionListener(new PermissionListener() {
                             @Override
                             public void onPermissionGranted() {
@@ -79,8 +84,6 @@ public class MyProfileFragment extends BaseFragment {
                                     public void setBitmap(Bitmap bitmap) {
                                         if (bitmap != null) {
                                             profileBitmap = bitmap;
-                                            ivProfilePic.setImageBitmap(profileBitmap);
-                                            iv_background.setImageBitmap(blur(bitmap));
                                             updateProfilePic(bitmap);
                                         }
                                     }
@@ -89,7 +92,7 @@ public class MyProfileFragment extends BaseFragment {
 
                             @Override
                             public void onPermissionDenied(ArrayList<String> deniedPermissions) {
-
+                                Log.d("denied", "denied");
                             }
                         }).check();
 
@@ -145,43 +148,102 @@ public class MyProfileFragment extends BaseFragment {
             case AppConstants.TASKCODES.UPDATEPROFILEPIC:
                 UpdateProfileResponse updatedProfilePic = (UpdateProfileResponse) response;
                 if (updatedProfilePic != null) {
+                    ivProfilePic.setImageBitmap(profileBitmap);
+                    ivBackground.setImageBitmap(profileBitmap);
                     showToast(getString(R.string.pic_uploaded));
                 }
         }
     }
 
     private void setData(final UpdateProfileResponse profile) {
+        String membership = "";
         if (!TextUtils.isEmpty(profile.getFirst_name())) {
             if (!TextUtils.isEmpty(profile.getLast_name())) {
                 setText(R.id.tv_username, getString(R.string.my_name_is) + profile.getFirst_name() + " " + profile.getLast_name());
+            } else {
+                setText(R.id.tv_username, getString(R.string.my_name_is) + profile.getFirst_name());
             }
-            setText(R.id.tv_username, getString(R.string.my_name_is) + profile.getFirst_name());
         }
+
         StringBuilder addr = new StringBuilder();
-        if (!TextUtils.isEmpty(profile.getCity_name())) {
-            addr.append(profile.getCity_name()).append(", ");
-        }
+//        if (!TextUtils.isEmpty(profile.getCity_string())) {
+//            addr.append(profile.getCity_string());
+//        }
         if (!TextUtils.isEmpty(profile.getCountry())) {
-            addr.append(profile.getCountry());
-        }
-        if (!TextUtils.isEmpty(addr)) {
             llAddr.setVisibility(View.VISIBLE);
-            setText(R.id.tv_address, addr.toString());
+            setText(R.id.tv_address, profile.getCountry());
         }
-        if (!TextUtils.isEmpty(profile.getMembership_type()))
+
+        if (!TextUtils.isEmpty(profile.getRegistered_date())) {
+            findView(R.id.ll_member_since).setVisibility(View.VISIBLE);
+            setText(R.id.tv_member_since, Util.convertDateFormat(profile.getRegistered_date(), "yyyy-MM-dd", "dd-MMM-yyyy").replace("-", " "));
+        } else {
+            findView(R.id.ll_member_since).setVisibility(View.GONE);
+        }
+
+        if (profile.getBigo_drink()){
+            findView(R.id.tv_drink_text).setVisibility(View.VISIBLE);
+            setText(R.id.tv_drink_text, "Bigo Drinks is activated in your account");
+        } else {
+            setText(R.id.tv_drink_text, "Bigo Drinks is not activated in your account");
+        }
+
+        if (!TextUtils.isEmpty(profile.getMembership_type())) {
             setText(R.id.tv_membership, profile.getMembership_type().toUpperCase());
+            membership = profile.getMembership_type().toUpperCase();
+        }
+
         if (profile.getSavings() != null)
             setText(R.id.tv_saving, profile.getSavings().toString());
+
         if (!TextUtils.isEmpty(profile.getAbout_me()))
             setText(R.id.tv_about, profile.getAbout_me());
-        if (!TextUtils.isEmpty(profile.getMembership_expired_at()))
-            setText(R.id.tv_membership_valdity,
-                    Util.convertDateFormat(profile.getMembership_expired_at(),"yyyy-MM-dd","dd-MMM-yyyy").replace("-"," "));
-        if (!TextUtils.isEmpty(profile.getImage()))
+
+        setUserValidityInfo(profile, membership);
+
+        if (!TextUtils.isEmpty(profile.getImage())) {
             Picasso.with(getActivity()).load(AppConstants.PAGE_URL.PHOTO_URL + profile.getImage()).
                     placeholder(R.mipmap.dummy_profile).into(ivProfilePic);
-        BlurUtility blurUtility = new BlurUtility(iv_background, profile.getImage(), getActivity());
-        blurUtility.execute();
+            Picasso.with(getActivity()).load(AppConstants.PAGE_URL.PHOTO_URL + profile.getImage()).
+                    placeholder(R.mipmap.dummy_background).into(ivBackground);
+        }
+//        BlurUtility blurUtility = new BlurUtility(ivBackground, profile.getImage(), getActivity());
+//        blurUtility.execute();
+
+    }
+
+    private void setUserValidityInfo(UpdateProfileResponse profile, String membership) {
+        setText(R.id.tv_info, getString(R.string.membership_valid_till));
+        switch (membership.toLowerCase()) {
+            case AppConstants.HASHKEY.BIGO_DEFAULT:
+                setText(R.id.tv_info, getString(R.string.offer_left));
+                if (null != profile.getTotal_redemption()) {
+                    switch (profile.getTotal_redemption()) {
+                        case 0:
+                            setText(R.id.tv_membership_valdity, "2 left");
+                            break;
+                        case 1:
+                            setText(R.id.tv_membership_valdity, "1 left");
+                            break;
+                        case 2:
+                            setText(R.id.tv_membership_valdity, "TRIAL EXPIRED");
+                            break;
+                        case 3:
+                            if (profile.getMembership_type().equalsIgnoreCase("Default")){
+                                setText(R.id.tv_membership_valdity, "TRIAL MEMBERSHIP EXPIRED PLEASE UPDATE PREMIUM MEMBERSHIP");
+                            }
+
+                    }
+                }
+                break;
+            case AppConstants.HASHKEY.BIGO_GOLD:
+            case AppConstants.HASHKEY.BIGO_PLATINUM:
+            case AppConstants.HASHKEY.BIGO_SIGNATURE:
+                if (!TextUtils.isEmpty(profile.getMembership_expired_at()))
+                    setText(R.id.tv_membership_valdity,
+                            Util.convertDateFormat(profile.getMembership_expired_at(), "yyyy-MM-dd", "dd-MMM-yyyy").replace("-", " "));
+                break;
+        }
     }
 
     @Override

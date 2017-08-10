@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/background_redeem"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/margin_12dp">
+
+    <RelativeLayout
+        android:id="@+id/rl_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_40dp"
+        android:background="@drawable/top_blue_bar"
+        android:orientation="horizontal"
+        android:padding="2dp">
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="Merchant Feedback"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_16dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/iv_cancel"
+            android:layout_width="@dimen/iv_40dp"
+            android:layout_height="@dimen/iv_40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/margin_8dp"
+            android:padding="10dp"
+            android:src="@drawable/iv_cancel" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rl_top_bar"
+        android:layout_marginBottom="@dimen/margin_8dp"
+        android:layout_marginLeft="@dimen/margin_16dp"
+        android:layout_marginRight="@dimen/margin_16dp"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:padding="@dimen/padding_4dp">
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/radio_accepted"
+                style="@style/radio_feedback"
+                android:buttonTint="@color/tab_blue"
+                android:text="Offer was Accepted" />
+
+            <RadioButton
+                android:id="@+id/radio_declined"
+                style="@style/radio_feedback"
+                android:layout_below="@id/radio_accepted"
+                android:buttonTint="@color/tab_blue"
+                android:text="Offer was Declined" />
+        </RadioGroup>
+
+
+        <simplifii.framework.widgets.CustomFontEditText
+            android:id="@+id/et_feedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/radio_group"
+            android:layout_marginTop="@dimen/margin_4dp"
+            android:background="@drawable/boundary"
+            android:gravity="start"
+            android:hint="Enter your feedback here"
+            android:maxLines="6"
+            android:minLines="3"
+            android:padding="@dimen/padding_8dp" />
+
+    </RelativeLayout>
+
+    <simplifii.framework.widgets.CustomFontButton
+        android:id="@+id/btn_apply_promo"
+        android:layout_width="wrap_content"
+        android:layout_height="28dp"
+        android:textSize="@dimen/text_14dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:layout_below="@id/rl_feedback"
+        android:layout_centerHorizontal="true"
+        android:background="@color/color_dark_blue"
+        android:gravity="center"
+        android:paddingBottom="@dimen/padding_2dp"
+        android:paddingTop="@dimen/padding_2dp"
+        android:text="@string/send_feedback"
+        android:textColor="@color/white"
+        />
+
+</RelativeLayout>

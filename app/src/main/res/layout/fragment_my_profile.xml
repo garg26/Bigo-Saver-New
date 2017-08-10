@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -17,209 +18,244 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="180dp">
 
                 <ImageView
                     android:id="@+id/iv_background"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/height_180dp"
-                    android:background="@color/bg_gray"
-                    android:scaleType="centerCrop" />
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/dummy_background" />
 
-                <ImageView
+                <com.fivehundredpx.android.blur.BlurringView
+                    android:id="@+id/blurring_view"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/height_180dp"
-                    android:background="@color/tranceparent_gray" />
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    app:blurRadius="6"
+                    app:downsampleFactor="6"
+                    app:overlayColor="@color/transaprent_light_gray" />
+
+                <!--<com.wonderkiln.blurkit.BlurLayout xmlns:blurkit="http://schemas.android.com/apk/res-auto"-->
+                <!--android:id="@+id/blurLayout"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="180dp"-->
+                <!--blurkit:blurRadius="24"-->
+                <!--blurkit:downscaleFactor="0.20"-->
+                <!--blurkit:fps="100">-->
 
                 <RelativeLayout
-                    android:id="@+id/rl_civ_profile"
-                    android:layout_width="@dimen/width_80dp"
-                    android:layout_height="@dimen/height_80dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/margin_20dp">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/iv_profile"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:src="@mipmap/dummy_profile"/>
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
                     <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/iv_profile"></RelativeLayout>
-                </RelativeLayout>
+                        android:id="@+id/rl_civ_profile"
+                        android:layout_width="@dimen/width_80dp"
+                        android:layout_height="@dimen/height_80dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="@dimen/margin_20dp"
+                        android:background="@drawable/iv_profile"
+                        android:padding="@dimen/padding_4dp">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="@dimen/padding_4dp"
-                    android:layout_below="@+id/rl_civ_profile"
-                    android:layout_centerHorizontal="true">
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:id="@+id/iv_profile"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:src="@mipmap/dummy_profile" />
 
-                    <simplifii.framework.widgets.CustomFontTextView
-                        android:id="@+id/tv_username"
-                        style="@style/tv_profile"
-                        android:text=""
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="@dimen/margin_10dp"
-                        android:textSize="@dimen/text_16dp" />
+                    </RelativeLayout>
 
                     <LinearLayout
-                        android:id="@+id/ll_address"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/tv_username"
-                        android:layout_gravity="center_horizontal"
-                        android:orientation="horizontal"
-                        android:visibility="gone">
+                        android:layout_below="@+id/rl_civ_profile"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="vertical"
+                        android:padding="@dimen/padding_4dp">
 
                         <simplifii.framework.widgets.CustomFontTextView
-                            android:id="@+id/tv_address_title"
+                            android:id="@+id/tv_username"
                             style="@style/tv_profile"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="@dimen/margin_10dp"
+                            android:text=""
+                            android:textSize="@dimen/text_16dp" />
+
+                        <LinearLayout
+                            android:id="@+id/ll_address"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_below="@+id/tv_username"
-                            android:text="@string/address"
-                            android:textSize="@dimen/text_16dp" />
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
 
-                        <simplifii.framework.widgets.CustomFontTextView
-                            android:id="@+id/tv_address"
-                            style="@style/tv_profile"
-                            android:textSize="@dimen/text_16dp" />
+                            <simplifii.framework.widgets.CustomFontTextView
+                                android:id="@+id/tv_address_title"
+                                style="@style/tv_profile"
+                                android:layout_below="@+id/tv_username"
+                                android:text="@string/address"
+                                android:textSize="@dimen/text_16dp" />
+
+                            <simplifii.framework.widgets.CustomFontTextView
+                                android:id="@+id/tv_address"
+                                style="@style/tv_profile"
+                                android:textSize="@dimen/text_16dp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_member_since"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal"
+                            android:visibility="gone">
+
+                            <simplifii.framework.widgets.CustomFontTextView
+                                android:id="@+id/tv_member_since_title"
+                                style="@style/tv_profile"
+                                android:layout_below="@+id/tv_username"
+                                android:text="@string/proud_bigo_member_since"
+                                android:textSize="12dp" />
+
+                            <simplifii.framework.widgets.CustomFontTextView
+                                android:id="@+id/tv_member_since"
+                                style="@style/tv_profile"
+                                android:textSize="@dimen/text_14dp" />
+                        </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/ll_member_since"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:visibility="gone">
+                </RelativeLayout>
 
-                    <simplifii.framework.widgets.CustomFontTextView
-                        android:id="@+id/tv_member_since_title"
-                        style="@style/tv_profile"
-                        android:layout_below="@+id/tv_username"
-                        android:text="@string/proud_bigo_member_since"
-                        android:textSize="12dp" />
+                <!--</com.wonderkiln.blurkit.BlurLayout>-->
 
-                    <simplifii.framework.widgets.CustomFontTextView
-                        android:id="@+id/tv_member_since"
-                        style="@style/tv_profile"
-                        android:textSize="@dimen/text_16dp" />
-                </LinearLayout>
-            </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/tab_blue"
-                android:padding="@dimen/padding_10dp">
+                <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="@dimen/height_180dp"-->
+                <!--android:background="@color/tranceparent_gray" />-->
 
-                <ImageView
-                    style="@style/iv_signature"
-                    android:layout_marginRight="@dimen/margin_6dp"
-                    android:layout_toLeftOf="@+id/tv_membership"
-                    android:src="@drawable/medal" />
-
-                <simplifii.framework.widgets.CustomFontTextView
-                    android:id="@+id/tv_membership"
-                    style="@style/tv_profile"
-                    android:layout_width="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:textStyle="bold" />
-
-                <ImageView
-                    style="@style/iv_signature"
-                    android:layout_marginLeft="@dimen/margin_6dp"
-                    android:layout_toRightOf="@+id/tv_membership"
-                    android:src="@drawable/medal" />
 
             </RelativeLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/height_1dp"
-                android:layout_marginLeft="@dimen/margin_8dp"
-                android:layout_marginRight="@dimen/margin_8dp"
-                android:background="@color/white" />
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/tab_blue"
-                android:gravity="center"
-                android:paddingBottom="@dimen/padding_10dp"
-                android:paddingLeft="@dimen/padding_10dp"
-                android:paddingRight="@dimen/padding_10dp">
-
-                <simplifii.framework.widgets.CustomFontTextView
-                    android:id="@+id/tv_saving_title"
-                    style="@style/tv_profile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginBottom="@dimen/margin_8dp"
-                    android:layout_marginTop="@dimen/margin_10dp"
-                    android:text="@string/i_have_saved_inr" />
-
-                <simplifii.framework.widgets.CustomFontTextView
-                    android:id="@+id/tv_saving"
-                    style="@style/tv_profile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginBottom="@dimen/margin_8dp"
-                    android:layout_marginTop="@dimen/margin_10dp"
-                    android:layout_toRightOf="@id/tv_saving_title" />
-            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/white"
-                android:orientation="vertical"
-                android:padding="@dimen/padding_16dp">
+                android:orientation="vertical">
 
-                <simplifii.framework.widgets.CustomFontTextView
-                    style="@style/tv_profile_heading"
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/about" />
+                    android:background="@color/tab_blue"
+                    android:padding="@dimen/padding_10dp">
 
-                <simplifii.framework.widgets.CustomFontTextView
-                    android:id="@+id/tv_about"
-                    style="@style/tv_profile_text"
-                    android:layout_marginTop="@dimen/margin_6dp"
-                    android:padding="@dimen/padding_6dp"
-                    android:text="Not Mentioned" />
+                    <ImageView
+                        style="@style/iv_signature"
+                        android:layout_marginRight="@dimen/margin_6dp"
+                        android:layout_toLeftOf="@+id/tv_membership"
+                        android:src="@drawable/medal" />
+
+                    <simplifii.framework.widgets.CustomFontTextView
+                        android:id="@+id/tv_membership"
+                        style="@style/tv_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        style="@style/iv_signature"
+                        android:layout_marginLeft="@dimen/margin_6dp"
+                        android:layout_toRightOf="@+id/tv_membership"
+                        android:src="@drawable/medal" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_1dp"
+                    android:layout_marginLeft="@dimen/margin_8dp"
+                    android:layout_marginRight="@dimen/margin_8dp"
+                    android:background="@color/white" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/tab_blue"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/padding_10dp"
+                    android:paddingLeft="@dimen/padding_10dp"
+                    android:paddingRight="@dimen/padding_10dp">
+
+                    <simplifii.framework.widgets.CustomFontTextView
+                        android:id="@+id/tv_saving_title"
+                        style="@style/tv_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="@dimen/margin_8dp"
+                        android:layout_marginTop="@dimen/margin_10dp"
+                        android:text="@string/i_have_saved_inr" />
+
+                    <simplifii.framework.widgets.CustomFontTextView
+                        android:id="@+id/tv_saving"
+                        style="@style/tv_profile"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginBottom="@dimen/margin_8dp"
+                        android:layout_marginTop="@dimen/margin_10dp"
+                        android:layout_toRightOf="@id/tv_saving_title" />
+                </RelativeLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/height_1dp"
-                    android:layout_marginBottom="@dimen/margin_10dp"
-                    android:layout_marginTop="@dimen/margin_12dp"
-                    android:background="@color/bg_gray" />
+                    android:layout_height="match_parent"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:padding="@dimen/padding_16dp">
 
-                <simplifii.framework.widgets.CustomFontTextView
-                    style="@style/tv_profile_heading"
-                    android:text="@string/membership_valid_till" />
+                    <simplifii.framework.widgets.CustomFontTextView
+                        style="@style/tv_profile_heading"
+                        android:layout_height="wrap_content"
+                        android:text="@string/about" />
 
-                <simplifii.framework.widgets.CustomFontTextView
-                    android:id="@+id/tv_membership_valdity"
-                    style="@style/tv_profile_text"
-                    android:layout_marginTop="@dimen/margin_6dp"
-                    android:padding="@dimen/padding_6dp"
-                    android:text="Not Mentioned" />
+                    <simplifii.framework.widgets.CustomFontTextView
+                        android:id="@+id/tv_about"
+                        style="@style/tv_profile_text"
+                        android:layout_marginTop="@dimen/margin_6dp"
+                        android:padding="@dimen/padding_6dp"
+                        android:text="@string/not_mentioned" />
 
-                <simplifii.framework.widgets.CustomFontTextView
-                    style="@style/tv_profile_text"
-                    android:padding="@dimen/padding_6dp"
-                    android:text="" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/height_1dp"
+                        android:layout_marginBottom="@dimen/margin_10dp"
+                        android:layout_marginTop="@dimen/margin_12dp"
+                        android:background="@color/bg_gray" />
 
+                    <simplifii.framework.widgets.CustomFontTextView
+                        android:id="@+id/tv_info"
+                        style="@style/tv_profile_heading"
+                        android:text="@string/offer_left" />
+
+                    <simplifii.framework.widgets.CustomFontTextView
+                        android:id="@+id/tv_membership_valdity"
+                        style="@style/tv_profile_text"
+                        android:layout_marginTop="@dimen/margin_6dp"
+                        android:padding="@dimen/padding_6dp"
+                        android:text="" />
+
+                    <simplifii.framework.widgets.CustomFontTextView
+                        android:id="@+id/tv_drink_text"
+                        style="@style/tv_profile_text"
+                        android:padding="@dimen/padding_6dp"
+                        android:text="" />
+
+                </LinearLayout>
             </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
-
 </LinearLayout>

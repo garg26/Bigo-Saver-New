@@ -15,9 +15,9 @@
         android:textStyle="bold" />
 
     <RelativeLayout
+        android:id="@+id/rl_subscribe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rl_subscribe"
         android:layout_below="@+id/titlebar">
 
         <include layout="@layout/view_subscribe"></include>
@@ -25,11 +25,11 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_upgrade"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rl_upgrade"
-        android:visibility="gone"
-        android:layout_below="@+id/titlebar">
+        android:layout_below="@+id/titlebar"
+        android:visibility="gone">
 
         <include layout="@layout/view_upgrade"></include>
 

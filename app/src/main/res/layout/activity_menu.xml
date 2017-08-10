@@ -4,7 +4,7 @@
     android:id="@+id/activity_menu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bigosaver.neerajyadav.bigosaver.activity.MenuActivity">
+    >
 
 
     <FrameLayout
@@ -19,6 +19,7 @@
     <LinearLayout
         android:id="@+id/layout_footer"
         style="@style/lay_bottom"
+        android:weightSum="4"
         android:background="@color/bg_gray"
         android:orientation="horizontal">
 
@@ -34,13 +35,14 @@
         </LinearLayout>
 
         <FrameLayout
-            android:layout_width="1dp"
+            android:layout_width="01dp"
             android:layout_height="30dp"
             android:background="@color/color_DarkGray" />
 
         <LinearLayout
             android:id="@+id/lay_notification"
             style="@style/lay_foot"
+            android:visibility="gone"
             android:layout_weight="1">
 
             <ImageView
@@ -49,10 +51,10 @@
                 android:src="@drawable/notification_inactive" />
         </LinearLayout>
 
-        <FrameLayout
-            android:layout_width="1dp"
-            android:layout_height="30dp"
-            android:background="@color/color_DarkGray" />
+        <!--<FrameLayout-->
+            <!--android:layout_width="1dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:background="@color/color_DarkGray" />-->
 
         <LinearLayout
             android:id="@+id/lay_fav"
@@ -78,7 +80,7 @@
             <ImageView
                 android:id="@+id/iv_cart"
                 style="@style/iv_footer"
-                android:src="@drawable/whats_on_inactive" />
+                android:src="@drawable/cart_inactive" />
         </LinearLayout>
 
         <FrameLayout

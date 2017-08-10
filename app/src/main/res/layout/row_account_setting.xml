@@ -4,6 +4,7 @@
     android:paddingBottom="@dimen/padding_16dp"
     android:background="@color/white"
     android:layout_width="match_parent"
+    android:foreground="?android:attr/selectableItemBackground"
     android:layout_height="wrap_content">
 
     <!--<ImageView-->

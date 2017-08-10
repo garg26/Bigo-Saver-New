@@ -35,6 +35,11 @@ public class EULA extends BaseActivity {
         else if (terms)
             initToolBar(getString(R.string.terms_of_use));
         tvEula = (TextView) findViewById(R.id.tv_eula);
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
         getEula();
     }
 

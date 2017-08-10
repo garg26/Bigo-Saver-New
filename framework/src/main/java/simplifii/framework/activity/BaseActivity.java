@@ -275,8 +275,10 @@ public class BaseActivity extends AppCompatActivity implements
     }
 
     protected String getEditText(int editTextId) {
-        return ((EditText) findViewById(editTextId)).getText().toString()
-                .trim();
+        EditText et = (EditText) findViewById(editTextId);
+        if (et != null && !TextUtils.isEmpty(et.getText().toString()))
+            return et.getText().toString().trim();
+        return null;
     }
 
     @Override

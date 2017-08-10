@@ -189,6 +189,9 @@ public class Merchant extends BaseSearchClass {
     @SerializedName("is_favorite")
     @Expose
     private Boolean is_favorite;
+    @SerializedName("timings")
+    @Expose
+    private String timings;
 
     /**
      * @return The id
@@ -1007,4 +1010,11 @@ public class Merchant extends BaseSearchClass {
     }
 
 
+    public String getTimings() {
+        return timings;
+    }
+
+    public void setTimings(String timings) {
+        this.timings = timings;
+    }
 }

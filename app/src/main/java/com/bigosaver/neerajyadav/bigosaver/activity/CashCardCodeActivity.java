@@ -26,6 +26,7 @@ public class CashCardCodeActivity extends BaseActivity {
     private UpdateProfileResponse profile;
     private CashCardResponse ccr;
     private Boolean isDrink = false;
+    private String code = "DRINKS4U";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class CashCardCodeActivity extends BaseActivity {
         profile = UpdateProfileResponse.getRunningInstance();
         btn_apply = (Button) findViewById(R.id.btn_apply);
         if (isDrink)
-            setText("DRINKS4U", R.id.et_cash_card);
+            setText(code, R.id.et_cash_card);
         else
             setText("", R.id.et_cash_card);
 
@@ -51,6 +52,8 @@ public class CashCardCodeActivity extends BaseActivity {
         if (bundle != null) {
             bundle = getIntent().getExtras();
             isDrink = (Boolean) bundle.get(AppConstants.BUNDLE_KEYS.DRINKS);
+            if (bundle.containsKey("code"))
+                code = bundle.getString("code");
         }
     }
 
@@ -152,7 +155,7 @@ public class CashCardCodeActivity extends BaseActivity {
                             setText(Util.convertDateFormat(icc.getMembership_expiry_date(), "yyyy-MM-dd", "dd-MMM-yyyy").replace("-", " ")
                                     , R.id.tv_valid_till);
                     }
-                    showToast("Cashcard applied successfully");
+                    showToast(getString(R.string.cashcard_applied));
                 }
                 break;
         }
@@ -173,7 +176,7 @@ public class CashCardCodeActivity extends BaseActivity {
         if (profile.getMembership_expired_at() != null && !TextUtils.isEmpty(profile.getMembership_expired_at()))
             setText(Util.convertDateFormat(profile.getMembership_expired_at(), "yyyy-MM-dd", "dd-MMM-yyyy").replace("-", " ")
                     , R.id.tv_validity);
-        else{
+        else {
             findViewById(R.id.tv_validity).setVisibility(View.GONE);
         }
         if (!TextUtils.isEmpty(ccr.getCurrrent_plan()))
@@ -194,4 +197,5 @@ public class CashCardCodeActivity extends BaseActivity {
         }
         return jsonObject;
     }
+
 }

@@ -192,8 +192,8 @@ public class FilterActivity extends BaseActivity {
             for (FilterData fd : categoryFilters) {
                 if (savedCategory.compareTo(fd.getCategory_name()) == 0) {
                     for (FilterItems filterItem : fd.getFilter_values()) {
-                        for(FilterItems savedFilterItem: onlySelectedFilters){
-                            if(savedFilterItem.getId().compareTo(filterItem.getId())==0){
+                        for (FilterItems savedFilterItem : onlySelectedFilters) {
+                            if (savedFilterItem.getId().compareTo(filterItem.getId()) == 0) {
                                 filterItem.setSelected(savedFilterItem.getSelected());
                                 filterItem.setRejected(savedFilterItem.getRejected());
                             }

@@ -186,8 +186,8 @@
         <item name="android:layout_centerHorizontal">true</item>
     </style>
 
-
     <style name="rl_home">
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">50</item>
@@ -277,13 +277,16 @@
         <item name="android:padding">@dimen/padding_2dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/darkGray</item>
+        <item name="android:layout_centerVertical">true</item>
         <item name="android:layout_marginLeft">@dimen/margin_4dp</item>
+        <item name="android:textSize">14dp</item>
     </style>
 
     <style name="iv_lock_info" parent="wrap_wrap">
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:layout_marginRight">@dimen/margin_8dp</item>
         <item name="android:src">@drawable/lock_edit</item>
+        <item name="android:layout_centerVertical">true</item>
     </style>
 
     <style name="et_info" parent="wrap_wrap">
@@ -295,13 +298,17 @@
         <item name="android:singleLine">true</item>
         <item name="android:layout_marginRight">@dimen/margin_12dp</item>
         <item name="android:gravity">right</item>
+        <item name="android:hint">@string/NA</item>
+        <item name="android:minWidth">120dp</item>
+        <item name="android:layout_alignParentRight">true</item>
     </style>
 
     <style name="view_my_info">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/height_1dp</item>
         <item name="android:background">@color/bg_gray</item>
-        <item name="android:layout_marginTop">@dimen/margin_8dp</item>
+        <item name="android:layout_marginTop">@dimen/margin_4dp</item>
+        <item name="android:layout_marginBottom">@dimen/margin_4dp</item>
     </style>
 
     <style name="haeder_footer_fp" parent="match_wrap">
@@ -322,18 +329,18 @@
     </style>
 
     <style name="civ_row_style">
-        <item name="android:layout_width">@dimen/width_28dp</item>
-        <item name="android:layout_height">@dimen/height_28dp</item>
-        <item name="android:layout_marginLeft">@dimen/margin_6dp</item>
-        <item name="android:scaleType">centerCrop</item>
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:layout_marginLeft">2dp</item>
+        <item name="android:scaleType">centerInside</item>
     </style>
 
     <style name="iv_membership_row_icon">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">@dimen/heighth_30dp</item>
-        <item name="android:padding">4dp</item>
-        <item name="android:layout_weight">9</item>
-        <item name="android:layout_marginLeft">@dimen/margin_16dp</item>
+        <item name="android:layout_width">32dp</item>
+        <item name="android:layout_height">32dp</item>
+        <item name="android:layout_weight">3</item>
+        <item name="android:padding">6dp</item>
+        <item name="android:layout_marginLeft">6dp</item>
         <item name="android:scaleType">centerCrop</item>
     </style>
 
@@ -351,7 +358,7 @@
         <item name="android:padding">@dimen/padding_12dp</item>
         <item name="android:textSize">@dimen/text_16dp</item>
         <item name="android:gravity">center</item>
-        <item name="android:layout_weight">1</item>
+        <item name="android:layout_weight">7</item>
     </style>
 
     <style name="cart_categoryiv_style">
@@ -373,8 +380,6 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginLeft">@dimen/margin_2dp</item>
         <item name="android:textSize">@dimen/text_11dp</item>
-        <item name="android:scaleY">0.7</item>
-        <item name="android:scaleX">0.7</item>
         <item name="android:layout_weight">1</item>
     </style>
 
@@ -397,7 +402,7 @@
 
 
     <style name="layout_chip">
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="chip_background">@color/tab_blue</item>
         <item name="chip_corner_radius">2dp</item>
@@ -426,6 +431,29 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">@dimen/text_12dp</item>
+    </style>
+
+    <style name="radio_feedback">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/dark_gray</item>
+    </style>
+
+    <style name="style_edit_layout" parent="match_wrap">
+        <item name="android:layout_marginTop">@dimen/margin_8dp</item>
+        <item name="android:layout_marginBottom">@dimen/margin_8dp</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingBottom">2dp</item>
+    </style>
+
+    <style name="offer_iv_style">
+        <item name="android:layout_width">16dp</item>
+        <item name="android:layout_height">16dp</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:layout_marginRight">4dp</item>
+    </style>
+
+    <style name="frame_style" parent="match_match">
     </style>
 
     <dimen name="margin_54dp">54dp</dimen>

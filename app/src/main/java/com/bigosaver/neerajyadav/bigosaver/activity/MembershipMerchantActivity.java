@@ -11,9 +11,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.bigosaver.Util.RoundedTransformation;
+import com.bigosaver.neerajyadav.bigosaver.model.commonmodels.Image;
+import com.bigosaver.neerajyadav.bigosaver.model.membership.MembershipPlansResponse;
 import com.bigosavers.R;
 import com.bigosaver.neerajyadav.bigosaver.model.CategoryAPI;
 import com.bigosaver.neerajyadav.bigosaver.model.merchants.MerchantData;
+import com.bumptech.glide.Glide;
+import com.lb.auto_fit_textview.AutoResizeTextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -38,6 +42,7 @@ public class MembershipMerchantActivity extends BaseActivity implements CustomLi
     private Double latitude = 0.0, longitude = 0.0;
     private List<CategoryAPI> list;
     private String categoryImage = "";
+    private MembershipPlansResponse mpr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +56,7 @@ public class MembershipMerchantActivity extends BaseActivity implements CustomLi
         customListAdapter = new CustomListAdapter(this, R.layout.row_all_offers, merchantDataList, this);
         getMerchants(planType);
         lvMerchants.setAdapter(customListAdapter);
-        lvMerchants.setOnItemClickListener(this);
+//        lvMerchants.setOnItemClickListener(this);
 
     }
 
@@ -60,7 +65,8 @@ public class MembershipMerchantActivity extends BaseActivity implements CustomLi
         super.loadBundle(bundle);
         if (bundle != null) {
             bundle = getIntent().getExtras();
-            planType = bundle.getString(AppConstants.BUNDLE_KEYS.MERCHANT_TYPE);
+            mpr = (MembershipPlansResponse) bundle.getSerializable(AppConstants.BUNDLE_KEYS.MERCHANT_TYPE);
+            planType = mpr.getName();
             latitude = bundle.getDouble(AppConstants.BUNDLE_KEYS.LATITUDE);
             longitude = bundle.getDouble(AppConstants.BUNDLE_KEYS.LONGITUDE);
         }
@@ -120,7 +126,7 @@ public class MembershipMerchantActivity extends BaseActivity implements CustomLi
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent, int resourceID, LayoutInflater inflater) {
+    public View getView(final int position, View convertView, ViewGroup parent, int resourceID, LayoutInflater inflater) {
         Holder holder;
         if (convertView == null) {
             convertView = inflater.inflate(resourceID, parent, false);
@@ -131,6 +137,7 @@ public class MembershipMerchantActivity extends BaseActivity implements CustomLi
         }
 
         if (null != merchantDataList && merchantDataList.size() > 0) {
+
             StringBuilder merchantPlace = new StringBuilder();
             categoryImage = findCategory(merchantDataList.get(position).getCategory(), list);
             if (!TextUtils.isEmpty(merchantDataList.get(position).getName()))
@@ -146,6 +153,60 @@ public class MembershipMerchantActivity extends BaseActivity implements CustomLi
                 holder.tvOutlets.setText(merchantPlace.toString());
             } else {
                 holder.tvOutlets.setVisibility(View.INVISIBLE);
+            }
+
+            if (merchantDataList.get(position).getOffer_type() != null) {
+                List<String> offer_type = merchantDataList.get(position).getOffer_type();
+                holder.ivOption1.setVisibility(View.GONE);
+                holder.ivOption2.setVisibility(View.GONE);
+                holder.ivOption3.setVisibility(View.GONE);
+                holder.ivOption4.setVisibility(View.GONE);
+                for (String s : offer_type) {
+                    if (s.equalsIgnoreCase("B1G1")) {
+                        holder.ivOption1.setVisibility(View.VISIBLE);
+                    }
+                    if (s.equalsIgnoreCase("B2G2")) {
+                        holder.ivOption2.setVisibility(View.VISIBLE);
+                    }
+                    if (s.equalsIgnoreCase("%OFF")) {
+                        holder.ivOption3.setVisibility(View.VISIBLE);
+                    }
+                    if (s.equalsIgnoreCase("LIVE")) {
+                        holder.ivOption4.setVisibility(View.VISIBLE);
+                    }
+                }
+            }
+
+            if (merchantDataList.get(position).getImages() != null) {
+                List<Image> images = merchantDataList.get(position).getImages();
+                if (images != null && images.size()>0) {
+                    String image = images.get(0).getImage();
+                    if (!TextUtils.isEmpty(image)) {
+                        Glide.with(this).load(Util.getImageUrl(image))
+                                .into(holder.ivMainImage);
+                    }
+                }
+            }
+
+            if (!TextUtils.isEmpty(merchantDataList.get(position).getOne_line())) {
+                holder.tvOneLine.setText(merchantDataList.get(position).getOne_line());
+                holder.tvOneLine.setVisibility(View.VISIBLE);
+            } else {
+                if (!TextUtils.isEmpty(merchantDataList.get(position).getDescription()))
+                    holder.tvOneLine.setText(merchantDataList.get(position).getDescription());
+                holder.tvOneLine.setVisibility(View.VISIBLE);
+            }
+
+            if (merchantDataList.get(position).getOffer_viewed() != null) {
+                holder.tvTotalView.setText(merchantDataList.get(position).getOffer_viewed() + "");
+            } else {
+                holder.tvTotalView.setText("N/A");
+            }
+
+            if (merchantDataList.get(position).getTimings() != null) {
+                holder.tvTime.setText(merchantDataList.get(position).getTimings() + "");
+            } else {
+                holder.tvTime.setText("N/A");
             }
 
             if (!TextUtils.isEmpty(merchantDataList.get(position).getLogo()))
@@ -171,7 +232,7 @@ public class MembershipMerchantActivity extends BaseActivity implements CustomLi
 
             if (!TextUtils.isEmpty(categoryImage))
                 Picasso.with(this).load(Util.getImageUrl(categoryImage))
-                        .placeholder(R.drawable.appicon)
+                        .placeholder(R.drawable.appiconlogo)
                         .into(holder.ivCategory);
 
             if (null == merchantDataList.get(position).getHas_bigo_offer() || !merchantDataList.get(position).getHas_bigo_offer())
@@ -185,9 +246,19 @@ public class MembershipMerchantActivity extends BaseActivity implements CustomLi
                 holder.tvDistance.setVisibility(View.VISIBLE);
                 holder.tvDistance.setText(dString);
             } else {
-                holder.tvDistance.setVisibility(View.GONE);
+                holder.tvDistance.setVisibility(View.VISIBLE);
+                holder.tvDistance.setText("N/A");
             }
         }
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle bundle = new Bundle();
+                bundle.putString(AppConstants.BUNDLE_KEYS.MERCHANT, merchantDataList.get(position).getId());
+                bundle.putString(AppConstants.BUNDLE_KEYS.CATEGORY_DATA, categoryImage);
+                startNextActivity(bundle, MerchantActivity.class);
+            }
+        });
         return convertView;
     }
 
@@ -211,15 +282,17 @@ public class MembershipMerchantActivity extends BaseActivity implements CustomLi
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Bundle bundle = new Bundle();
-        bundle.putString(AppConstants.BUNDLE_KEYS.MERCHANT, merchantDataList.get(position).getId());
-        bundle.putString(AppConstants.BUNDLE_KEYS.CATEGORY_DATA, categoryImage);
-        startNextActivity(bundle, MerchantActivity.class);
+//        Bundle bundle = new Bundle();
+//        bundle.putString(AppConstants.BUNDLE_KEYS.MERCHANT, merchantDataList.get(position).getId());
+//        bundle.putString(AppConstants.BUNDLE_KEYS.CATEGORY_DATA, categoryImage);
+//        startNextActivity(bundle, MerchantActivity.class);
     }
 
     class Holder {
         TextView tvName, tvOutlets, tvDistance;
-        ImageView ivLogo, ivNew, ivCategory, ivMonthly, ivDrink;
+        AutoResizeTextView tvTotalView, tvTime, tvOneLine;
+        ImageView ivLogo, ivNew, ivCategory, ivMonthly, ivDrink, ivOption1, ivOption2, ivOption3, ivOption4,
+                ivMainImage;
 
         public Holder(View v) {
             tvName = (TextView) v.findViewById(R.id.tv_top_all);
@@ -230,6 +303,14 @@ public class MembershipMerchantActivity extends BaseActivity implements CustomLi
             ivMonthly = (ImageView) v.findViewById(R.id.civ_monthly);
             ivDrink = (ImageView) v.findViewById(R.id.civ_drinks);
             ivCategory = (ImageView) v.findViewById(R.id.civ_category);
+            tvTotalView = (AutoResizeTextView) v.findViewById(R.id.tv_view);
+            tvTime = (AutoResizeTextView) v.findViewById(R.id.tv_time);
+            tvOneLine = (AutoResizeTextView) v.findViewById(R.id.tv_one_line);
+            ivOption1 = (ImageView) v.findViewById(R.id.iv_option1);
+            ivOption2 = (ImageView) v.findViewById(R.id.iv_option2);
+            ivOption3 = (ImageView) v.findViewById(R.id.iv_option3);
+            ivOption4 = (ImageView) v.findViewById(R.id.iv_option4);
+            ivMainImage = (ImageView) v.findViewById(R.id.iv_main_image);
         }
     }
 }

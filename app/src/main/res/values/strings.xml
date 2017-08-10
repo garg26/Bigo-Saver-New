@@ -68,8 +68,8 @@
     <string name="favourites">Favourites</string>
     <string name="tv_subtitle_app_home">ANOTHER REASON TO GO OUT</string>
     <string name="take_a_tour">Take a Tour</string>
-    <string name="already_account">Already have an Account ?</string>
-    <string name="text_signup_saving">SIGNUP</string>
+    <string name="already_account">Already have an Account ? Sign In</string>
+    <string name="text_signup_saving">SIGNUP AND START SAVING</string>
     <string name="text_signup_saving_login">Sign Up and Start Saving</string>
     <string name="full_name">Full Name</string>
     <string name="first_name">First Name</string>
@@ -153,6 +153,7 @@
     <string name="locations">Location</string>
     <string name="cashcard">Cash Card Code</string>
     <string name="change_password">Change Password</string>
+    <string name="success_forgot_password">Password changed successfully</string>
     <string name="by_subscribing_i_agree_tothe_terms_of_use">By Subscribing I agree to the Terms of Use</string>
     <string name="place">Name of place</string>
     <string name="buffet">Buffet</string>
@@ -165,7 +166,7 @@
     <string name="term_cond">Terms n Condition</string>
     <string name="bigo_offer">BIGO OFFER</string>
     <string name="please_ask_jing">Please ask jing Asiea to enter their code</string>
-    <string name="tv_est_saving">Estimated Savings: INR </string>
+    <string name="tv_est_saving">Estimated Savings: </string>
     <string name="cfont_tv_est_saving">INR 1999</string>
     <string name="medium_pizza">Medium Pizza</string>
     <string name="offer_desc">Enjoy ONE Complimentary Medium Pizza When a Medium Pizza of equal or greater value is purchased.</string>
@@ -180,7 +181,8 @@
     <string name="i_stay_in">"I stay in "</string>
     <string name="i_have_saved_inr">"I HAVE SAVED: INR "</string>
     <string name="membership_valid_till">MEMBERSHIP VALID TILL</string>
-    <string name="proud_bigo_member_since">"Proud BIGO Member Since "</string>
+    <string name="offer_left">Number of Trial Offers Left</string>
+    <string name="proud_bigo_member_since">"Proud BIGO Member Since  "</string>
     <string name="offer_health">" Health &amp; Beauty Offers</string>
     <string name="offer_food">"Food &amp; Beverage Offers</string>
     <string name="offer_retail">"Retail &amp; Service Offers"</string>
@@ -215,7 +217,7 @@
     <string name="subscribe">SUBSCRIBE</string>
     <string name="valid_till">"Valid till: "</string>
     <string name="not_avaliable_today">Not Availabe Today</string>
-    <string name="no_merchant_found">No Merchant found</string>
+    <string name="no_merchant_found">No Offer found</string>
     <string name="my_inofrmation">My Information</string>
     <string name="enter_cash_card_code">Enter Cash Card Code</string>
     <string name="how_to_use">How to Use the App</string>
@@ -249,4 +251,18 @@
     <string name="multi_select">multi_select</string>
     <string name="one_month">1 Month</string>
     <string name="twelve_month">12 Month</string>
+    <string name="error_forgot_password">Unable to verify account</string>
+    <string name="empty_country">Please enter your country</string>
+    <string name="feedback_submitted">Thank you for your feedback</string>
+    <string name="city_name">City</string>
+    <string name="not_available">Not Available</string>
+    <string name="not_mentioned">Not Mentioned</string>
+    <string name="cashcard_applied">Cashcard applied successfully</string>
+    <string name="added_favourites">" has been added to your favourites."</string>
+    <string name="removed_favourites">" has been removed from your favourites."</string>
+    <string name="select_option">Please select an option</string>
+    <string name="send_feedback">Submit Feedback</string>
+    <string name="oops_no_merhcants_found">Oops, no merhcants found</string>
+    <string name="default_server_key">495854431645-95hcm6vp6ocs7h7996pjvsjob3i754or.apps.googleusercontent.com</string>
+    <string name="offer_available">Offers Available</string>
 </resources>

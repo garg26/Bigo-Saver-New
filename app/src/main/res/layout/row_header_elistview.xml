@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:background="@color/white"
-    android:paddingTop="@dimen/padding_8dp"
+    android:paddingTop="@dimen/padding_4dp"
     android:paddingRight="@dimen/padding_8dp"
     android:paddingLeft="@dimen/padding_8dp"
     android:layout_marginBottom="@dimen/margin_4dp"
@@ -12,12 +12,15 @@
         android:id="@+id/lblListHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="akjbdakckjad"
         android:textSize="@dimen/text_20dp"/>
     <simplifii.framework.widgets.CustomFontTextView
         android:id="@+id/lblListtype"
         android:layout_below="@+id/lblListHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="dkjvhdskhdk"
         android:textColor="@color/color_blue_bg"
         android:layout_marginBottom="@dimen/padding_4dp" />
     <ImageView

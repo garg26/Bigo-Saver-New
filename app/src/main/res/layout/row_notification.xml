@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_120dp"
             android:scaleType="centerInside"
-            android:src="@drawable/appicon" />
+            android:src="@drawable/appiconlogo" />
 
         <RelativeLayout
             android:id="@+id/rl_notification_image"

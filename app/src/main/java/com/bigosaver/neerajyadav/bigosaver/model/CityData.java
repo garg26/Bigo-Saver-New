@@ -22,6 +22,17 @@ public class CityData implements Serializable {
     @SerializedName("image")
     @Expose
     private String image;
+    @SerializedName("is_active")
+    @Expose
+    private boolean is_active;
+
+    public boolean is_active() {
+        return is_active;
+    }
+
+    public void setIs_active(boolean is_active) {
+        this.is_active = is_active;
+    }
 
     public String getId() {
         return id;

@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:foreground="?android:attr/selectableItemBackground"
     android:orientation="vertical">
 
     <simplifii.framework.widgets.CustomFontTextView
@@ -18,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingBottom="@dimen/padding_4dp"
+        android:paddingBottom="@dimen/padding_8dp"
         android:paddingLeft="@dimen/padding_4dp"
         android:paddingRight="@dimen/padding_8dp"
         android:paddingTop="@dimen/padding_8dp"
@@ -35,28 +36,29 @@
                 android:layout_height="match_parent"
                 android:layout_margin="4dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/appicon" />
+                android:src="@drawable/appiconlogo" />
 
 
-            <ImageView
-                android:id="@+id/iv_new_offer"
-                android:layout_width="40dp"
-                android:layout_height="20dp"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentTop="true"
-                android:src="@drawable/bigonew"
-                android:visibility="gone" />
+            <!--<ImageView-->
+            <!--android:id="@+id/iv_new_offer"-->
+            <!--android:layout_width="40dp"-->
+            <!--android:layout_height="20dp"-->
+            <!--android:layout_alignParentRight="true"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:src="@drawable/bigonew"-->
+            <!--android:visibility="gone" />-->
 
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height_80dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/margin_12dp"
             android:layout_weight="23">
 
             <RelativeLayout
                 android:id="@+id/rl_tv_row_all"
+                android:layout_toLeftOf="@+id/iv_next"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -71,9 +73,20 @@
                     android:id="@+id/tv_num_outlets"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:layout_below="@+id/tv_top_all"
+                    android:text="" />
+
+                <com.lb.auto_fit_textview.AutoResizeTextView
+                    android:id="@+id/tv_time"
+                    android:inputType="text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_num_outlets"
+                    android:maxLines="1"
                     android:text=""
-                    android:textColor="@color/color_blue_bg" />
+                    android:visibility="visible"/>
 
 
             </RelativeLayout>
@@ -90,10 +103,18 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_toLeftOf="@+id/iv_next"
                 android:layout_below="@+id/rl_tv_row_all"
                 android:layout_marginTop="@dimen/margin_4dp">
 
                 <ImageView
+                    android:id="@+id/iv_new_offer"
+                    style="@style/civ_row_style"
+                    android:src="@mipmap/new_icon"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:layout_toRightOf="@+id/iv_new_offer"
                     android:id="@+id/civ_category"
                     style="@style/civ_row_style"
                     android:scaleType="centerInside" />
@@ -103,8 +124,7 @@
                     style="@style/civ_row_style"
                     android:layout_toRightOf="@id/civ_category"
                     android:scaleType="centerInside"
-                    android:padding="@dimen/padding_2dp"
-                    android:src="@drawable/bigo_red_drinks" />
+                    android:src="@mipmap/dronk_icon" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -120,7 +140,7 @@
                     style="@style/civ_row_style"
                     android:layout_toRightOf="@id/civ_drinks"
                     android:scaleType="centerInside"
-                    android:src="@drawable/bigo_monthly"
+                    android:src="@mipmap/live_icon"
                     android:visibility="gone" />
 
                 <simplifii.framework.widgets.CustomFontTextView
@@ -130,7 +150,7 @@
                     android:layout_alignParentRight="true"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="@dimen/margin_4dp"
-                    android:layout_marginRight="16dp"
+                    android:layout_marginRight="6dp"
                     android:visibility="gone" />
             </RelativeLayout>
 

@@ -35,6 +35,9 @@ public class CategoryAPI implements Serializable {
     @SerializedName("image")
     @Expose
     private String image;
+    @SerializedName("show_all_cites")
+    @Expose
+    private boolean showAllCities;
     @SerializedName("mobile_image")
     @Expose
     private String mobileImage;
@@ -44,6 +47,14 @@ public class CategoryAPI implements Serializable {
 
     public String getMobileImage() {
         return mobileImage;
+    }
+
+    public boolean isShowAllCities() {
+        return showAllCities;
+    }
+
+    public void setShowAllCities(boolean showAllCities) {
+        this.showAllCities = showAllCities;
     }
 
     public void setMobileImage(String mobileImage) {

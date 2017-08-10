@@ -145,7 +145,7 @@ public class CartFragment extends BaseFragment implements CustomListAdapterInter
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putString(AppConstants.BUNDLE_KEYS.MEMBERSHIPID, plan.getId());
+                bundle.putSerializable(AppConstants.BUNDLE_KEYS.MEMBERSHIPID, plan);
                 startNextActivity(bundle, MembershipSubscribeActivity.class);
             }
         });

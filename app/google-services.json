@@ -1,80 +1,27 @@
 {
   "project_info": {
-    "project_number": "735825131673",
-    "project_id": "bigosavers-c230c"
+    "project_number": "495854431645",
+    "firebase_url": "https://bigosavers-32b5e.firebaseio.com",
+    "project_id": "bigosavers-32b5e",
+    "storage_bucket": "bigosavers-32b5e.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:735825131673:android:c04d40d7e1fb1fa6",
-        "android_client_info": {
-          "package_name": "com.bigosaver.my.bigosaver"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "735825131673-8t44v82qvujpbsqj5775kosinbmiu94j.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.bigosaver.my.bigosaver",
-            "certificate_hash": "A1EC167586C2CE58E429E66BDDD908B1AFAA812F"
-          }
-        },
-        {
-          "client_id": "735825131673-ptejtfftedjho8lujbenj0rfnij0rss5.apps.googleusercontent.com",
-          "client_type": 3
-        },
-        {
-          "client_id": "735825131673-5saqmupski2l52cufjkrq13ido9qprce.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyAoyuTJ1lx2cLW4iXFdEYm-0MnmkKEFEjg"
-        }
-      ],
-      "services": {
-        "analytics_service": {
-          "status": 1
-        },
-        "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 1
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:735825131673:android:2cd04b8122b05fa1",
+        "mobilesdk_app_id": "1:495854431645:android:2cd04b8122b05fa1",
         "android_client_info": {
           "package_name": "com.bigosavers"
         }
       },
       "oauth_client": [
         {
-          "client_id": "735825131673-k7om6bk45kr9cbi6mne9bk3hu5o0pfku.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.bigosavers",
-            "certificate_hash": "A318D69EF1F8D65C4BFE1605E3C2E298F5A91A7B"
-          }
-        },
-        {
-          "client_id": "735825131673-ptejtfftedjho8lujbenj0rfnij0rss5.apps.googleusercontent.com",
-          "client_type": 3
-        },
-        {
-          "client_id": "735825131673-5saqmupski2l52cufjkrq13ido9qprce.apps.googleusercontent.com",
+          "client_id": "495854431645-u4v1tudqoh6neg2med48edobicpel7c7.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAoyuTJ1lx2cLW4iXFdEYm-0MnmkKEFEjg"
+          "current_key": "AIzaSyBNR1cI00QWkCugYNAhhadyfqxla__c8Z0"
         }
       ],
       "services": {
@@ -82,11 +29,16 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "495854431645-95hcm6vp6ocs7h7996pjvsjob3i754or.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
-          "status": 1
+          "status": 2
         }
       }
     }

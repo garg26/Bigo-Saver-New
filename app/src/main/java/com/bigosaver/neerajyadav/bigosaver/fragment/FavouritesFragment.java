@@ -43,6 +43,7 @@ public class FavouritesFragment extends BaseFragment implements CustomListAdapte
     private GridView gv_fav;
     private CustomListAdapter customListAdapter;
     private ArrayList<CategoryAPI> list;
+
     public static FavouritesFragment getInstance() {
         return new FavouritesFragment();
     }
@@ -75,10 +76,14 @@ public class FavouritesFragment extends BaseFragment implements CustomListAdapte
         switch (taskCode) {
             case AppConstants.TASKCODES.GETFAVOURITES:
                 List<FavouritesResponse> fr = (List<FavouritesResponse>) response;
-                if (null != fr || fr.size() > 0) {
-                    favouritesList.clear();
+                favouritesList.clear();
+                if (null != fr && fr.size() > 0) {
+                    findView(R.id.tv_empty).setVisibility(View.GONE);
+                    gv_fav.setVisibility(View.VISIBLE);
                     favouritesList.addAll(fr);
-                    customListAdapter.notifyDataSetChanged();
+                } else {
+                    gv_fav.setVisibility(View.GONE);
+                    findView(R.id.tv_empty).setVisibility(View.VISIBLE);
                 }
                 break;
         }
@@ -119,20 +124,20 @@ public class FavouritesFragment extends BaseFragment implements CustomListAdapte
             holder = new FavouritesFragment.Holder(convertView);
             convertView.setTag(holder);
         } else {
-            holder = (FavouritesFragment.Holder) convertView.getTag();
+            holder = (Holder) convertView.getTag();
         }
         FavouritesResponse favourite = favouritesList.get(position);
         if (!TextUtils.isEmpty(favourite.getMerchant_name()))
             holder.tvTitleFav.setText(favourite.getMerchant_name());
 
         StringBuilder stringBuilder = new StringBuilder();
-        if(!TextUtils.isEmpty(favourite.getMerchant_place()))
+        if (!TextUtils.isEmpty(favourite.getMerchant_place()))
             stringBuilder.append(favourite.getMerchant_place() + ", ");
 
-        if(!TextUtils.isEmpty(favourite.getMerchant_area_name()))
+        if (!TextUtils.isEmpty(favourite.getMerchant_area_name()))
             stringBuilder.append(favourite.getMerchant_area_name() + ", ");
 
-        if(!TextUtils.isEmpty(favourite.getMerchant_city()))
+        if (!TextUtils.isEmpty(favourite.getMerchant_city()))
             stringBuilder.append(favourite.getMerchant_city());
 
         if (!TextUtils.isEmpty(stringBuilder.toString()))
@@ -143,13 +148,13 @@ public class FavouritesFragment extends BaseFragment implements CustomListAdapte
         if (favourite.getMerchant_images() != null && favourite.getMerchant_images().size() > 0)
             if (!TextUtils.isEmpty(favourite.getMerchant_images().get(0).getImage()))
                 Picasso.with(getActivity()).load(AppConstants.PAGE_URL.PHOTO_URL + favourite.getMerchant_images().get(0).getImage()).
-                        placeholder(R.drawable.appicon).into(holder.ivFavourite);
+                        placeholder(R.drawable.appiconlogo).into(holder.ivFavourite);
             else
-                holder.ivFavourite.setBackgroundResource(R.drawable.appicon);
+                holder.ivFavourite.setBackgroundResource(R.drawable.appiconlogo);
 
         if (null != favourite.getMerchant_category_icon() && !TextUtils.isEmpty(favourite.getMerchant_category_icon()))
             Picasso.with(getActivity()).load(AppConstants.PAGE_URL.PHOTO_URL + favourite.getMerchant_category_icon()).
-                    placeholder(R.drawable.appicon).into(holder.ivCategory);
+                    placeholder(R.drawable.appiconlogo).into(holder.ivCategory);
         return convertView;
     }
 
@@ -161,7 +166,20 @@ public class FavouritesFragment extends BaseFragment implements CustomListAdapte
 //        bundle.putString(AppConstants.BUNDLE_KEYS.CATEGORY_DATA, findCategory(favouritesList.get(position).getMerchant_category_icon(), list));
         bundle.putString(AppConstants.BUNDLE_KEYS.CATEGORY_DATA, favouritesList.get(position).getMerchant_category_icon());
         intent.putExtras(bundle);
-        startActivity(intent);
+        startActivityForResult(intent, AppConstants.REQUEST_CODES.CATEGORY);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode != getActivity().RESULT_OK) {
+            return;
+        }
+        switch (requestCode) {
+            case AppConstants.REQUEST_CODES.CATEGORY:
+                getFavouriteData();
+                break;
+        }
     }
 
     class Holder {

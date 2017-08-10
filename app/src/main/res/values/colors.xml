@@ -34,6 +34,8 @@
     <color name="color_red">#e24b52</color>
     <color name="green">#1cbb23</color>
     <color name="yellow_subscribe_button">#fed352</color>
+    <color name="transaprent_light_gray" >#50f4f4f4</color>
+    <color name="yellow_button">#ffcc28</color>
 
     <array name="array_dot_active">
         <item>@color/dot_light_screen1</item>
@@ -48,5 +50,4 @@
         <item>@color/dot_dark_screen3</item>
         <item>@color/dot_dark_screen4</item>
     </array>
->>>>>>> 3870a522fc3914e56b7f68bb75b67f0eeba6cbff
 </resources>

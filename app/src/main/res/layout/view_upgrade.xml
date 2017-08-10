@@ -55,8 +55,6 @@
                 android:textStyle="bold" />
         </RelativeLayout>
 
-
-
         <Button
             android:id="@+id/btn_done_upgrade"
             android:layout_width="180dp"

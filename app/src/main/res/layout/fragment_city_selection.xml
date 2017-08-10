@@ -1,6 +1,4 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
@@ -9,6 +7,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/scroll_view"
         android:scrollbars="none">
 
         <LinearLayout
@@ -48,7 +47,7 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="@dimen/margin_2dp"
                         android:layout_marginTop="@dimen/margin_2dp"
-                        android:src="@drawable/appicon" />
+                        android:src="@drawable/appiconlogo" />
 
                     <simplifii.framework.widgets.CustomFontTextView
                         android:id="@+id/tv_select_city"
@@ -83,6 +82,7 @@
                     <RelativeLayout
                         android:id="@+id/rl_1"
                         style="@style/rl_home"
+
                         android:layout_weight="30">
 
                         <ImageView
@@ -186,11 +186,12 @@
                 android:id="@+id/ll_must_try"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="-20dp"
                 android:orientation="vertical">
 
                 <simplifii.framework.widgets.CustomFontTextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:background="@color/gray"
                     android:gravity="center"
                     android:padding="@dimen/padding_6dp"
@@ -202,15 +203,18 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/margin_16dp"
-                    android:background="@color/gray">
+                    android:scrollbars="none"
+                    android:background="@color/white">
 
                     <LinearLayout
                         android:id="@+id/ll_popular_places"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/gray"
+                        android:background="@color/white"
                         android:scrollbars="none"
-                        android:orientation="horizontal"></LinearLayout>
+                        android:orientation="horizontal">
+
+                    </LinearLayout>
 
                 </HorizontalScrollView>
             </LinearLayout>

@@ -28,10 +28,15 @@ public interface AppConstants {
 
         int GOOGLE_SIGHN_IN = 10;
         int REGISTER = 11;
-        int FILTER = 12;
+        int FILTER = 120;
         int FORGOT_PASS = 13;
         int MERCHANTEWITHID = 14;
         int PAYMENT = 15;
+        int SUBSCRIBE_DRINKS = 16;
+        int CATEGORY = 17;
+        int OTP_REQUEST = 18;
+        int OTP_CONFIRM = 19;
+        int OTP_REQUEST_FORGETPASS = 20;
     }
 
     public static interface VALIDATIONS {
@@ -57,21 +62,23 @@ public interface AppConstants {
     }
 
     public static interface PAGE_URL {
-        String PHOTO_URL = "http://52.66.8.188/media/";
-        String BASE_URL = "http://52.66.8.188:80/v1/";
-//        String PHOTO_URL = "http://192.168.1.4:8000/media/";
+        String STAGING_URL = "https://bs-ep-api.bigosavers.com/";
+        String PHOTO_URL = STAGING_URL + "media/";
+        String BASE_URL = STAGING_URL + "v1/";
+        String BASE_URL_V2 = STAGING_URL + "v2/";
+        //        String PHOTO_URL = "http://192.168.1.4:8000/media/";
 //        String BASE_URL = "http://192.168.1.4:8000/v1/";
-        String REGISTER = BASE_URL + "users/register_user_mobile/";
+        String REGISTER = BASE_URL_V2 + "users/register_user_mobile/";
         String LOGIN = BASE_URL + "token/";
         String CATEGORY = BASE_URL + "category";
         String CITIES = BASE_URL + "city";
         String MERCHANTS_FEATURE_LIST = BASE_URL + "merchant/list_feature/";
         //        String FILTERITEMS = BASE_URL + "filter/";
         String FILTERITEMS = BASE_URL + "category/%s/filters/";
-        String SOCIAL_REGISTER = BASE_URL + "users/social_register_login/";
+        String SOCIAL_REGISTER = BASE_URL_V2 + "users/social_register_login/";
         String OFFERS = BASE_URL + "offer/filter_offer/";
         String MERCHANTDETAIL = BASE_URL + "merchant/";
-        String FORGOTPASS = BASE_URL + "users/change_password/";
+        String FORGOTPASS = BASE_URL_V2 + "mobile_reset_password/?format=json";
         String MEMBERSHIPPLAN = BASE_URL + "membership_plan/";
         String CASHCARDUSE = BASE_URL + "cash_card/checking_code/";
         String PROMOCARDUSE = BASE_URL + "cash_card/checking_promo_code/";
@@ -85,12 +92,15 @@ public interface AppConstants {
         String REDEEMOFFER = BASE_URL + "offer/";
         String REDEMPTIONHISTORY = BASE_URL + "offer/redeem_user_history";
         String CHANGEPASS = BASE_URL + "mobile_reset_password/";
-        String UPDATENUMBER = BASE_URL + "mobile_phone_update/";
+        String UPDATENUMBER = BASE_URL_V2 + "mobile_phone_update/";
         String EULA = BASE_URL + "site_settings/?format=json";
         String BIGODRINKS = BASE_URL + "bigo_drink_count/";
         String IMPLEMENTPROMOCODE = BASE_URL + "cash_card/implement_promo_code/";
         String GET_MEMBERSHIP_MERCHANTS = BASE_URL + "merchant/merchant_by_plan/";
         String SUBSCRIPTION_HISTORY = BASE_URL + "subscription/user_history/";
+        String SUBMIT_FEEDBACK = BASE_URL + "merchant/";
+        String SEND_OTP = BASE_URL + "send_otp/";
+        String RESEND_OTP = BASE_URL + "resend_otp/";
     }
 
     public static interface PREF_KEYS {
@@ -114,13 +124,16 @@ public interface AppConstants {
         String SELECTED_CITY = "selectedCity";
         String CATEGORY = "category";
         String IS_SOCIAL_SIGNUP = "isSocialSignUp";
-        String MERCHANT = "merchant";
+        String MERCHANT = "merchantid";
         String CATEGORY_DATA = "categoryData";
         String LATITUDE = PARAMS.LAT;
         String LONGITUDE = PARAMS.LNG;
         String SELECTED_FILTERS = "selectedFilters";
         String SELECTED_CATEGORY = "selectedCategory";
         String SELECTED_FILTERS_JSON = "selectedFilterJson";
+        String FCM_KEY = "fcm_key";
+        String PUSH_NOTIFICATION = "pushNotification";
+        String CATEGORY_LIST = "categorylist";
     }
 
     public static interface BUNDLE_KEYS {
@@ -131,7 +144,7 @@ public interface AppConstants {
         String CITY = "city";
         String KEY_POSITION = "position";
         String FILTERS = "filters";
-        String MERCHANT = "merchant";
+        String MERCHANT = "mid";
         String MESSAGE = "message";
         String MEMBERSHIPID = "membershipid";
         String SEARCHDATA = "searchData";
@@ -149,7 +162,11 @@ public interface AppConstants {
         String CITYID = "cityId";
         String TERMS = "terms";
         String DRINKS = "drinks";
-        String MERCHANT_TYPE = "merchant";
+        String MERCHANT_TYPE = "merchant_type";
+        String MERCHANT_NAME = "merchant_name";
+        String MOBILE_NUMBER = "mobileNumber";
+        String OTP = "otpText";
+        String M_NUMBER = "m_number";
     }
 
     public static interface HASHKEY {
@@ -161,6 +178,10 @@ public interface AppConstants {
         String GOLDTRANSACTION = "goldTransaction";
         String PLATINUMTRANSACTION = "platinumTransaction";
         String SIGNATURETRANSACTION = "signatureTransaction";
+        String BIGO_DEFAULT = "default";
+        String BIGO_GOLD = "bigo gold";
+        String BIGO_PLATINUM = "bigo platinum";
+        String BIGO_SIGNATURE = "bigo signature";
     }
 
 
@@ -211,5 +232,22 @@ public interface AppConstants {
         int IMPLEMENTPROMOCODE = 43;
         int GET_MEMBERSHIP_MERCHANTS = 44;
         int SUBSCRIPTION_HISTORY = 45;
+        int SUBMIT_FEEDBACK = 46;
+        int SEND_OTP = 47;
+        int RESEND_OTP = 48;
+    }
+
+    public interface FCM_BUNDLE_KEYS {
+        String REDIRECT_TO = "redirectTo";
+        String MERCHANT_PAGE = "md";
+        String MERCHANT_ID = "mid";
+        String CATEGORY_ID = "cid";
+        String PROFILE_PAGE = "pp";
+        String CASHCODE_PAGE = "bd";
+        String NEW_OFFER_TAB = "not";
+        String NOTIFICATION_PAGE = "np";
+        String WHATS_ON = "wo";
+        String FAVOURITES = "fav";
+        String CODE = "code";
     }
 }

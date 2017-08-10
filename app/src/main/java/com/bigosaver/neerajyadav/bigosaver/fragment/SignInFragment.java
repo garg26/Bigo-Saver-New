@@ -13,7 +13,9 @@ import android.widget.TextView;
 
 import com.bigosaver.Util.DigitVerification;
 import com.bigosaver.Util.FBLoginUtil;
+import com.bigosaver.Util.FireBaseGoogleLoginUtil;
 import com.bigosaver.Util.GoogleUtil;
+import com.bigosaver.neerajyadav.bigosaver.activity.MobileNumberConfirmationActivity;
 import com.bigosavers.R;
 import com.bigosaver.neerajyadav.bigosaver.activity.ForgetPasswordActivity;
 import com.bigosaver.neerajyadav.bigosaver.activity.MenuActivity;
@@ -45,10 +47,12 @@ public class SignInFragment extends BaseFragment {
     private String userNum;
     private String pass;
     private FBLoginUtil fbLoginUtil;
-    private GoogleUtil googleUtil;
+    private FireBaseGoogleLoginUtil googleUtil;
     private TextView tv_fPassword;
     private PageChangeListener listener;
     private boolean flagNumberRequired;
+    private String otpText;
+    private String phone_number;
 
     public SignInFragment() {
         // Required empty public constructor
@@ -84,7 +88,7 @@ public class SignInFragment extends BaseFragment {
                 fbLoginUtil.initiateFbLogin();
                 break;
             case R.id.rl_signin_google:
-                googleUtil.signInWithGoogle();
+                googleUtil.login();
                 break;
             case R.id.tv_forgotpassword:
                 Intent i = new Intent(getActivity(), ForgetPasswordActivity.class);
@@ -131,8 +135,7 @@ public class SignInFragment extends BaseFragment {
     }
 
     private void getGoogleData() {
-        googleUtil = GoogleUtil.getInstance((AppCompatActivity) getActivity());
-        googleUtil.setListener(new GoogleUtil.GoogleLoginCallBack() {
+        googleUtil = FireBaseGoogleLoginUtil.getInstance((AppCompatActivity) getActivity(), new FireBaseGoogleLoginUtil.GoogleSignInListener() {
             @Override
             public void onSuccess(GoogleSignInAccount googleSignInAccount) {
                 if (googleSignInAccount != null) {
@@ -156,34 +159,39 @@ public class SignInFragment extends BaseFragment {
                 showToast(getString(R.string.social_login_error));
             }
         });
-
     }
 
     private void verifyPhone() {
-        DigitVerification.authenticate("+91", new DigitVerification.DigitCallback() {
-            @Override
-            public void success(DigitsSession session, String phoneNumber) {
-                if (session != null && !TextUtils.isEmpty(phoneNumber)) {
-                    if (phoneNumber.contains("+91")) {
-                        phoneNumber = phoneNumber.replace("+91", "");
-                    }
-                    proceedAfterDigitVerification(phoneNumber);
-                }
-            }
 
-            @Override
-            public void failure(DigitsException exception) {
-                flagNumberRequired = false;
-                showToast(getString(R.string.mobile_verification_error));
-                return;
+        Bundle bundle = new Bundle();
+        bundle.putString(AppConstants.BUNDLE_KEYS.MOBILE_NUMBER, "");
+        Intent intent = new Intent(getActivity(), MobileNumberConfirmationActivity.class);
+        intent.putExtras(bundle);
+        startActivityForResult(intent, AppConstants.REQUEST_CODES.OTP_REQUEST);
 
-            }
-        });
+//        DigitVerification.authenticate("+91", new DigitVerification.DigitCallback() {
+//            @Override
+//            public void success(DigitsSession session, String phoneNumber) {
+//                if (session != null && !TextUtils.isEmpty(phoneNumber)) {
+//                    if (phoneNumber.contains("+91")) {
+//                        phoneNumber = phoneNumber.replace("+91", "");
+//                    }
+//                    proceedAfterDigitVerification(phoneNumber);
+//                }
+//            }
+//
+//            @Override
+//            public void failure(DigitsException exception) {
+//                flagNumberRequired = false;
+//                showToast(getString(R.string.mobile_verification_error));
+//                return;
+//
+//            }
+//        });
     }
 
     private void proceedAfterDigitVerification(String phoneNumber) {
         Preferences.saveData(AppConstants.PREF_KEYS.PHONE, phoneNumber);
-        Digits.clearActiveSession();
         flagNumberRequired = true;
         executeSignUp();
     }
@@ -208,6 +216,7 @@ public class SignInFragment extends BaseFragment {
             jsonObject.put("first_name", user.getFirst_name());
             jsonObject.put("last_name", user.getLast_name());
             jsonObject.put("email", user.getEmail());
+            jsonObject.put("otp_code", otpText);
             if (flagNumberRequired) {
                 jsonObject.put("phone", Preferences.getData(AppConstants.PREF_KEYS.PHONE, "+91"));
             }
@@ -230,13 +239,21 @@ public class SignInFragment extends BaseFragment {
         }
         switch (requestCode) {
             case AppConstants.REQUEST_CODES.FORGOT_PASS:
-                Bundle bundle = data.getExtras();
-                if (bundle != null)
-                    showToast((String) bundle.get(AppConstants.BUNDLE_KEYS.MESSAGE));
                 break;
             case AppConstants.REQUEST_CODES.GOOGLE_SIGHN_IN:
-                googleUtil.onActivityResult(data);
+                googleUtil.onActivityResult(requestCode, resultCode, data);
                 return;
+            case AppConstants.REQUEST_CODES.OTP_REQUEST:
+                if (data != null){
+                    Bundle extras = data.getExtras();
+                    if (extras != null){
+                        otpText = extras.getString(AppConstants.BUNDLE_KEYS.OTP);
+                        phone_number = extras.getString(AppConstants.BUNDLE_KEYS.M_NUMBER);
+//                        executeSignUp();
+                        proceedAfterDigitVerification(phone_number);
+                    }
+                }
+                break;
         }
         fbLoginUtil.onActivityResult(requestCode, resultCode, data);
     }

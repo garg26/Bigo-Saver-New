@@ -342,7 +342,12 @@ public abstract class BaseFragment extends Fragment implements
                                   Object... params) {
         hideProgressBar();
         if (re != null) {
-            showToast(re.getMessage());
+            String message = re.getMessage();
+            if (!TextUtils.isEmpty(message) && message.contains("[") && message.contains("]")) {
+                message = message.replace("[", "");
+                message = message.replace("]", "");
+            }
+            showToast(message);
         }
     }
 

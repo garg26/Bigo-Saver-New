@@ -1,6 +1,6 @@
 package com.bigosaver.user;
 
-import android.app.Application;
+import android.Manifest;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -9,6 +9,8 @@ import android.util.Base64;
 import android.util.Log;
 
 import com.bigosaver.Util.DigitVerification;
+import com.clevertap.android.sdk.ActivityLifecycleCallback;
+import com.clevertap.android.sdk.Application;
 import com.facebook.FacebookSdk;
 
 import java.security.MessageDigest;
@@ -32,6 +34,7 @@ public class AppController extends Application {
         DigitVerification.getInstance(this).initDigitVerification();
         Preferences.initSharedPreferences(this);
         FacebookSdk.sdkInitialize(this);
+//        BlurKit.init(this);
         printHash();
     }
 
@@ -49,6 +52,10 @@ public class AppController extends Application {
 
     public static boolean checkLocationPermission() {
         return checkPermission(android.Manifest.permission.ACCESS_FINE_LOCATION);
+    }
+
+    public static boolean checkLocationPermissionCourse() {
+        return checkPermission(Manifest.permission.ACCESS_COARSE_LOCATION);
     }
 
     public void printHash() {

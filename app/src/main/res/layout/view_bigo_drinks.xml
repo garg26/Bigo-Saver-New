@@ -33,8 +33,6 @@
             android:text="Drink responsibly"
             android:textColor="@color/golden_yellow" />
 
-
-
         <Button
             android:id="@+id/btn_done"
             android:layout_width="180dp"

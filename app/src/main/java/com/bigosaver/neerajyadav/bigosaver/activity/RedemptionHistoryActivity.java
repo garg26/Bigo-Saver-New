@@ -127,7 +127,7 @@ public class RedemptionHistoryActivity extends BaseActivity implements CustomLis
 
             if (!TextUtils.isEmpty(rhr.getMerchant_logo())) {
                 Picasso.with(this).load("http://52.66.8.188/media/" + rhr.getMerchant_logo()).
-                        placeholder(R.drawable.appicon).into(holder.ivLogo);
+                        placeholder(R.drawable.appiconlogo).into(holder.ivLogo);
             }
 //            final String categoryImage = findCategory(rhr.getCategory(), list);
 //            if (!TextUtils.isEmpty(categoryImage))
@@ -199,7 +199,7 @@ public class RedemptionHistoryActivity extends BaseActivity implements CustomLis
 
         if (!TextUtils.isEmpty(rhr.getMerchant_logo())) {
             Picasso.with(this).load("http://52.66.8.188/media/" + rhr.getMerchant_logo()).
-                    placeholder(R.drawable.appicon).into(ivLogo);
+                    placeholder(R.drawable.appiconlogo).into(ivLogo);
         }
         if (!TextUtils.isEmpty(rhr.getOffer_title()))
             tvOffer.setText(rhr.getOffer_title());

@@ -102,6 +102,9 @@ public class In_plan implements Cloneable {
     @SerializedName("area")
     @Expose
     private String area;
+    @SerializedName("discount")
+    @Expose
+    private String discount;
     @SerializedName("merchant_category_icon")
     @Expose
     private String merchant_category_icon;
@@ -145,6 +148,14 @@ public class In_plan implements Cloneable {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(String discount) {
+        this.discount = discount;
     }
 
     public Boolean getNeed_activate_bigo() {

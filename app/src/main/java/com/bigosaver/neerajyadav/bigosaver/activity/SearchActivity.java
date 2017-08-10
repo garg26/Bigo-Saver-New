@@ -22,6 +22,7 @@ import com.bigosaver.neerajyadav.bigosaver.model.merchants.merchantdetail.search
 import com.bigosaver.neerajyadav.bigosaver.model.merchants.merchantdetail.search.Merchant;
 import com.bigosaver.neerajyadav.bigosaver.model.merchants.merchantdetail.search.Place;
 import com.bigosaver.neerajyadav.bigosaver.model.merchants.merchantdetail.search.SearchResponse;
+import com.lb.auto_fit_textview.AutoResizeTextView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -282,6 +283,12 @@ public class SearchActivity extends BaseActivity implements CustomListAdapterInt
             merchantPlace.append(merchant.getArea_name());
         TextView tvOutlet = (TextView) holderMerchant.findViewById(R.id.tv_num_outlets);
         tvOutlet.setText(merchantPlace);
+
+        if (!TextUtils.isEmpty(merchant.getTimings())) {
+            AutoResizeTextView tvTime = (AutoResizeTextView) holderMerchant.findViewById(R.id.tv_time);
+            tvTime.setVisibility(View.VISIBLE);
+            tvTime.setText("Timing: " + merchant.getTimings());
+        }
 
         if (!TextUtils.isEmpty(merchant.getLogo())) {
             ImageView iv = (ImageView) holderMerchant.findViewById(R.id.iv_offer_logo);

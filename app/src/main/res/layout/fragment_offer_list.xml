@@ -1,19 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
     <!--<include-->
-        <!--android:id="@+id/ll_empty"-->
-        <!--layout="@layout/empty_view"-->
-        <!--android:visibility="gone"></include>-->
-
-    <ListView
-        android:id="@+id/lv_offer"
+    <!--android:id="@+id/ll_empty"-->
+    <!--layout="@layout/empty_view"-->
+    <!--android:visibility="gone"></include>-->
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="4dp"
-        android:scrollbars="none"></ListView>
+        android:layout_height="wrap_content">
 
+        <ListView
+            android:id="@+id/lv_offer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:background="@color/bg_gray"
+            android:divider="@color/full_transparent"
+            android:dividerHeight="8dp"
+            android:scrollbars="none"></ListView>
 
-</LinearLayout>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_list_top"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_alignParentBottom="true"
+        android:src="@mipmap/arrow_up"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp"
+        />
+
+</RelativeLayout>

@@ -1,6 +1,7 @@
 
 package com.bigosaver.neerajyadav.bigosaver.model.User;
 
+import com.bigosaver.neerajyadav.bigosaver.model.BaseModel;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -8,7 +9,7 @@ import simplifii.framework.utility.AppConstants;
 import simplifii.framework.utility.JsonUtil;
 import simplifii.framework.utility.Preferences;
 
-public class UpdateProfileResponse {
+public class UpdateProfileResponse extends BaseModel{
 
     private static UpdateProfileResponse runningInstance;
 
@@ -51,6 +52,9 @@ public class UpdateProfileResponse {
     @SerializedName("city")
     @Expose
     private String city;
+    @SerializedName("city_string")
+    @Expose
+    private String city_string;
     @SerializedName("city_name")
     @Expose
     private String city_name;
@@ -265,6 +269,15 @@ public class UpdateProfileResponse {
      */
     public void setCity(String city) {
         this.city = city;
+    }
+
+
+    public String getCity_string() {
+        return city_string;
+    }
+
+    public void setCity_string(String city_string) {
+        this.city_string = city_string;
     }
 
     /**

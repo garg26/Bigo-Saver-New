@@ -60,7 +60,7 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
             ivIcon.setVisibility(View.VISIBLE);
             Picasso.with(context).load(Util.getImageUrl(item.getImage())).into(ivIcon);
         } else {
-            ivIcon.setVisibility(View.INVISIBLE);
+            ivIcon.setVisibility(View.GONE);
         }
 
         txtListChild.setText(item.getValue());

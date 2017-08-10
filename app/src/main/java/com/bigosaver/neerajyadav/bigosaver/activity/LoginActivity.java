@@ -71,14 +71,14 @@ public class LoginActivity extends BaseActivity implements CustomPagerAdapter.Pa
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        tabSignIn.onActivityResult(requestCode, resultCode, data);
+        if (tabSignIn != null)
+            tabSignIn.onActivityResult(requestCode, resultCode, data);
     }
 
     @Override
     public void moveToSignUp() {
         pager.setCurrentItem(1);
     }
-
 
     @Override
     public void moveToSignIn() {

@@ -39,7 +39,8 @@ import simplifii.framework.utility.Preferences;
 /**
  * Created by Dhillon on 18-10-2016.
  */
-public class OfferTabFragment extends BaseFragment implements CustomPagerAdapter.PagerAdapterInterface, SearchView.OnQueryTextListener, OfferListFragment.OnDataSetChanged {
+public class OfferTabFragment extends BaseFragment implements CustomPagerAdapter.PagerAdapterInterface,
+        SearchView.OnQueryTextListener, OfferListFragment.OnDataSetChanged {
     private static final int REQ_OPEN_LOCATION = 5;
     private CategoryAPI categoryAPI;
     private ArrayList<String> tabs;
@@ -52,11 +53,13 @@ public class OfferTabFragment extends BaseFragment implements CustomPagerAdapter
     private String savedCategory = "";
     private String jsonFilters = "";
     private Gson gson = new Gson();
+    private boolean allCity;
 
-    public static OfferTabFragment getInstance(CategoryAPI categoryAPI, CityData cityData, GPSTracker gpsTracker) {
+    public static OfferTabFragment getInstance(CategoryAPI categoryAPI, CityData cityData, GPSTracker gpsTracker, boolean allCity) {
         OfferTabFragment f = new OfferTabFragment();
         f.categoryAPI = categoryAPI;
         f.cityData = cityData;
+        f.allCity = allCity;
         f.gpsTracker = gpsTracker;
         return f;
     }
@@ -75,6 +78,7 @@ public class OfferTabFragment extends BaseFragment implements CustomPagerAdapter
 //        askPermissions();
         initTab();
         ViewPager pager = (ViewPager) findView(R.id.view_pager);
+        pager.setOffscreenPageLimit(5);
         TabLayout tabLayout = (TabLayout) findView(R.id.tab_layout);
         CustomPagerAdapter adapter = new CustomPagerAdapter(getChildFragmentManager(), tabs, this);
         pager.setAdapter(adapter);
@@ -137,7 +141,6 @@ public class OfferTabFragment extends BaseFragment implements CustomPagerAdapter
 //        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER);
 //    }
 
-
     private void initTab() {
         if (categoryAPI != null) {
             int i = 0;
@@ -152,12 +155,19 @@ public class OfferTabFragment extends BaseFragment implements CustomPagerAdapter
             }
 
             if (categoryAPI.getTabs() != null) {
+//                savedCategoryPreferenceKeys(categoryAPI.getTabs());
                 for (Tab tab : categoryAPI.getTabs()) {
-                    tabs.add(tab.getName());
+                    this.tabs.add(tab.getName());
                     offerListFragmentList.add(OfferListFragment.getInstance(i++, categoryAPI,
-                            cityData, gpsTracker, filterArray, this));
+                            cityData, gpsTracker, filterArray, this, allCity));
                 }
             }
+        }
+    }
+
+    private void savedCategoryPreferenceKeys(List<Tab> tabs) {
+        for (Tab tab : tabs) {
+            Preferences.saveData(categoryAPI.getId() + tab.getName(), false);
         }
     }
 
@@ -205,6 +215,12 @@ public class OfferTabFragment extends BaseFragment implements CustomPagerAdapter
     }
 
 
+    private void updateFragmentData(JSONArray filteredArray) {
+        for (int i = 0; i < categoryAPI.getTabs().size(); i++) {
+            offerListFragmentList.get(i).onUpdate(filteredArray);
+        }
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -215,23 +231,19 @@ public class OfferTabFragment extends BaseFragment implements CustomPagerAdapter
         switch (requestCode) {
             case AppConstants.REQUEST_CODES.FILTER:
                 Bundle bundle = data.getExtras();
-                String json = (String) bundle.get(AppConstants.BUNDLE_KEYS.FILTERS);
-                try {
-                    JSONArray filteredArray = new JSONArray(json);
-                    updateFragmentData(filteredArray);
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                if (bundle != null) {
+                    String json = (String) bundle.get(AppConstants.BUNDLE_KEYS.FILTERS);
+                    try {
+                        JSONArray filteredArray = new JSONArray(json);
+                        updateFragmentData(filteredArray);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
                 break;
             case REQ_OPEN_LOCATION:
 
                 break;
-        }
-    }
-
-    private void updateFragmentData(JSONArray filteredArray) {
-        for (int i = 0; i < categoryAPI.getTabs().size(); i++) {
-            offerListFragmentList.get(i).onUpdate(filteredArray);
         }
     }
 
@@ -268,30 +280,26 @@ public class OfferTabFragment extends BaseFragment implements CustomPagerAdapter
         JSONArray jsonArray = new JSONArray();
         if (selectedFilters.size() > 0) {
             for (int i = 0; i < selectedFilters.size(); i++) {
-                if(selectedFilters.get(i).getFilterType().compareTo(getString(R.string.select_reject))==0){
-                        if (selectedFilters.get(i).getSelected()) {
-                            JSONObject jsonObject = new JSONObject();
-                            jsonObject.put("filterItemId", selectedFilters.get(i).getId());
-                            jsonObject.put("value", "selected");
-//                        jsonObject.put("filterId", selectedFilters.get(i).getFilter_values().get(j).getId());
-                            jsonArray.put(jsonObject);
-                        } else if (selectedFilters.get(i).getRejected()) {
-                            JSONObject jsonObject = new JSONObject();
-                            jsonObject.put("filterItemId",selectedFilters.get(i).getId());
-                            jsonObject.put("value", "not_selected");
-//                        jsonObject.put("filterId", selectedFilters.get(i).getFilter_values().get(j).getId());
-                            jsonArray.put(jsonObject);
-                        }
+                if (selectedFilters.get(i).getFilterType().compareTo(getString(R.string.select_reject)) == 0) {
+                    if (selectedFilters.get(i).getSelected()) {
+                        JSONObject jsonObject = new JSONObject();
+                        jsonObject.put("filterItemId", selectedFilters.get(i).getId());
+                        jsonObject.put("value", "selected");
+                        jsonArray.put(jsonObject);
+                    } else if (selectedFilters.get(i).getRejected()) {
+                        JSONObject jsonObject = new JSONObject();
+                        jsonObject.put("filterItemId", selectedFilters.get(i).getId());
+                        jsonObject.put("value", "not_selected");
+                        jsonArray.put(jsonObject);
                     }
-                 else if (selectedFilters.get(i).getFilterType().compareTo(getString(R.string.multi_select))==0) {
-                        if (selectedFilters.get(i).getSelected()) {
-                            JSONObject jsonObject = new JSONObject();
-                            jsonObject.put("filterItemId", selectedFilters.get(i).getId());
-                            jsonObject.put("value", "selected");
-//                        jsonObject.put("filterId", selectedFilters.get(i).getFilter_values().get(j).getId());
-                            jsonArray.put(jsonObject);
-                        }
+                } else if (selectedFilters.get(i).getFilterType().compareTo(getString(R.string.multi_select)) == 0) {
+                    if (selectedFilters.get(i).getSelected()) {
+                        JSONObject jsonObject = new JSONObject();
+                        jsonObject.put("filterItemId", selectedFilters.get(i).getId());
+                        jsonObject.put("value", "selected");
+                        jsonArray.put(jsonObject);
                     }
+                }
             }
             Preferences.saveData(AppConstants.PREF_KEYS.SELECTED_FILTERS, gson.toJson(selectedFilters));
             Preferences.saveData(AppConstants.PREF_KEYS.SELECTED_FILTERS_JSON, jsonArray.toString());

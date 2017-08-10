@@ -44,7 +44,6 @@ public class ChangePasswordActivity extends BaseActivity {
         HttpParamObject httpParamObject = new HttpParamObject();
         httpParamObject.setUrl(AppConstants.PAGE_URL.CHANGEPASS);
         httpParamObject.setJson(getData().toString());
-        httpParamObject.addHeader("Authorization", "Token f55b58c1bccfb46f59ca9a43d7169b594c018e7215dd");
         httpParamObject.addParameter("format", "json");
         httpParamObject.setPostMethod();
         httpParamObject.setJSONContentType();
@@ -54,13 +53,10 @@ public class ChangePasswordActivity extends BaseActivity {
     @Override
     public void onPostExecute(Object response, int taskCode, Object... params) {
         super.onPostExecute(response, taskCode, params);
-        if (null == response) {
-            showToast("No response");
-            return;
-        }
+
         switch (taskCode) {
             case AppConstants.TASKCODES.CHANGEPASS:
-                showToast("Password changes successfully");
+                showToast("Password changed successfully");
                 break;
         }
     }

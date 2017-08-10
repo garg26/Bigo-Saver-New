@@ -31,21 +31,21 @@
             <RelativeLayout
                 android:id="@+id/rl_radio"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_4dp">
 
                 <simplifii.framework.widgets.CustomFontTextView
                     android:id="@+id/tv_select_duration"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
                     android:text="@string/select_duration"
                     android:textColor="@color/tab_blue"
-                    android:textSize="11dp" />
+                    android:textSize="14dp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/tv_select_duration"
+                    android:layout_below="@+id/tv_select_duration"
                     android:orientation="horizontal">
 
                     <RelativeLayout
@@ -57,6 +57,7 @@
                             android:id="@+id/radio_group"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/margin_4dp"
                             android:checkedButton="@+id/radio_monthly"
                             android:orientation="horizontal">
 
@@ -65,15 +66,16 @@
                                 style="@style/radio"
                                 android:buttonTint="@color/tab_blue"
                                 android:text="1 month"
-                                android:textSize="@dimen/text_15dp" />
+                                android:textSize="@dimen/text_14dp" />
 
                             <simplifii.framework.widgets.CustomFontRadio
                                 android:id="@+id/radio_yearly"
                                 style="@style/radio"
+                                android:layout_marginLeft="@dimen/margin_16dp"
                                 android:layout_toRightOf="@+id/radio_monthly"
                                 android:buttonTint="@color/tab_blue"
                                 android:text="12 month"
-                                android:textSize="@dimen/text_15dp" />
+                                android:textSize="@dimen/text_14dp" />
                         </RadioGroup>
                     </RelativeLayout>
                     <!--<RelativeLayout-->
@@ -100,47 +102,6 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/rl_promo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_8dp"
-                android:visibility="visible">
-
-                <simplifii.framework.widgets.CustomFontTextView
-                    android:id="@+id/tv_have_code"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:text="@string/have_code"
-                    android:textColor="@color/tab_blue"
-                    android:textSize="11dp" />
-
-                <simplifii.framework.widgets.CustomFontEditText
-                    android:id="@+id/et_enter_promo_code"
-                    android:layout_width="90dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_8dp"
-                    android:layout_toRightOf="@id/tv_have_code"
-                    android:background="@drawable/enter_code"
-                    android:inputType="textCapCharacters"
-                    android:padding="@dimen/padding_2dp"
-                    android:textCursorDrawable="@null"
-                    android:textSize="16dp" />
-
-                <simplifii.framework.widgets.CustomFontButton
-                    android:id="@+id/btn_apply_promo"
-                    android:layout_width="60dp"
-                    android:layout_height="18dp"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="@dimen/margin_8dp"
-                    android:layout_toRightOf="@+id/et_enter_promo_code"
-                    android:background="@color/color_dark_blue"
-                    android:text="@string/apply"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/text_12dp" />
-            </RelativeLayout>
-
-            <RelativeLayout
                 android:id="@+id/rl_promo_applied"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -157,7 +118,6 @@
 
             </RelativeLayout>
 
-
         </LinearLayout>
 
         <RelativeLayout
@@ -167,15 +127,15 @@
             android:layout_marginLeft="@dimen/margin_12dp"
             android:layout_weight="80">
 
-            <View
-                android:layout_width="1dp"
-                android:layout_height="@dimen/height_40dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/margin_8dp"
-                android:layout_marginRight="@dimen/margin_12dp"
-                android:layout_marginTop="@dimen/margin_12dp"
-                android:layout_toLeftOf="@+id/iv_membership"
-                android:background="@color/bg_gray" />
+            <!--<View-->
+                <!--android:layout_width="1dp"-->
+                <!--android:layout_height="@dimen/height_40dp"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_marginLeft="@dimen/margin_8dp"-->
+                <!--android:layout_marginRight="@dimen/margin_12dp"-->
+                <!--android:layout_marginTop="@dimen/margin_12dp"-->
+                <!--android:layout_toLeftOf="@+id/iv_membership"-->
+                <!--android:background="@color/bg_gray" />-->
 
 
             <ImageView
@@ -189,6 +149,48 @@
         </RelativeLayout>
 
     </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_promo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_4dp"
+        android:visibility="visible">
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:id="@+id/tv_have_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="@string/have_code"
+            android:textColor="@color/tab_blue"
+            android:textSize="@dimen/text_14dp" />
+
+        <simplifii.framework.widgets.CustomFontEditText
+            android:id="@+id/et_enter_promo_code"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_8dp"
+            android:layout_toRightOf="@id/tv_have_code"
+            android:background="@drawable/enter_code"
+            android:inputType="textCapCharacters"
+            android:padding="@dimen/padding_2dp"
+            android:textCursorDrawable="@null"
+            android:textSize="14dp" />
+
+        <simplifii.framework.widgets.CustomFontButton
+            android:id="@+id/btn_apply_promo"
+            android:layout_width="60dp"
+            android:layout_height="18dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/margin_8dp"
+            android:layout_toRightOf="@+id/et_enter_promo_code"
+            android:background="@color/color_dark_blue"
+            android:text="@string/apply"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_12dp" />
+    </RelativeLayout>
 
     <View
         android:layout_width="match_parent"

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_chips"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.plumillonforge.android.chipview.ChipView
+        android:id="@+id/filter_chip_view"
+        style="@style/layout_chip" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/margin_24dp"
+        android:id="@+id/tv_empty"
+        android:visibility="gone"
+        android:textSize="@dimen/size_18dp"
+        android:text="Oops, no merhcants found."
+        android:gravity="center"/>
+
+</LinearLayout>

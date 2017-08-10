@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/content"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingLeft="6dp"
+    android:paddingRight="6dp">
+
+    <simplifii.framework.widgets.CustomFontTextView
+        android:id="@android:id/text1"
+        style="@style/tv_chip"
+        android:text="dummy"
+        android:layout_centerVertical="true" />
+
+    <ImageView
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:src="@drawable/cancel"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@android:id/text1"/>
+
+
+</RelativeLayout>

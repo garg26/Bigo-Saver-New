@@ -1,0 +1,15 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.bigosaver.my.user.com.example.neerajyadav.bigosaver.fragment.AllOffersFragment">
+
+<ListView
+    android:background="@color/white"
+    android:layout_marginTop="@dimen/margin_12dp"
+    android:paddingLeft="@dimen/padding_16dp"
+    android:id="@+id/lv_all_offers"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"></ListView>
+</LinearLayout>

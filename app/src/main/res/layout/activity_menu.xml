@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_menu"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.bigosaver.neerajyadav.bigosaver.activity.MenuActivity">
+
+
+    <FrameLayout
+        android:id="@+id/fl_fragment_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layout_footer"
+        android:background="@color/white">
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_footer"
+        style="@style/lay_bottom"
+        android:background="@color/bg_gray"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/lay_home"
+            style="@style/lay_foot"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_home"
+                style="@style/iv_footer"
+                android:src="@drawable/home_inactive" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:background="@color/color_DarkGray" />
+
+        <LinearLayout
+            android:id="@+id/lay_notification"
+            style="@style/lay_foot"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_notification"
+                style="@style/iv_footer"
+                android:src="@drawable/notification_inactive" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:background="@color/color_DarkGray" />
+
+        <LinearLayout
+            android:id="@+id/lay_fav"
+            style="@style/lay_foot"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_fav"
+                style="@style/iv_footer"
+                android:src="@drawable/favourite_inactive" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:background="@color/color_DarkGray" />
+
+        <LinearLayout
+            android:id="@+id/lay_cart"
+            style="@style/lay_foot"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_cart"
+                style="@style/iv_footer"
+                android:src="@drawable/whats_on_inactive" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="1dp"
+            android:layout_height="30dp"
+            android:background="@color/color_DarkGray" />
+
+        <LinearLayout
+            android:id="@+id/lay_avatar"
+            style="@style/lay_foot"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/iv_avatar"
+                style="@style/iv_footer"
+                android:src="@drawable/account_inactive" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

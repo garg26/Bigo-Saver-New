@@ -1,0 +1,17 @@
+{
+   "Heart & Blood Vessels":["None","Heart failure","High blood pressure","Heart attack","Poor circulation","Stroke","High cholesterol/lipids","Irregular Heart Beat","Valvular disease\n(problems with any heart valves)"],
+   "Brain & Nerves":["None","Headaches or migraines","Neuropathy (peripheral nerve disease)","Parkinson's","Dementia/Alzheimer's","Seizures","Meningitis","Multiple Sclerosis","Chronic fatigue syndrome"],
+   "Lungs":["None","Emphysema","Asthma","Hay Fever","Chronic bronchitis","Tuberculosis","Asbestosis","Pneumonia","Pulmonary embolism \n(Lung blood clot)","Sleep apnea","Home oxygen"],
+   "Stomach/Intestines":["None","GERD (Gastric reflux)","Ulcers","Crohn's Disease","Colitis","Diverticulitis","Irritable bowel syndrome","Polyps","Gallstones","Pancreatitis"],
+   "Kidney/Bladder":["None","Stones","Kidney failure","History of dialysis","Urinary tract infection"],
+   "Blood Disorders":["None","Anemia","Sickle cell anemia","Bleeding Disorder","History of blood tranfusions","Clot","Myelodyspastic disorder"],
+   "Immune System":["None","HIV/AIDS","Frequent infections","Lupus","Rheumatoid arthritis"],
+   "Joints/Skeleton":["None","Osteoporosis","Fractures","Arthritis","Gout","Scoliosis"],
+   "Liver":["None","Hepatitis A","Hepatitis B","Hepatitis C","Cirrhosis"],
+   "Endocrine (Glands)":["None","Thyroid disease","Diabetes","Pituitary Disease","Adrenal Disease"],
+   "Psychological/Psychiatric":["None","Depression","Anxiety","Schizophrenia","Phobias","Addiction"],
+   "Skin Disorders":["None","Acne","Eczema","Psoriasis","Warts","Shingles"],
+   "Genetic Diseases":["None","Breast/Ovarian (BROV)","Cowden Syndrome","Familial Adenomatous Polyposis (FAP)","Hereditary Breast Cancer (HBOC)","Hereditary Nonpolyposis Colon Cancer (HNPCC)","Peutz-Jegher","Li-Fraumeni","Not Known"],
+   "Genitourinary - Female Only":["None","Vaginal Problems","Menopause","Uterine fibroids","Dysfunctional bleeding","Polycystic  Ovarian Syndrome (PCOS)","Sexual dysfunction","Sexually transmitted disease","Endometriosis","Urinary Incontinence"],
+   "Genitourinary - MALE only":["None","Prostate problems","Disorders of the testes","Sexual dysfunction","Sexually transmitted disease","Urinary Incontinence"]
+}

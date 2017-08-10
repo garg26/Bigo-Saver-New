@@ -1,0 +1,172 @@
+{
+  "HAEMATOLOGY ": [
+    "1. CBC with platelet count? on Cell Counter (RBC & Platelet)??",
+    "2. R.B.C. & Hb",
+    "3. W.B.C.",
+    "4. Absolute Eosinophil Count",
+    "5. E.S.R. (Westergren's)",
+    "6. Platelet Count",
+    "7. Malarial Parasites?",
+    "8. Bleeding & Clotting Time?",
+    "9. Prothrombin Time With INR",
+    "10. Reticulocyte Count",
+    "11. L.E. Cells"
+  ],
+  "BIOCHEMISTRY": [
+    "1. Liver Function Tests (for short LFT) (Includes - S.G.O.T., S.G.P.T.,? Total Bilirubin (Dir. & Indir. Bilirubin ), Total Protein, Albumin, A/G Ratio, Alk. Phosphatase)",
+    "2. Kidney Function Tests (Includes - Blood Urea, S. Creatinine, S. Uric Acid, Sodium, Potassium, Chlorides)",
+    "3. Blood Urea,",
+    "4. S. Creatinine.",
+    "5. S.Bilirubin,",
+    "6. Total Protein (A/G Ratio)",
+    "7. Serum Electrolytes [Na, K, Cl,.....(Each) Rs 80/-]",
+    "8. Sr. Calcium,",
+    "9. Inorganic Phosphorus",
+    "10. Sr. Cholesterol,",
+    "11. Uric Acid,",
+    "12. S.G.O.T.,",
+    "13. S.G.P.T.,",
+    "14. Alkaline Po4,",
+    "15. Sr. Lithium, ?",
+    "16. C.P.K.,",
+    "17. L.D.H.,",
+    "18. Acid Phosphastase (Total),",
+    "19. Hdl Cholesterol",
+    "20. Triglycerides",
+    "21. Iron (Fe) Studies?",
+    "22. Hb. Electrophoresis",
+    "23. CPK ? MB",
+    "24. Glucose Tolerance Test",
+    "25. Blood Sugar??Random",
+    "26. Fasting Sugar & P.P. Sugar?",
+    "27. Lipid Profile",
+    "28. Lipase",
+    "29. Amylase"
+  ],
+  "BACTERIOLOGY": [
+    "1. A.F.B. Smear (Sputum, Urine, Pus)",
+    "2. Routine Culture (Urine, Stool, Pus Etc.)",
+    "3. Sputum Routine"
+  ],
+  "SEROLOGY": [
+    "1. V.D.R.L?",
+    "2. C- Reactive Protein",
+    "3. A.S.O.Titre",
+    "4. Widal",
+    "5. Direct Coomb's Test",
+    "6. Indirect Coomb's Test",
+    "7. Blood Group & Rh",
+    "8. Dengue IgG, IgM",
+    "9. Leptospira IgG, IgM",
+    "10. Chikungunya IgM",
+    "11. Bence - Jones Protein in Urine"
+  ],
+  "STOOL EXAMINATION": [
+    "1. Stool Routine",
+    "2. Stool For Ph & Reducing Substances"
+  ],
+  "STOOL EXAMINATION": [
+    "1. Urine Routine",
+    "2. Bence - Jones Protein By Electrophoresis",
+    "3. Pregnancy Test",
+    "4. Albumin (24 Hrs. Sample)",
+    "5. Urine For Sugar & Acetone",
+    "6. Calcium, Phosphorus & Uric Acid (24 Hrs. Sample) (cost of Each)",
+    "7. Albumin-Creatinine Ratio (ACR)",
+    "8. Urine for Micro-Albumin"
+  ],
+  "C.S.F. EXAMINATION": [
+    "1. C.S.F. Routine",
+    "1. C.S.F., V.D.R.L"
+  ],
+  "Thyroid Hormones": [
+    "T3, T4 & Tsh Ultra Sensitive (Combined)",
+    "T3, or T4 (each)",
+    "T.S.H",
+    "Ft3 (Free T3)",
+    "Ft4 (Free T4)",
+    "Free T3, Free T4, Tsh Ultra sensitive (Combined)"
+  ],
+  "Anti-Thyroid Antibody": [
+    "Anti Tg Antibody (Thyroglobulin Antibody)",
+    "Anti Tpo Antibody (Microsomal Antibody)"
+  ],
+  "Reproductive Hormones": [
+    "Fsh",
+    "Hlh",
+    "Prolactine",
+    "Fsh + Hlh + Prolactine",
+    "Beta Hcg",
+    "E2 (Estradiol)",
+    "Progesterone",
+    "S. Testosterone",
+    "DHEAS"
+  ],
+  "Tumor Markers": [
+    "Cea (Carcino - Embryogenic Antigen)",
+    "Afp (Alpha Foetoprotein)",
+    "Psa (Total) (Prostate Specific Antigen)",
+    "Free Psa (Prostate Specific Antigen)",
+    "Ca - 125",
+    "Ca - 19 - 9",
+    "Ca - 15 - 3"
+  ],
+  "Metabolic Viral (And Other) Diseases": [
+    "1. Aids (HIV - I & II) Antibody",
+    "2. Insulin Fasting Or Pp (Each)",
+    "3. Fasting & Pp (Combined)"
+  ],
+  "Torch Profile": [
+    "1. Torch Profile (Complete) (Toxoplasma, Rubella, Cmv, Herpes)",
+    "2. Toxoplasma - Lgm",
+    "3. Toxoplasma - Lgg",
+    "4. Toxoplasma - Lgm + Toxoplasma - Lgg",
+    "5. Rubella - Lgm",
+    "6. Rubella - Lgg",
+    "7. Rubella - Lgm + Rubella - Lgg",
+    "8. C.M.V. - Lgm (Cytomegalo Virus)",
+    "9. C.M.V. - Lgg (Cytomegalo Virus)",
+    "10. C.M.V. - Lgm (Cytomegalo Virus) + C.M.V. - Lgg (Cytomegalo Virus)?",
+    "11. Herpes - I (Lgg) (Hsv Type I)",
+    "12. Herpes - II (Lgg) (Hsv Type II)",
+    "13. Herpes - I (Lgg) (Hsv Type I) + Herpes - Ii (Lgg) (Hsv Type II)",
+    "14. Herpes - I (Lgm) (Hsv Type - I)",
+    "15. Herpes - II (Lgm) (Hsv Type - II)",
+    "16. Herpes - I (Lgm) (Hsv Type - I) + Herpes - II (Lgm) (Hsv Type - II)",
+    "17. Lge (Immunoglobulin E)"
+  ],
+  "Viral Hepatitis Markers": [
+    "1. Initial Acute Phase Markers Profile",
+    "2. Anti Hav - Igm",
+    "3. Hbs Ag (Australia Antigen)",
+    "4. Anti Hbc - Lgm"
+  ],
+  "Chronic Phase Markers": [
+    "1. Hbe Ag",
+    "2. Anti Hbe",
+    "3. Anti Hbs",
+    "4. Anti Hbc - Total (Lgg + Lgm)",
+    "5. Anti Hcv",
+    "6. Anti Hev ('E' Virus)"
+  ],
+  "OTHER TESTS": [
+    "1. A.N.A.",
+    "2. D.N.A.",
+    "3. A.N.A. Titre",
+    "4. A.S.O.",
+    "5. R.A. Titre",
+    "6. 'C' Reactive Protein (",
+    "7. Creatinine Clearance Test",
+    "8. C3 C4 Each",
+    "9. Stone For Chemical Analysis",
+    "10. S. Lithium",
+    "11. Mantoux Tuberculin Test (T.T.)",
+    "12. Semen Routine"
+  ],
+  "Histopathology": [
+    "SECOND OPINION ON BLOCKS & SLIDES",
+    "FINE NEEDLE ASPIRATION CYTOLOGY (FNAC)",
+    "CYTOLOGY",
+    "?PAP SMEARS"
+  ]
+}

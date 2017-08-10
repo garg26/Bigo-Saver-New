@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_cash_card_code"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.bigosaver.neerajyadav.bigosaver.activity.CashCardCodeActivity">
+
+    <TextView
+        android:id="@+id/titlebar"
+        style="@style/tv_title"
+        android:elevation="@dimen/height_1dp"
+        android:text="@string/cashcard"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titlebar">
+
+        <include
+            layout="@layout/view_enter_card_code"
+            android:visibility="visible"/>
+
+        <include
+            layout="@layout/view_confirm_cash_code_details"
+            android:visibility="gone" />
+
+        <include
+            layout="@layout/view_bigo_drinks"
+            android:visibility="gone" />
+
+        <include
+            layout="@layout/view_upgrade"
+            android:visibility="gone" />
+
+        <!--<include layout="@layout/view_"-->
+    </RelativeLayout>
+</RelativeLayout>

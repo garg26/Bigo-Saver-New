@@ -1,0 +1,220 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_city_bg"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_220dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp">
+
+                    <ImageView
+                        android:id="@+id/iv_city_background"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/california_tree"
+                        android:scaleType="centerCrop" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_16dp"
+                    android:layout_marginRight="@dimen/margin_16dp"
+                    android:layout_marginTop="@dimen/margin_12dp"
+                    android:background="@drawable/shape_select_city">
+
+                    <ImageView
+                        android:id="@+id/iv_pointer"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/margin_2dp"
+                        android:layout_marginTop="@dimen/margin_2dp"
+                        android:src="@drawable/appicon" />
+
+                    <simplifii.framework.widgets.CustomFontTextView
+                        android:id="@+id/tv_select_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/iv_pointer"
+                        android:drawablePadding="@dimen/margin_8dp"
+                        android:drawableRight="@drawable/down_arrow"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="@dimen/padding_10dp"
+                        android:paddingLeft="@dimen/padding_4dp"
+                        android:paddingRight="@dimen/padding_10dp"
+                        android:paddingTop="@dimen/padding_10dp"
+                        android:text="@string/select_city"
+                        android:textColor="@color/black" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_20dp">
+
+                <LinearLayout
+                    android:id="@+id/ll_home_icons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="90">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_1"
+                        style="@style/rl_home"
+                        android:layout_weight="30">
+
+                        <ImageView
+                            android:id="@+id/civ_Food"
+                            style="@style/civ_home"
+                            android:background="@drawable/round_category_blue" />
+
+                        <simplifii.framework.widgets.CustomFontTextView
+                            android:id="@+id/tv_food_drink"
+                            style="@style/tv_home"
+                            android:layout_below="@+id/civ_Food"
+                            android:layout_marginTop="@dimen/margin_4dp"
+                            android:text=""
+                            android:textColor="@color/black" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_2"
+                        style="@style/rl_home"
+                        android:layout_weight="30">
+
+                        <ImageView
+                            android:id="@+id/civ_health"
+                            style="@style/civ_home"
+                            android:background="@drawable/round_category_red" />
+
+                        <simplifii.framework.widgets.CustomFontTextView
+                            android:id="@+id/tv_health"
+                            style="@style/tv_home"
+                            android:layout_below="@+id/civ_health"
+                            android:layout_marginTop="@dimen/margin_4dp"
+                            android:textColor="@color/black" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_3"
+                        style="@style/rl_home"
+                        android:layout_weight="30">
+
+                        <ImageView
+                            android:id="@+id/civ_things"
+                            style="@style/civ_home"
+                            android:background="@drawable/round_category" />
+
+                        <simplifii.framework.widgets.CustomFontTextView
+                            android:id="@+id/tv_things"
+                            style="@style/tv_home"
+                            android:layout_below="@+id/civ_things"
+                            android:layout_marginTop="@dimen/margin_4dp"
+                            android:textColor="@color/black" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ll_home_icons"
+                    android:padding="@dimen/padding_20dp"
+                    android:weightSum="100">
+
+                    <RelativeLayout
+                        android:id="@+id/rl_4"
+                        style="@style/rl_home"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/civ_Retail"
+                            style="@style/civ_home"
+                            android:background="@drawable/round_category_purple" />
+
+                        <simplifii.framework.widgets.CustomFontTextView
+                            android:id="@+id/tv_retail"
+                            style="@style/tv_home"
+                            android:layout_below="@+id/civ_Retail"
+                            android:layout_marginTop="@dimen/margin_4dp"
+                            android:textColor="@color/black" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/rl_5"
+                        style="@style/rl_home"
+                        android:gravity="center">
+
+                        <ImageView
+                            android:id="@+id/civ_hotels"
+                            style="@style/civ_home"
+                            android:background="@drawable/round_category_yellow" />
+
+                        <simplifii.framework.widgets.CustomFontTextView
+                            android:id="@+id/tv_hotels"
+                            style="@style/tv_home"
+                            android:layout_below="@+id/civ_hotels"
+                            android:layout_marginTop="@dimen/margin_4dp"
+                            android:textColor="@color/black" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_must_try"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/gray"
+                    android:gravity="center"
+                    android:padding="@dimen/padding_6dp"
+                    android:text="@string/must_try"
+                    android:textColor="@color/off_black"
+                    android:textSize="@dimen/text_16dp" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_16dp"
+                    android:background="@color/gray">
+
+                    <LinearLayout
+                        android:id="@+id/ll_popular_places"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/gray"
+                        android:scrollbars="none"
+                        android:orientation="horizontal"></LinearLayout>
+
+                </HorizontalScrollView>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

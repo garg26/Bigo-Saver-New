@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/full_transparent"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/full_transparent"
+        android:padding="@dimen/padding_10dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_dialog"
+            android:orientation="vertical"
+            android:padding="@dimen/padding_20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_50dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:background="@drawable/tv_new1"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <simplifii.framework.widgets.CustomFontEditText
+                    android:id="@+id/et_city"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_16dp"
+                    android:layout_weight="30"
+                    android:background="@color/full_transparent"
+                    android:hint="@string/city"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textSize="@dimen/text_16dp" />
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="70"
+                    android:background="@drawable/rectangle4"
+                    android:gravity="center"
+                    android:text="@string/search"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_12dp" />
+            </LinearLayout>
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_20dp"
+                android:text="@string/tv_from_cities"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_1dp"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:background="@color/bg_gray" />
+
+            <ListView
+                android:id="@+id/lv_cities"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@color/white"
+                android:scrollbars="none"></ListView>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_city_cancel"
+        android:layout_width="@dimen/width_32dp"
+        android:layout_height="@dimen/height_32dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="@dimen/margin_16dp"
+        android:background="@drawable/circle1">
+
+
+        <ImageView
+            android:layout_width="@dimen/width_16dp"
+            android:layout_height="@dimen/width_16dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/error" />
+
+    </RelativeLayout>
+</RelativeLayout>

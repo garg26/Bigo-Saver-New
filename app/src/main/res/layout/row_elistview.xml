@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/padding_8dp"
+    android:paddingBottom="@dimen/padding_8dp"
+    android:paddingRight="@dimen/padding_8dp"
+    android:paddingLeft="@dimen/padding_8dp"
+    >
+    <ImageView
+        android:id="@+id/iv_filter_icon"
+        android:layout_width="@dimen/width_24dp"
+        android:layout_height="@dimen/width_24dp"
+        android:layout_marginRight="8dp"
+        android:visibility="invisible"
+        android:layout_alignParentLeft="true" />
+
+    <simplifii.framework.widgets.CustomFontTextView
+        android:id="@+id/lblListItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/iv_filter_icon"
+        android:textSize="@dimen/text_16dp"
+        android:text="ALL"/>
+    <ImageView
+        android:id="@+id/iv_icon_cross"
+        android:layout_width="@dimen/width_24dp"
+        android:layout_height="@dimen/width_24dp"
+        android:layout_marginRight="8dp"
+        android:layout_toLeftOf="@+id/iv_icon_tick"
+        android:background="@drawable/rejecticonunchecked"/>
+    <ImageView
+        android:id="@+id/iv_icon_tick"
+        android:layout_width="@dimen/width_24dp"
+        android:layout_height="@dimen/width_24dp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/selecticonuncheck"/>
+</RelativeLayout>

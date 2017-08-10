@@ -1,0 +1,434 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="tv_title" parent="match_wrap">
+        <item name="android:background">@color/bg_gray</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/padding_10dp</item>
+    </style>
+
+    <style name="btn_style" parent="match_wrap">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/color_DarkGray</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">@drawable/shape_tv_button</item>
+    </style>
+
+    <style name="tv_profile" parent="wrap_wrap">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="iv_signature">
+        <item name="android:layout_height">@dimen/iv_24dp</item>
+        <item name="android:layout_width">@dimen/iv_24dp</item>
+
+    </style>
+
+    <style name="tv_profile_text" parent="match_wrap">
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginBottom">@dimen/margin_10dp</item>
+        <item name="android:textColor">@color/color_DarkGray</item>
+    </style>
+
+    <style name="iv_row">
+        <item name="android:layout_width">@dimen/iv_32dp</item>
+        <item name="android:layout_height">@dimen/iv_32dp</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="logo_notification">
+        <item name="android:layout_height">@dimen/iv_32dp</item>
+        <item name="android:layout_width">@dimen/iv_32dp</item>
+    </style>
+
+    <style name="lay_bottom">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/height_50dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_alignParentBottom">true</item>
+    </style>
+
+    <style name="lay_foot">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="iv_footer">
+        <item name="android:layout_width">@dimen/iv_24dp</item>
+        <item name="android:layout_height">@dimen/iv_24dp</item>
+    </style>
+
+    <style name="tv_profile_heading" parent="wrap_wrap">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/text_14dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+
+    <style name="login_btn">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/padding_4dp</item>
+        <item name="android:layout_marginRight">@dimen/margin_32dp</item>
+        <item name="android:layout_marginLeft">@dimen/margin_32dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_16dp</item>
+        <item name="android:layout_marginTop">@dimen/margin_32dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="logo">
+        <item name="android:layout_width">16dp</item>
+        <item name="android:layout_height">16dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:layout_marginLeft">@dimen/margin_8dp</item>
+    </style>
+
+    <style name="tv_signinwith">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_16dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textColor">@color/dark_gray</item>
+    </style>
+
+    <style name="rl_signin_with">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_weight">50</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="no_account">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">@dimen/margin_32dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="tv_no_account">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_14dp</item>
+        <item name="android:layout_centerVertical">true</item>
+    </style>
+
+    <style name="tv_signup">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_16dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:text">@string/text_signup</item>
+    </style>
+
+    <style name="tv_login" parent="match_wrap">
+        <item name="android:layout_marginTop">@dimen/margin_20dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColorHint">@color/dark_gray</item>
+        <item name="android:background">@null</item>
+        <item name="android:paddingBottom">@dimen/padding_12dp</item>
+        <item name="android:textColor">@color/dark_gray</item>
+        <item name="android:cursorVisible">true</item>
+    </style>
+
+    <style name="view">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/height_1dp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <style name="civ_logo">
+        <item name="android:layout_width">@dimen/width_54dp</item>
+        <item name="android:layout_height">@dimen/height_54dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="fpass">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:text">@string/fpass</item>
+        <item name="android:textSize">@dimen/text_16dp</item>
+        <item name="android:layout_marginTop">@dimen/margin_20dp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="tv_home">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:layout_marginTop">@dimen/margin_12dp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_12dp</item>
+    </style>
+
+    <style name="civ_home">
+        <item name="android:layout_width">@dimen/width_72dp</item>
+        <item name="android:layout_height">@dimen/width_72dp</item>
+        <item name="android:padding">14dp</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+
+    <style name="rl_home">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">50</item>
+    </style>
+
+    <style name="tv_top_details">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_12dp</item>
+    </style>
+
+    <style name="iv_add_details">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="ll_add_details">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/padding_10dp</item>
+        <item name="android:background">@color/gray</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="rl_add_details">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="tv_add_detail">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/margin_12dp</item>
+    </style>
+
+    <style name="text_subtitle">
+        <item name="android:textSize">@dimen/text_12dp</item>
+    </style>
+
+    <style name="menu_labels_style">
+        <item name="android:background">@drawable/fab_label_background</item>
+    </style>
+
+    <style name="eveation_text" parent="wrap_wrap">
+        <item name="android:textColor">@color/dark_gray</item>
+    </style>
+
+    <style name="eveationdetail" parent="match_wrap">
+
+    </style>
+
+    <style name="eveation_link" parent="wrap_wrap">
+        <item name="android:textColor">@color/color_blue_bg</item>
+        <item name="android:layout_marginLeft">5dp</item>
+    </style>
+
+    <style name="ll_membership" parent="match_wrap">
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="tv_signup_saving" parent="wrap_wrap">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="text_input_signup" parent="match_wrap">
+        <item name="android:paddingBottom">@dimen/padding_8dp</item>
+        <item name="android:textColorHint">@color/dark_gray</item>
+        <item name="android:textSize">@dimen/text_14dp</item>
+    </style>
+
+    <style name="til_hint">
+        <item name="android:textSize">@dimen/text_14dp</item>
+        <item name="android:textColor">@color/dark_gray</item>
+    </style>
+
+    <style name="et_signup" parent="match_wrap">
+        <item name="android:textColor">@color/color_blue_bg</item>
+        <item name="android:textSize">@dimen/text_14dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@null</item>
+        <item name="android:paddingTop">@dimen/padding_8dp</item>
+        <item name="android:paddingBottom">@dimen/padding_8dp</item>
+    </style>
+
+    <style name="tv_my_info" parent="wrap_wrap">
+        <item name="android:padding">@dimen/padding_2dp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/darkGray</item>
+        <item name="android:layout_marginLeft">@dimen/margin_4dp</item>
+    </style>
+
+    <style name="iv_lock_info" parent="wrap_wrap">
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_marginRight">@dimen/margin_8dp</item>
+        <item name="android:src">@drawable/lock_edit</item>
+    </style>
+
+    <style name="et_info" parent="wrap_wrap">
+        <item name="android:background">@null</item>
+        <item name="android:textColor">@color/et_gray</item>
+        <item name="android:textSize">@dimen/text_14dp</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:enabled">false</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:layout_marginRight">@dimen/margin_12dp</item>
+        <item name="android:gravity">right</item>
+    </style>
+
+    <style name="view_my_info">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/height_1dp</item>
+        <item name="android:background">@color/bg_gray</item>
+        <item name="android:layout_marginTop">@dimen/margin_8dp</item>
+    </style>
+
+    <style name="haeder_footer_fp" parent="match_wrap">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/text_12dp</item>
+        <item name="android:textColor">@color/tab_yellow</item>
+    </style>
+
+    <style name="cash_card_detail" parent="wrap_wrap">
+        <item name="android:textColor">@color/golden_yellow</item>
+        <item name="customFont">@string/font_regular</item>
+        <item name="android:textSize">@dimen/text_12dp</item>
+    </style>
+
+    <style name="rl_cash_code_detail" parent="match_wrap">
+        <item name="android:layout_marginTop">@dimen/margin_8dp</item>
+        <item name="android:layout_marginLeft">@dimen/margin_12dp</item>
+    </style>
+
+    <style name="civ_row_style">
+        <item name="android:layout_width">@dimen/width_28dp</item>
+        <item name="android:layout_height">@dimen/height_28dp</item>
+        <item name="android:layout_marginLeft">@dimen/margin_6dp</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="iv_membership_row_icon">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/heighth_30dp</item>
+        <item name="android:padding">4dp</item>
+        <item name="android:layout_weight">9</item>
+        <item name="android:layout_marginLeft">@dimen/margin_16dp</item>
+        <item name="android:scaleType">centerCrop</item>
+    </style>
+
+    <style name="style_timing">
+        <item name="android:textColor">@color/color_blue_bg</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12dp</item>
+    </style>
+
+    <style name="tv_membership_titles">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/height_50dp</item>
+        <item name="android:padding">@dimen/padding_12dp</item>
+        <item name="android:textSize">@dimen/text_16dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="cart_categoryiv_style">
+        <item name="android:layout_width">@dimen/iv_20dp</item>
+        <item name="android:layout_height">@dimen/iv_20dp</item>
+    </style>
+
+    <style name="cart_categorytv_style">
+        <item name="android:textColor">@color/tab_blue</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/margin_2dp</item>
+        <item name="android:textSize">@dimen/text_10dp</item>
+    </style>
+
+    <style name="radio">
+        <item name="android:textColor">@color/tab_blue</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">@dimen/margin_2dp</item>
+        <item name="android:textSize">@dimen/text_11dp</item>
+        <item name="android:scaleY">0.7</item>
+        <item name="android:scaleX">0.7</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="redeem_header">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/text_16dp</item>
+        <item name="android:textColor">@color/golden_yellow</item>
+    </style>
+
+    <style name="tv_redeem_dialog">
+        <item name="android:textSize">@dimen/text_16dp</item>
+        <item name="android:textColor">@color/et_gray</item>
+    </style>
+
+    <style name="detail_page_layouts" parent="match_wrap">
+        <item name="android:layout_margin">@dimen/margin_4dp</item>
+        <!--<item name="android:background">@color/gray</item>-->
+    </style>
+
+
+    <style name="layout_chip">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="chip_background">@color/tab_blue</item>
+        <item name="chip_corner_radius">2dp</item>
+        <item name="chip_spacing">4dp</item>
+    </style>
+
+    <style name="layout_chip_detail">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="chip_background">@color/full_transparent</item>
+        <item name="chip_corner_radius">2dp</item>
+        <item name="chip_spacing">2dp</item>
+    </style>
+
+    <style name="tv_chip">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/margin_4dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">@dimen/text_14dp</item>
+    </style>
+
+    <style name="tv_chip1">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/text_12dp</item>
+    </style>
+
+    <dimen name="margin_54dp">54dp</dimen>
+    <dimen name="heighth_30dp">30dp</dimen>
+    <dimen name="text_11dp">11dp</dimen>
+</resources>

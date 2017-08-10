@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.bigosaver.neerajyadav.bigosaver.fragment.ProfileFragment">
+
+    <TextView
+        android:id="@+id/tv_title"
+        style="@style/tv_title"
+        android:text="@string/notification" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <com.daimajia.slider.library.SliderLayout
+            android:id="@+id/slider_notification"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_140dp"></com.daimajia.slider.library.SliderLayout>
+
+        <com.daimajia.slider.library.Indicators.PagerIndicator
+            android:id="@+id/custom_indicator_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"></com.daimajia.slider.library.Indicators.PagerIndicator>
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="ksdhfkldshfldskhf jkdshffkjdshfskjdg sdkjbgkjdsgkds skjbdskjbgdsk kjbkjsdgbdsg jhdb"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/tab_blue"
+        android:padding="@dimen/padding_12dp"
+        android:visibility="gone">
+
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:id="@+id/tv_membership"
+            style="@style/tv_profile"
+            android:layout_width="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/total_notification"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/padding_24dp"
+        android:paddingRight="@dimen/padding_24dp"
+        android:visibility="gone">
+
+        <ListView
+            android:id="@+id/lv_notification"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/margin_20dp"
+            android:divider="@color/white"
+            android:dividerHeight="@dimen/margin_10dp"
+            android:scrollbars="none"></ListView>
+
+    </LinearLayout>
+
+    <simplifii.framework.widgets.CustomFontTextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:id="@+id/tv_empty"
+        android:background="@color/white"
+        android:text="No notifications found"
+        android:textSize="@dimen/text_16dp" />
+
+</LinearLayout>

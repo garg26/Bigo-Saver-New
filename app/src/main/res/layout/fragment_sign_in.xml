@@ -1,0 +1,156 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.bigosaver.neerajyadav.bigosaver.fragment.SignInFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/lay_bottom"
+        android:scrollbars="none">
+
+        <RelativeLayout
+            android:id="@+id/rl_home_signin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_40dp">
+
+            <simplifii.framework.widgets.CustomFontEditText
+                android:id="@+id/et_user_mobile_num"
+                style="@style/tv_login"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:inputType="phone"
+                android:hint="@string/tv_mobile_num"
+                android:textSize="@dimen/text_14dp" />
+
+            <View
+                android:id="@+id/v_user"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_1dp"
+                android:layout_below="@+id/et_user_mobile_num"
+                android:background="@color/bg_gray" />
+
+            <simplifii.framework.widgets.CustomFontEditText
+                android:id="@+id/et_password"
+                style="@style/tv_login"
+                android:layout_below="@id/v_user"
+                android:hint="@string/tv_password"
+                android:inputType="textPassword"
+                android:textSize="@dimen/text_14dp" />
+
+            <View
+                android:id="@+id/v_password"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_1dp"
+                android:layout_below="@+id/et_password"
+                android:background="@color/bg_gray" />
+
+            <Button
+                android:id="@+id/btn_sign_in"
+                style="@style/login_btn"
+                android:layout_below="@+id/v_password"
+                android:background="@drawable/rectangle"
+                android:text="@string/tv_sign_in" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_forgotpassword"
+                style="@style/fpass"
+                android:layout_below="@+id/btn_sign_in"
+                android:layout_marginTop="@dimen/margin_40dp"
+                android:textColor="@color/tab_yellow" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_forgotpassword"
+                android:layout_marginTop="@dimen/margin_40dp">
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_signup_saving"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/text_signup_saving_login"
+                    android:textColor="@color/tab_yellow"
+                    android:textSize="@dimen/text_20dp" />
+
+                <View
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/height_1dp"
+                    android:layout_below="@+id/tv_signup_saving"
+                    android:layout_marginLeft="@dimen/margin_32dp"
+                    android:layout_marginRight="@dimen/margin_32dp"
+                    android:background="@color/tab_yellow" />
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/lay_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_64dp"
+        android:layout_alignParentBottom="true">
+
+        <View
+            android:id="@+id/view3"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_1dp"
+            android:layout_above="@+id/ll_signinwith"
+            android:background="@color/bg_gray" />
+
+        <LinearLayout
+            android:id="@+id/ll_signinwith"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_50dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            android:padding="@dimen/padding_10dp"
+            android:weightSum="100">
+
+            <RelativeLayout
+                android:id="@+id/rl_signin_fb"
+                style="@style/rl_signin_with">
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_signinfb"
+                    style="@style/tv_signinwith"
+                    android:layout_centerHorizontal="true"
+                    android:text="Sign in with" />
+
+                <ImageView
+                    style="@style/logo"
+                    android:src="@drawable/fb_icon"
+                    android:layout_alignBottom="@+id/tv_signinfb"
+                    android:layout_toRightOf="@+id/tv_signinfb"
+                    android:layout_toEndOf="@+id/tv_signinfb"
+                    android:id="@+id/imageView4" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="@dimen/height_1dp"
+                android:layout_height="match_parent"
+                android:background="@color/bg_gray"
+                android:gravity="center" />
+
+            <RelativeLayout
+                android:id="@+id/rl_signin_google"
+                style="@style/rl_signin_with">
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_signin_google"
+                    style="@style/tv_signinwith"
+                    android:layout_centerHorizontal="true"
+                    android:text="Sign in with" />
+
+                <ImageView
+                    style="@style/logo"
+                    android:layout_toRightOf="@+id/tv_signin_google"
+                    android:src="@drawable/google_plus_icon" />
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

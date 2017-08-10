@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="color_primary">#3F51B5</color>
+    <color name="color_primary_dark">#303F9F</color>
+    <color name="tab_blue">#146fb9</color>
+    <color name="icon_blue">#FF1F71CD</color>
+
+    <color name="white">#ffffff</color>
+    <color name="window_background">@color/white</color>
+    <color name="tab_background">#1565c0</color>
+    <color name="color_red_bg">#F44336</color>
+    <color name="color_blue_bg">#2196F3</color>
+    <color name="color_green_bg">#8BC34A</color>
+    <color name="dialog_button_green">#16c03b</color>
+    <color name="color_DarkGray">#A9A9A9</color>
+    <color name="darkGray">#787575</color>
+    <color name="color_LightGrey">#D3D3D3</color>
+    <color name="color_magento_bg">#E91E63</color>
+    <!--<color name="color_purple_bg">#9C27B0</color>-->
+    <color name="color_darkyellow_bg">#FF9800</color>
+    <color name="color_lightgreen_bg">#CDDC39</color>
+    <color name="color_darkpurple_bg">#673AB7</color>
+    <color name="color_view_sep_bg">#545454</color>
+    <color name="color_discvr_red">#D13D50</color>
+    <color name="color_discvr_done">#D13D50</color>
+    <color name="color_text_grey">#636060</color>
+    <color name="color_border_grey">#BEBEBE</color>
+    <color name="color_label_address_grey">#404040</color>
+    <color name="color_text_desc">#727272</color>
+    <color name="color_purple_bg">#660091</color>
+    <color name="color_purple">#58198c</color>
+    <color name="color_skip_inv_bg">#BEBEBE</color>
+    <color name="alpha_bg_team_card">#66727272</color>
+    <color name="color_title">#505050</color>
+    <color name="color_tab_text_unselected">#a7bce1</color>
+    <color name="color_subtitle">#7c7c7c</color>
+    <color name="color_time_green">#21921b</color>
+    <color name="color_time_orange">#f2853d</color>
+    <color name="color_time_red">#f23d3d</color>
+    <color name="alpha_statusbar">#11000000</color>
+</resources>

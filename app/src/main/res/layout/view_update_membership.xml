@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <simplifii.framework.widgets.CustomFontTextView
+            style="@style/cash_card_detail"
+            android:text="@string/hello_nitin"
+            android:layout_marginLeft="@dimen/margin_12dp"
+            android:layout_marginTop="@dimen/margin_20dp"
+            />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            style="@style/rl_cash_code_detail">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                style="@style/cash_card_detail"
+                android:id="@+id/tv_entered_code"
+                android:text="@string/you_have_entered_cash_card_code"
+                />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                style="@style/cash_card_detail"
+                android:id="@+id/entered_code_update"
+                android:layout_toRightOf="@id/tv_entered_code"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/margin_4dp"
+                />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            style="@style/rl_cash_code_detail">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                style="@style/cash_card_detail"
+                android:id="@+id/tv_membership_name"
+                android:text="@string/current_membership"
+                />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                style="@style/cash_card_detail"
+                android:id="@+id/current_membership_name"
+                android:layout_toRightOf="@id/tv_membership_name"
+                android:layout_marginLeft="@dimen/margin_4dp"
+                android:textStyle="bold"
+
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            style="@style/rl_cash_code_detail">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                style="@style/cash_card_detail"
+                android:id="@+id/tv_upgraded_to"
+                android:text="@string/you_will_be_upgraded_to"
+                />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                style="@style/cash_card_detail"
+                android:id="@+id/upgraded_membership"
+                android:layout_toRightOf="@id/tv_upgraded_to"
+                android:layout_marginLeft="@dimen/margin_4dp"
+                android:textStyle="bold"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            style="@style/rl_cash_code_detail">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                style="@style/cash_card_detail"
+                android:id="@+id/validity"
+                android:text="@string/validity"
+                />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                style="@style/cash_card_detail"
+                android:id="@+id/validity_updated"
+                android:layout_toRightOf="@id/validity"
+                android:layout_marginLeft="@dimen/margin_4dp"
+                android:textStyle="bold"
+                />
+        </RelativeLayout>
+
+
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="180dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="@dimen/margin_24dp"
+            android:background="@drawable/button_enter_code"
+            android:text="@string/confirm"
+            android:layout_marginBottom="@dimen/margin_20dp"
+            android:textColor="@color/white"
+            android:layout_gravity="center"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <simplifii.framework.widgets.CustomFontTextView
+        android:id="@+id/tv_row_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_20dp"
+        android:background="@color/gray"
+        android:gravity="center"
+        android:text="Search Result"
+        android:elevation="@dimen/elevation_1dp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/padding_4dp"
+        android:paddingLeft="@dimen/padding_4dp"
+        android:paddingRight="@dimen/padding_8dp"
+        android:paddingTop="@dimen/padding_8dp"
+        android:weightSum="100">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_80dp"
+            android:layout_weight="77">
+
+            <ImageView
+                android:id="@+id/iv_offer_logo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/appicon" />
+
+
+            <ImageView
+                android:id="@+id/iv_new_offer"
+                android:layout_width="40dp"
+                android:layout_height="20dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/bigonew"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_80dp"
+            android:layout_marginLeft="@dimen/margin_12dp"
+            android:layout_weight="23">
+
+            <RelativeLayout
+                android:id="@+id/rl_tv_row_all"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_top_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/tv_top_row_alloffer"
+                    android:textSize="@dimen/text_16dp" />
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_num_outlets"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_top_all"
+                    android:text=""
+                    android:textColor="@color/color_blue_bg" />
+
+
+            </RelativeLayout>
+
+            <ImageView
+                android:id="@+id/iv_next"
+                android:layout_width="@dimen/width_24dp"
+                android:layout_height="@dimen/height_24dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/padding_4dp"
+                android:src="@drawable/next1" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_tv_row_all"
+                android:layout_marginTop="@dimen/margin_4dp">
+
+                <ImageView
+                    android:id="@+id/civ_category"
+                    style="@style/civ_row_style"
+                    android:scaleType="centerInside" />
+
+                <ImageView
+                    android:id="@+id/civ_drinks"
+                    style="@style/civ_row_style"
+                    android:layout_toRightOf="@id/civ_category"
+                    android:scaleType="centerInside"
+                    android:padding="@dimen/padding_2dp"
+                    android:src="@drawable/bigo_red_drinks" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_14dp"
+                    android:id="@+id/tv_offer_title"
+                    android:layout_toLeftOf="@+id/tv_distance"
+                    android:visibility="gone"
+                    />
+
+                <ImageView
+                    android:id="@+id/civ_monthly"
+                    style="@style/civ_row_style"
+                    android:layout_toRightOf="@id/civ_drinks"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/bigo_monthly"
+                    android:visibility="gone" />
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/margin_4dp"
+                    android:layout_marginRight="16dp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</LinearLayout>

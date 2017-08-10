@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_code_details"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/padding_8dp">
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:id="@+id/tv_name"
+            style="@style/cash_card_detail"
+            android:layout_marginLeft="@dimen/margin_12dp"
+            android:layout_marginTop="@dimen/margin_20dp"
+            android:visibility="gone"
+            android:text="@string/hello_nitin" />
+
+        <RelativeLayout
+            style="@style/rl_cash_code_detail"
+            android:layout_width="wrap_content">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_entered_code"
+                style="@style/cash_card_detail"
+                android:text="@string/you_have_entered_cash_card_code" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_cash_card_code"
+                style="@style/cash_card_detail"
+                android:layout_marginLeft="@dimen/margin_4dp"
+                android:layout_toRightOf="@id/tv_entered_code"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            style="@style/rl_cash_code_detail"
+            android:layout_width="wrap_content">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_membership_name"
+                style="@style/cash_card_detail"
+                android:text="@string/current_membership" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_current_membership"
+                style="@style/cash_card_detail"
+                android:layout_marginLeft="@dimen/margin_4dp"
+                android:layout_toRightOf="@id/tv_membership_name"
+                 />
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/rl_cash_code_detail"
+            android:id="@+id/rl_validity"
+            android:visibility="visible"
+            android:layout_width="wrap_content">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/validity"
+                style="@style/cash_card_detail"
+                android:text="@string/validity" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_validity"
+                style="@style/cash_card_detail"
+                android:layout_marginLeft="@dimen/margin_4dp"
+                android:layout_toRightOf="@id/validity" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/rl_cash_code_detail"
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:id="@+id/rl_upgrade">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/upgrade"
+                style="@style/cash_card_detail"
+                android:text="You will be upgraded to:" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_upgrade"
+                style="@style/cash_card_detail"
+                android:layout_marginLeft="@dimen/margin_4dp"
+                android:layout_toRightOf="@id/upgrade"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/rl_cash_code_detail"
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:id="@+id/rl_upgradedto">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/upgradedto"
+                style="@style/cash_card_detail"
+                android:text="@string/new_membership_validity" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_upgradedto"
+                style="@style/cash_card_detail"
+                android:layout_marginLeft="@dimen/margin_4dp"
+                android:layout_toRightOf="@id/upgradedto"
+                />
+        </RelativeLayout>
+
+
+        <simplifii.framework.widgets.CustomFontTextView
+            style="@style/cash_card_detail"
+            android:id="@+id/tv_bigo_drink"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="@dimen/margin_12dp"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:text="@string/bigo_drinks_will_be_activated_in_your_membership" />
+
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="180dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_20dp"
+            android:background="@drawable/button_enter_code"
+            android:text="@string/confirm"
+            android:textColor="@color/white" />
+
+        <CheckBox
+            android:id="@+id/cb_age_confirmation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/margin_2dp"
+            android:layout_marginTop="@dimen/margin_12dp"
+            android:text="@string/iconfirm_i_am_of_legal_drinking_age"
+            android:textColor="@color/red_cb"
+            android:textSize="@dimen/text_12dp"
+            android:buttonTint="@color/red_cb" />
+    </LinearLayout>
+
+
+</LinearLayout>

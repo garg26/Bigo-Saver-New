@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="140dp"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="3dp"
+    android:layout_marginRight="3dp"
+    android:background="@drawable/boundary"
+    android:padding="@dimen/height_2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_place"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:id="@+id/tv_name_of_offer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_place"
+            android:layout_marginLeft="@dimen/margin_10dp"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="10dp" />
+
+        <RelativeLayout
+            android:id="@+id/rl_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name_of_offer">
+
+            <LinearLayout
+                android:id="@+id/ll_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_4dp"
+                android:layout_marginLeft="@dimen/margin_8dp"
+                android:layout_marginTop="@dimen/margin_4dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_place_type"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp" />
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_4dp"
+                    android:layout_toRightOf="@id/iv_place_type"
+                    android:textSize="@dimen/text_8dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_place"
+                android:layout_marginLeft="@dimen/margin_8dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_location"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_below="@+id/iv_place_type"
+                    android:src="@drawable/location_mark" />
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_location"
+                    android:layout_marginLeft="@dimen/margin_4dp"
+                    android:layout_toRightOf="@id/iv_location"
+                    android:textSize="@dimen/text_8dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_location"
+                android:id="@+id/ll_saving"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/margin_8dp"
+                android:visibility="gone"
+                android:layout_marginTop="2dp">
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_saving_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/margin_2dp"
+                    android:text="Savings upto: ₹"
+                    android:textSize="8dp" />
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_saving"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/margin_2dp"
+                    android:layout_toRightOf="@+id/tv_saving_title"
+                    android:textColor="@color/white"
+                    android:textSize="8dp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!--<RelativeLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="32dp"-->
+                <!--android:layout_below="@+id/ll_saving"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:background="@color/darkGray"-->
+                <!--android:padding="@dimen/padding_6dp">-->
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:layout_below="@+id/ll_location"
+                    android:id="@+id/tv_find_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_marginTop="@dimen/margin_4dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:background="@color/tab_blue"
+                    android:padding="@dimen/margin_4dp"
+                    android:text="@string/find_out_more"
+                    android:textColor="@color/white"
+                    android:textSize="12dp" />
+            <!--</RelativeLayout>-->
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_place"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_100dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/california_tree" />
+
+    <ImageView
+        android:id="@+id/iv_cat_icon"
+        android:layout_width="@dimen/width_28dp"
+        android:layout_height="@dimen/height_28dp"
+        android:layout_marginLeft="@dimen/margin_4dp"
+        android:layout_marginTop="@dimen/margin_4dp"
+        android:src="@drawable/catfood" />
+
+
+</RelativeLayout>

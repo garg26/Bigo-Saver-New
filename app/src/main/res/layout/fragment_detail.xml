@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroll_eveation_detail"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:padding="@dimen/padding_8dp"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ll_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_2dp"
+                android:text="Description"
+                android:textColor="@color/off_black"
+                android:textSize="16dp" />
+
+            <LinearLayout
+                style="@style/detail_page_layouts"
+                android:elevation="1dp"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_description"
+                    style="@style/eveationdetail"
+                    android:maxLines="10"
+                    android:padding="2dp"
+                    android:text="Description not mentioned" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_outlet_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/outlet_information"
+                android:textColor="@color/off_black"
+                android:textSize="16dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/padding_4dp"
+                android:elevation="1dp">
+
+                <LinearLayout
+                    android:id="@+id/ll_website"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="4dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:id="@+id/iv_item_list_icon"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/globe_icon" />
+
+                    <simplifii.framework.widgets.CustomFontTextView
+                        android:id="@+id/tv_website"
+                        style="@style/eveation_link"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="8dp"
+                        android:textColor="@color/color_blue_bg" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_timing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ll_website"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/padding_4dp"
+                    android:visibility="gone">
+
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_gravity="start"
+                        android:src="@drawable/clock1" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_day_timings"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start"
+                        android:layout_marginLeft="@dimen/margin_8dp"
+                        android:layout_marginRight="8dp"
+                        android:orientation="vertical" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_filters"
+            style="@style/detail_page_layouts"
+            android:elevation="@dimen/elevation_1dp"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/margin_4dp">
+
+            <LinearLayout
+                android:id="@+id/ll_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/margin_6dp"
+                android:paddingRight="@dimen/margin_6dp"
+                android:paddingTop="@dimen/margin_4dp">
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/margin_4dp"
+                    android:text="Type:" />
+
+                <com.plumillonforge.android.chipview.ChipView
+                    android:id="@+id/type_chip_view"
+                    style="@style/layout_chip_detail"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_cuisine"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_4dp"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/margin_6dp"
+                android:paddingRight="@dimen/margin_6dp">
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/margin_4dp"
+                    android:text="Cuisine:" />
+
+                <com.plumillonforge.android.chipview.ChipView
+                    android:id="@+id/cuisine_chip_view"
+                    style="@style/layout_chip_detail"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_known_for"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_4dp"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:text="@string/known_for"
+                android:textColor="@color/off_black"
+                android:textSize="16dp" />
+
+            <RelativeLayout
+                style="@style/detail_page_layouts"
+                android:elevation="@dimen/height_1dp">
+
+                <LinearLayout
+                    android:id="@+id/ll_known"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:elevation="@dimen/height_1dp"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/padding_4dp"
+                    android:paddingLeft="@dimen/padding_2dp"
+                    android:paddingRight="@dimen/padding_4dp"
+                    android:paddingTop="@dimen/padding_4dp"></LinearLayout>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_more_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_4dp"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:text="@string/more_information"
+                android:textColor="@color/off_black"
+                android:textSize="16dp" />
+
+            <RelativeLayout
+                style="@style/detail_page_layouts"
+                android:elevation="@dimen/height_1dp">
+
+                <LinearLayout
+                    android:id="@+id/ll_more_information"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:elevation="@dimen/height_1dp"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/padding_4dp"
+                    android:paddingLeft="@dimen/padding_2dp"
+                    android:paddingRight="@dimen/padding_4dp"
+                    android:paddingTop="@dimen/padding_4dp"></LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_2dp"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:text="Location"
+            android:textColor="@color/off_black"
+            android:textSize="16dp" />
+
+        <RelativeLayout
+            android:id="@+id/rl_1"
+            style="@style/detail_page_layouts"
+            android:elevation="1dp"
+            android:padding="8dp">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_username"
+                style="@style/wrap_wrap"
+                android:text="@string/name"
+                android:textColor="@color/off_black"
+                android:textSize="16dp" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_place"
+                style="@style/eveation_text"
+                android:layout_below="@id/tv_username"
+                android:layout_marginTop="2dp"
+                android:text="@string/al" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/area"
+                style="@style/eveation_text"
+                android:layout_toLeftOf="@+id/tv_area"
+                android:text="@string/area"
+                android:visibility="gone" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_area"
+                style="@style/eveation_text"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="4dp"
+                android:hint="         "
+                android:visibility="gone" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_distance"
+                style="@style/eveation_text"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/tv_area"
+                android:layout_marginTop="4dp"
+                android:text="" />
+        </RelativeLayout>
+
+       <ImageView
+           android:layout_width="match_parent"
+           android:layout_height="150dp"
+           android:id="@+id/iv_map"
+           android:padding="@dimen/padding_4dp"/>
+
+    </LinearLayout>
+
+</ScrollView>

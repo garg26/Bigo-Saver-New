@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/full_transparent"
+    android:padding="@dimen/padding_10dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="32dp"-->
+            <!--android:layout_height="32dp"-->
+            <!--android:layout_marginRight="@dimen/margin_4dp"-->
+            <!--android:layout_marginTop="@dimen/margin_4dp"-->
+            <!--android:gravity="center"-->
+            <!--android:id="@+id/ll_cancel"-->
+            <!--android:layout_alignParentRight="true">-->
+
+            <!---->
+        <!--</LinearLayout>-->
+
+        <LinearLayout
+            android:id="@+id/lay_middle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/margin_16dp"
+            android:layout_marginRight="@dimen/margin_20dp"
+            android:background="@drawable/background_redeem"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/padding_16dp"
+            android:paddingRight="@dimen/padding_8dp"
+            android:paddingTop="@dimen/padding_8dp"
+            android:paddingBottom="@dimen/padding_16dp">
+
+            <ImageView
+                android:id="@+id/iv_cancel_redeem"
+                android:layout_width="@dimen/iv_24dp"
+                android:layout_height="@dimen/iv_24dp"
+                android:src="@drawable/close"
+                android:layout_gravity="end"/>
+
+            <ImageView
+                android:id="@+id/iv_merchant_logo"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_20dp"
+                android:scaleType="centerCrop" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_merchant_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_10dp"
+                android:textAlignment="center"
+                android:textColor="@color/tab_blue"
+                android:textSize="@dimen/text_20dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:orientation="horizontal">
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    style="@style/tv_redeem_dialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Reference: "
+                    android:textStyle="bold" />
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_reference_no"
+                    style="@style/tv_redeem_dialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_12dp"
+                android:orientation="horizontal">
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    style="@style/tv_redeem_dialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Offer: "
+                    android:textStyle="bold" />
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_offer"
+                    style="@style/tv_redeem_dialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:orientation="horizontal">
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    style="@style/tv_redeem_dialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Redeemed On: "
+                    android:textStyle="bold" />
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_redemption_date"
+                    style="@style/tv_redeem_dialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Not Available"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:orientation="horizontal">
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    style="@style/tv_redeem_dialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Savings: "
+                    android:textStyle="bold" />
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_savings"
+                    style="@style/tv_redeem_dialog"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

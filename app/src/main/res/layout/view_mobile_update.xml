@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/view_mobile_update"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/padding_8dp">
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:id="@+id/tv_name"
+            style="@style/cash_card_detail"
+            android:layout_marginLeft="@dimen/margin_12dp"
+            android:layout_marginTop="@dimen/margin_20dp"
+            android:text="@string/hello_nitin"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            style="@style/rl_cash_code_detail"
+            android:layout_width="wrap_content">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_entered_code"
+                style="@style/cash_card_detail"
+                android:text="@string/are_you_sure_you_want_to_update_your_mobile_nubmer" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            style="@style/rl_cash_code_detail"
+            android:layout_width="wrap_content">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_membership_name"
+                style="@style/cash_card_detail"
+                android:text="@string/your_current_mobile_number_is" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/rl_cash_code_detail"
+            android:layout_width="wrap_content">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_current_number"
+                style="@style/cash_card_detail"
+                android:text="@string/default_number"
+                android:textColor="@color/et_gray" />
+
+        </RelativeLayout>
+
+
+        <simplifii.framework.widgets.CustomFontEditText
+            android:id="@+id/et_mobile"
+            style="@style/cash_card_detail"
+            android:textColor="@color/et_gray"
+            android:layout_width="wrap_content"
+            android:layout_marginLeft="@dimen/margin_12dp"
+            android:layout_marginTop="@dimen/margin_8dp"
+            android:textAlignment="center"
+            android:hint="@string/enter_new_mobile_number_ex_9800000000" />
+
+
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="180dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_20dp"
+            android:background="@drawable/button_enter_code"
+            android:text="@string/confirm"
+            android:textColor="@color/white" />
+
+        <RelativeLayout
+            style="@style/rl_cash_code_detail"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/margin_32dp">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                style="@style/cash_card_detail"
+                android:id="@+id/tv_otp_text"
+                android:layout_centerHorizontal="true"
+                android:text="@string/we_will_send_you_an_otp_for_mobile_verification" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                style="@style/cash_card_detail"
+                android:layout_below="@+id/tv_otp_text"
+                android:layout_centerHorizontal="true"
+                android:text="@string/please_make_sure_you_have_access_to_your_phone" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

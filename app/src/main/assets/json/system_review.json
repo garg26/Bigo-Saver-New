@@ -1,0 +1,17 @@
+{
+   "General":["None","Fever","Chills","Sweats","Change in sleep habits","Fatigue","Weight Gain","Weight Loss","Pain","Other","","","","","","","","","","",""],
+   "Neurological":["None","Memory Changes","Lightheadedness","Dizziness","Fainting","Numbness","Tingling","Weakness","Blurred vision","Vision problems","Headache","Ringing in ears","Hearing difficulty","Hearing loss","Speech changes","Unbalanced walking","Tremors","Involuntary movements (Twitching)","Seizures","Paralysis","Other"],
+   "Head & Neck":["None","Nasal discharge","Nosebleeds","Hoarseness","Difficulty Speaking","Sores in mouth or throat","Sore throat","Painfull swallowing","Swallowing problems","Earache","Nech stiffness","Neck pain","Blurred vision","Double vision","Sudden blindness","Facial asymmetry","Facial weakness","Facial tingling","Facial paralysis","Mass (lump)","Other"],
+   "Breast":["None","Tenderness","Swelling","Breast pain","Changes","Skin changes","Lumps","Nipple discharge","Other","","","","","","","","","","","",""],
+   "Cardiovascular":["None","Leg pain/Swelling","Edema (Puffiness)","Chest pain","Fast heart beat","Blood pressure problems","Shortness of breath","Tingling Fainting","Other","","","","","","","","","","","",""],
+   "Respiratory":["None","Wheezing","Cough","Shortness of breath","Difficulty breathing (dyspnea)","Blood phelgm/Sputum","Snoring","Sleep apnea","Other","","","","","","","","","","","",""],
+   "Gastrointestinal":["None","Yellow skin or eyes","Nausea","Vomiting","Problems Swallowing","Cramping/Stomach pain","Changes in appetite/diet","Indigestion","Reflux/Heartburn","Diarrhea","Constipation","Abdominal distension/bloating","Hemorrhoids","Black stools","Blood in stools","other","","","","",""],
+   "Genitourinary":["None","Burning","Frequeny","Nocturia \n(increased urination at night)","Dribbling","Difficulty with urination","Reduced urination","Painful urination","Unable to control bladder","Blood in urine","Hernias","Warts","Sores","Other","","","","","","",""],
+   "Musculoskeletal":["None","Joint Swelling","Joint/Back pain","Stiffness","Trauma","Muscle weakness","Muscle cramps","Decreased range of motion/movement","Falls","Other","","","","","","","","","","",""],
+   "Skin":["None","Open sore","Change in moles","Abnormal color","Rashes","Excessive itching","Nail changes","Hair loss","Mass (Lump)","Other","","","","","","","","","","",""],
+   "Endocrine":["None","Cold intolerance","No heat tolerance","Hot flashes","Excessive thirst","Excessive urination","Other","","","","","","","","","","","","","",""],
+   "Hematology/Lymph":["None","Abnormal bleeding","Prior transfusion","Anemia","Easy bruising","Swelling in groin/armpit/neck","Other","","","","","","","","","","","","","",""],
+   "Psychological":["None","Worried/anxious","Sad/depressed","Difficulty sleeping","Poor appetite","Food cravings","Frequent crying","Sensitivity","Thoughts of suicide / attempts","Stress","Irritability","Poor concentration","Racing thoughts","Hallucinations","Rapid speech","Guilty thoughts","Paranoia","Mood swings","Risky behavior","Other",""],
+   "Female only":["None","Unexpected vaginal bleeding","Vaginal discharge","Vaginal bleeding","Menstrual problems","Sexual dysfunction","Pelvic Fullness","Pelvic pain","Bloating","Warts","Sores","Rash","Birth Control","Other","","","","","","",""],
+   "Male only":["None","Erectile dysfunction","Enlarged prostate","Penile mass (lump)","Testicular mass (lump)","Problems with passing urine","Other","","","","","","","","","","","","","",""]
+}

@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/membership_shape"
+    android:padding="@dimen/padding_12dp"
+    android:layout_margin="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="@dimen/elevation_1dp">
+
+    <LinearLayout
+        android:id="@+id/ll_membership_offer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <LinearLayout
+            android:id="@+id/lay_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="30"
+            android:orientation="vertical">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_membership_title"
+                style="@style/tv_profile_heading"
+                android:text="@string/gold_member"
+                android:layout_gravity="start"
+                android:gravity="start" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_membership_description"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="@dimen/margin_4dp"
+                android:textSize="@dimen/text_12dp"
+                android:gravity="start"
+                android:text="@string/description_membership" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/margin_12dp"
+            android:id="@+id/rl_membership_merchants"
+            android:layout_weight="70">
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="@dimen/height_40dp"
+                android:layout_marginRight="@dimen/margin_12dp"
+                android:layout_toLeftOf="@+id/iv_membership"
+                android:layout_marginTop="@dimen/margin_12dp"
+                android:layout_gravity="center"
+                android:background="@color/bg_gray" />
+
+
+            <ImageView
+                android:id="@+id/iv_membership"
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:background="@drawable/circle_member"
+                android:scaleType="centerInside"
+                android:layout_centerHorizontal="true"/>
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_membership"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:textSize="@dimen/text_12dp"
+                android:textColor="@color/tab_blue"
+                android:layout_marginTop="@dimen/margin_4dp"
+                android:text="@string/view_merchants" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_1dp"
+        android:layout_marginTop="@dimen/margin_10dp"
+        android:layout_marginBottom="@dimen/margin_10dp"
+        android:layout_gravity="center"
+        android:background="@color/bg_gray" />
+
+    <simplifii.framework.widgets.CustomFontTextView
+        android:id="@+id/tv_membership_offer"
+        style="@style/tv_profile_heading"
+        android:text="@string/offers"
+        android:layout_gravity="start"
+        android:gravity="start" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:layout_marginBottom="@dimen/margin_4dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|start"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                style="@style/cart_categoryiv_style"
+                android:src="@drawable/cat_food" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_food_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_6dp"
+                android:textColor="@color/tab_blue"
+                android:textSize="@dimen/text_12dp"/>
+
+            <simplifii.framework.widgets.CustomFontTextView
+                style="@style/cart_categorytv_style"
+                android:text="@string/offer_food" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center|start"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                style="@style/cart_categoryiv_style"
+                android:src="@drawable/cat_health" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_health_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_6dp"
+                android:textColor="@color/tab_blue"
+                android:textSize="@dimen/text_12dp"/>
+
+            <simplifii.framework.widgets.CustomFontTextView
+                style="@style/cart_categorytv_style"
+                android:text="@string/offer_health" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/margin_6dp"
+        android:layout_marginBottom="@dimen/margin_4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|start"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                style="@style/cart_categoryiv_style"
+                android:src="@drawable/cat_retail" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_retail_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_6dp"
+                android:textColor="@color/tab_blue"
+                android:textSize="@dimen/text_12dp"/>
+
+            <simplifii.framework.widgets.CustomFontTextView
+                style="@style/cart_categorytv_style"
+                android:text="@string/offer_retail" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|start"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                style="@style/cart_categoryiv_style"
+                android:src="@drawable/cat_todo" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_todo_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_6dp"
+                android:textColor="@color/tab_blue"
+                android:textSize="@dimen/text_12dp"/>
+
+            <simplifii.framework.widgets.CustomFontTextView
+                style="@style/cart_categorytv_style"
+                android:text="@string/offer_todo" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/margin_6dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_offer_logo"
+            style="@style/cart_categoryiv_style"
+            android:src="@drawable/cat_hotel" />
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:id="@+id/tv_hotel_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_6dp"
+            android:textColor="@color/tab_blue"
+            android:textSize="@dimen/text_12dp"/>
+
+        <simplifii.framework.widgets.CustomFontTextView
+            style="@style/cart_categorytv_style"
+            android:text="@string/offer_hotel" />
+
+    </LinearLayout>
+
+
+    <simplifii.framework.widgets.CustomFontTextView
+        android:id="@+id/tv_subscribe"
+        android:layout_marginTop="@dimen/margin_20dp"
+        android:padding="@dimen/padding_10dp"
+        android:layout_marginLeft="@dimen/margin_20dp"
+        android:layout_marginRight="@dimen/margin_20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tv_new"
+        android:gravity="center"
+        android:text="@string/buy_now"
+        android:textColor="#fed352" />
+
+</LinearLayout>

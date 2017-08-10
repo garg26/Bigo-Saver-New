@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_row_fav"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_4dp">
+
+    <RelativeLayout
+        android:id="@+id/rl_row_favourites"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_140dp"
+        android:layout_marginTop="@dimen/margin_10dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_dummy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_140dp">
+
+            <ImageView
+                android:id="@+id/iv_main_favourites"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="4dp"
+                android:background="@drawable/shape_iv_corner"
+                android:scaleType="centerCrop" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_140dp"
+                android:background="@drawable/shape_iv_corner" />
+
+        </RelativeLayout>
+
+
+        <ImageView
+            android:id="@+id/civ_row_fav"
+            android:layout_width="@dimen/width_32dp"
+            android:layout_height="@dimen/height_32dp"
+            android:layout_below="@id/rl_dummy"
+            android:layout_marginBottom="@dimen/margin_10dp"
+            android:layout_marginLeft="@dimen/margin_8dp"
+            android:layout_marginTop="98dp" />
+
+        <ImageView
+            android:id="@+id/iv_fav"
+            android:layout_width="@dimen/width_32dp"
+            android:layout_height="@dimen/height_32dp"
+            android:layout_below="@id/rl_dummy"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="@dimen/margin_10dp"
+            android:layout_marginRight="@dimen/margin_8dp"
+            android:padding="@dimen/padding_4dp"
+            android:src="@drawable/isfav"
+            android:layout_marginTop="98dp" />
+    </RelativeLayout>
+
+    <simplifii.framework.widgets.CustomFontTextView
+        android:id="@+id/tv_title_fav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_4dp"
+        android:layout_marginTop="@dimen/margin_6dp"
+        android:textColor="@color/black" />
+
+    <simplifii.framework.widgets.CustomFontTextView
+        android:id="@+id/tv_discount_fav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_4dp"
+        android:layout_marginTop="@dimen/margin_4dp"
+        android:textSize="@dimen/text_12dp" />
+</LinearLayout>

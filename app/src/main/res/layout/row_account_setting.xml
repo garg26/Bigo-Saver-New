@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:paddingTop="@dimen/padding_12dp"
+    android:paddingBottom="@dimen/padding_16dp"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!--<ImageView-->
+        <!--android:id="@+id/iv_account_icon"-->
+        <!--style="@style/iv_row"-->
+        <!--android:src="@drawable/neeraj"/>-->
+
+    <simplifii.framework.widgets.CustomFontTextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/my_information"
+        android:textSize="16dp"
+        android:textColor="@color/dark_gray"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/margin_4dp"/>
+
+    <ImageView
+        style="@style/iv_row"
+        android:layout_height="@dimen/iv_20dp"
+        android:id="@+id/iv_next"
+        android:src="@drawable/rightarrow"
+        android:layout_alignParentRight="true"/>
+
+</RelativeLayout>

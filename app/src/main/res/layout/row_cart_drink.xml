@@ -1,0 +1,224 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="@drawable/membership_drink"
+    android:elevation="@dimen/elevation_1dp"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_12dp">
+
+    <LinearLayout
+        android:id="@+id/ll_membership_offer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <LinearLayout
+            android:id="@+id/lay_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="30"
+            android:orientation="vertical">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_membership_title"
+                style="@style/tv_profile_heading"
+                android:layout_gravity="start"
+                android:gravity="start"
+                android:text="BIGO DRINKS MEMBERSHIP"
+                android:textColor="@color/color_red" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_offer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_4dp"
+                    android:gravity="start"
+                    android:textSize="@dimen/text_12dp" />
+
+            </RelativeLayout>
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_membership_offer"
+                style="@style/tv_profile_heading"
+                android:layout_gravity="start"
+                android:layout_marginLeft="@dimen/margin_8dp"
+                android:layout_marginTop="@dimen/margin_16dp"
+                android:gravity="start"
+                android:text="@string/offers"
+                android:textColor="@color/tv_gray" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_8dp"
+                android:layout_marginTop="@dimen/margin_4dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="@dimen/width_16dp"
+                    android:layout_height="@dimen/height_16dp"
+                    android:src="@drawable/bigo_red_drinks" />
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/margin_4dp"
+                    android:gravity="start"
+                    android:text="300"
+                    android:id="@+id/tv_alcoholic_offers"
+                    android:textColor="@color/color_red"
+                    android:textSize="@dimen/text_12dp" />
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="start"
+                    android:text="@string/offer_drinks"
+                    android:textColor="@color/color_red"
+                    android:textSize="@dimen/text_12dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:id="@+id/rl_drinks_merchants"
+            android:layout_marginLeft="@dimen/margin_12dp"
+            android:layout_weight="70">
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="@dimen/height_40dp"
+                android:layout_gravity="center"
+                android:layout_marginRight="@dimen/margin_12dp"
+                android:layout_marginTop="@dimen/margin_12dp"
+                android:layout_toLeftOf="@+id/iv_membership"
+                android:background="@color/bg_gray" />
+
+
+            <ImageView
+                android:id="@+id/iv_membership"
+                android:layout_width="104dp"
+                android:layout_height="96dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/drinks_glass" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/iv_membership"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/margin_4dp"
+                android:gravity="center"
+                android:text="@string/view_merchants"
+                android:textColor="@color/color_red"
+                android:textSize="@dimen/text_12dp" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_4dp"
+        android:layout_marginLeft="@dimen/margin_16dp"
+        android:layout_marginRight="@dimen/margin_16dp"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:background="@drawable/drinks_box"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/padding_12dp"
+        android:paddingRight="@dimen/padding_8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_4dp"
+            android:layout_marginTop="@dimen/margin_4dp"
+            android:layout_weight="0.9"
+            android:orientation="vertical">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/description_drinks4u1" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/description_drinks4u2" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/description_drinks4u6" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/description_drinks4u3"
+                    android:textColor="@color/color_red" />
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/description_drinks4u4" />
+
+            </LinearLayout>
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/description_drinks4u5" />
+
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_weight="0.1"
+            android:src="@drawable/exclusive" />
+
+
+    </LinearLayout>
+
+    <simplifii.framework.widgets.CustomFontTextView
+        android:id="@+id/tv_subscribe"
+        android:layout_marginTop="@dimen/margin_20dp"
+        android:padding="@dimen/padding_10dp"
+        android:layout_marginLeft="@dimen/margin_20dp"
+        android:layout_marginRight="@dimen/margin_20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/tv_new_drinks"
+        android:gravity="center"
+        android:text="Activate BIGO Drinks"
+        android:textColor="@color/red_cb" />
+
+    <simplifii.framework.widgets.CustomFontTextView
+        android:id="@+id/tv_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_10dp"
+        android:layout_marginRight="@dimen/margin_10dp"
+        android:layout_marginTop="@dimen/margin_20dp"
+        android:gravity="center"
+        android:text="@string/please_note"
+        android:textSize="@dimen/text_10dp" />
+
+</LinearLayout>

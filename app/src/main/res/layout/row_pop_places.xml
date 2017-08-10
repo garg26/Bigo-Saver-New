@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="2dp"
+    android:layout_marginRight="2dp"
+    android:padding="@dimen/height_1dp"
+    android:elevation="@dimen/height_1dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <ImageView
+            android:id="@+id/iv_place"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_120dp"
+            android:scaleType="center"
+            android:src="@drawable/appicon" />
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_place"
+            android:text="Test Text"/>
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:id="@+id/tv_name_of_offer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_place"
+            android:layout_marginLeft="@dimen/margin_8dp"
+            android:layout_marginTop="@dimen/margin_16dp"
+            android:text="@string/offer" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name_of_offer">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_8dp"
+                android:text="Location"
+                android:textColor="@color/black" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_location_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_4dp"
+                android:layout_toRightOf="@+id/tv_location"
+                android:text="@string/name_of_city"
+                android:textColor="@color/color_blue_bg" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/padding_12dp"
+    android:paddingLeft="@dimen/padding_4dp"
+    android:paddingRight="@dimen/padding_12dp"
+    android:paddingTop="@dimen/padding_12dp"
+    android:weightSum="100">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_80dp"
+        android:layout_weight="77">
+
+        <ImageView
+            android:id="@+id/iv_offer_logo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="4dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/appicon" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_80dp"
+        android:layout_marginLeft="@dimen/margin_12dp"
+        android:layout_weight="23">
+
+        <RelativeLayout
+            android:id="@+id/rl_tv_row_all"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_top_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:hint="Membership"
+                android:textSize="@dimen/text_16dp" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_actual_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_top_all"
+                android:text="" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_discount_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_actual_price"
+                android:text="" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_expiration_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_discount_price"
+                android:text="" />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

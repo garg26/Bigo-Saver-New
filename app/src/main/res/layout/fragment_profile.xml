@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.bigosaver.neerajyadav.bigosaver.fragment.ProfileFragment">
+
+    <TextView
+        style="@style/tv_title"
+        android:id="@+id/tv_title"
+        android:text="@string/profile" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_12dp"
+        android:background="@color/white"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/shape_tv_tab"
+            android:weightSum="100"
+            android:padding="@dimen/padding_2dp">
+            <TextView
+                style="@style/btn_style"
+                android:id="@+id/tv_profile"
+                android:text="MY PROFILE"
+                android:layout_weight="50"/>
+            <TextView
+                style="@style/btn_style"
+                android:id="@+id/tv_account"
+                android:text="ACCOUNT SETTINGS"
+                android:layout_weight="50"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLay_profile"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+</LinearLayout>

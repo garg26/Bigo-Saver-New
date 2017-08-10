@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_4dp">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:layout_centerHorizontal="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:id="@+id/tv_redemption_title"
+                android:text="Redemption Details" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/margin_4dp"
+                android:layout_below="@+id/tv_redemption_title"
+                android:background="@color/tab_blue" />
+
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_4dp"
+            android:layout_marginTop="@dimen/margin_8dp">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_title_visited"
+                style="@style/redeem_header"
+                android:text="Merchant Visited :" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_merchant_visited"
+                style="@style/redeem_header"
+                android:textStyle="bold"
+                android:layout_toRightOf="@+id/tv_title_visited" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_4dp"
+            android:layout_marginTop="@dimen/margin_4dp">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_title_redeemed"
+                style="@style/redeem_header"
+                android:text="Total offers redeemed :" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_offers_redeemed"
+                style="@style/redeem_header"
+                android:textStyle="bold"
+                android:layout_toRightOf="@+id/tv_title_redeemed" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_8dp"
+            android:layout_marginTop="@dimen/margin_4dp">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_title_saved"
+                style="@style/redeem_header"
+                android:text="Total savings : INR " />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_saved"
+                style="@style/redeem_header"
+                android:textStyle="bold"
+                android:layout_toRightOf="@+id/tv_title_saved" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_4dp"
+            android:layout_marginTop="@dimen/margin_4dp">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:layout_centerHorizontal="true"
+                android:id="@+id/tv_title_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Redemption List" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/tv_title_list"
+        android:background="@color/tab_blue" />
+
+</LinearLayout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_upgrade"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="54dp"
+            android:layout_height="54dp"
+            android:id="@+id/iv_membership"
+            android:scaleType="centerInside"
+            android:layout_gravity="center_horizontal|center_vertical"/>
+
+        <RelativeLayout
+            style="@style/rl_cash_code_detail"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/upgraded"
+                style="@style/cash_card_detail"
+                android:text="You are upgraded to:" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_upgraded"
+                style="@style/cash_card_detail"
+                android:layout_marginLeft="@dimen/margin_4dp"
+                android:layout_toRightOf="@id/upgraded"
+                android:textStyle="bold"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            style="@style/rl_cash_code_detail"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/validtill"
+                style="@style/cash_card_detail"
+                android:text="Your membership is valid till:" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_valid_till"
+                style="@style/cash_card_detail"
+                android:layout_marginLeft="@dimen/margin_4dp"
+                android:layout_toRightOf="@id/validtill"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+
+
+        <Button
+            android:id="@+id/btn_done_upgrade"
+            android:layout_width="180dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/margin_20dp"
+            android:layout_marginTop="@dimen/margin_20dp"
+            android:background="@drawable/button_drink"
+            android:text="@string/done"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</LinearLayout>

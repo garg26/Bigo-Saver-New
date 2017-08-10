@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="12dp"
+    android:background="@drawable/membership_shape"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_12dp">
+
+    <LinearLayout
+        android:id="@+id/ll_membership_offer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <LinearLayout
+            android:id="@+id/lay_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="20"
+            android:orientation="vertical">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_membership_title"
+                style="@style/tv_profile_heading"
+                android:layout_gravity="start"
+                android:gravity="start"
+                android:text="@string/gold_member" />
+
+            <RelativeLayout
+                android:id="@+id/rl_radio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_select_duration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/select_duration"
+                    android:textColor="@color/tab_blue"
+                    android:textSize="11dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/tv_select_duration"
+                    android:orientation="horizontal">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/tv_select_duration">
+
+                        <RadioGroup
+                            android:id="@+id/radio_group"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checkedButton="@+id/radio_monthly"
+                            android:orientation="horizontal">
+
+                            <simplifii.framework.widgets.CustomFontRadio
+                                android:id="@+id/radio_monthly"
+                                style="@style/radio"
+                                android:buttonTint="@color/tab_blue"
+                                android:text="1 month"
+                                android:textSize="@dimen/text_15dp" />
+
+                            <simplifii.framework.widgets.CustomFontRadio
+                                android:id="@+id/radio_yearly"
+                                style="@style/radio"
+                                android:layout_toRightOf="@+id/radio_monthly"
+                                android:buttonTint="@color/tab_blue"
+                                android:text="12 month"
+                                android:textSize="@dimen/text_15dp" />
+                        </RadioGroup>
+                    </RelativeLayout>
+                    <!--<RelativeLayout-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="@dimen/margin_32dp"-->
+                    <!--android:layout_toRightOf="@id/tv_select_duration">-->
+                    <!--<simplifii.framework.widgets.CustomFontTextView-->
+                    <!--android:id="@+id/tv_circular_twelve_month"-->
+                    <!--android:layout_width="12dp"-->
+                    <!--android:layout_height="12dp"-->
+                    <!--android:background="@drawable/circle_subscribe"/>-->
+                    <!--<simplifii.framework.widgets.CustomFontTextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:textSize="@dimen/text_12dp"-->
+                    <!--android:layout_toRightOf="@id/tv_circular_twelve_month"-->
+                    <!--android:layout_marginLeft="@dimen/margin_4dp"-->
+                    <!--android:textColor="@color/et_gray"-->
+                    <!--android:text="@string/_12_month"/>-->
+                    <!--</RelativeLayout>-->
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_promo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:visibility="visible">
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_have_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/have_code"
+                    android:textColor="@color/tab_blue"
+                    android:textSize="11dp" />
+
+                <simplifii.framework.widgets.CustomFontEditText
+                    android:id="@+id/et_enter_promo_code"
+                    android:layout_width="90dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_8dp"
+                    android:layout_toRightOf="@id/tv_have_code"
+                    android:background="@drawable/enter_code"
+                    android:inputType="textCapCharacters"
+                    android:padding="@dimen/padding_2dp"
+                    android:textCursorDrawable="@null"
+                    android:textSize="16dp" />
+
+                <simplifii.framework.widgets.CustomFontButton
+                    android:id="@+id/btn_apply_promo"
+                    android:layout_width="60dp"
+                    android:layout_height="18dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/margin_8dp"
+                    android:layout_toRightOf="@+id/et_enter_promo_code"
+                    android:background="@color/color_dark_blue"
+                    android:text="@string/apply"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_12dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_promo_applied"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8dp"
+                android:visibility="gone">
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_promo_message"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:textColor="@color/golden_yellow"
+                    android:textSize="11dp" />
+
+            </RelativeLayout>
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/margin_12dp"
+            android:layout_weight="80">
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="@dimen/height_40dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/margin_8dp"
+                android:layout_marginRight="@dimen/margin_12dp"
+                android:layout_marginTop="@dimen/margin_12dp"
+                android:layout_toLeftOf="@+id/iv_membership"
+                android:background="@color/bg_gray" />
+
+
+            <ImageView
+                android:id="@+id/iv_membership"
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/circle_member"
+                android:scaleType="centerInside" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_1dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/margin_10dp"
+        android:layout_marginTop="@dimen/margin_10dp"
+        android:background="@color/bg_gray" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_12dp">
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:id="@+id/tv_subs_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/subscription_amount"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_14dp" />
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:id="@+id/tv_subscription_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_8dp"
+            android:layout_toRightOf="@id/tv_subs_amount"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_14dp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:visibility="gone">
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:id="@+id/tv_validity_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/subscription_validity"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_14dp" />
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:id="@+id/tv_subs_validity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_8dp"
+            android:layout_toRightOf="@id/tv_validity_title"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_14dp" />
+    </RelativeLayout>
+
+    <simplifii.framework.widgets.CustomFontTextView
+        android:id="@+id/tv_subscribe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/margin_20dp"
+        android:layout_marginRight="@dimen/margin_20dp"
+        android:layout_marginTop="@dimen/margin_20dp"
+        android:background="@drawable/tv_new"
+        android:gravity="center"
+        android:padding="@dimen/padding_10dp"
+        android:text="@string/subscribe_now"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_16dp" />
+
+    <simplifii.framework.widgets.CustomFontTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/margin_20dp"
+        android:text="@string/by_subscribing_i_agree_tothe_terms_of_use"
+        android:textSize="@dimen/text_12dp" />
+
+</LinearLayout>

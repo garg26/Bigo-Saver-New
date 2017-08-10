@@ -1,0 +1,154 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:padding="@dimen/padding_40dp"
+        tools:context="com.bigosaver.my.user.com.example.neerajyadav.bigosaver.fragment.SignUpFragment">
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_fname_of_user"
+            style="@style/text_input_signup"
+            app:hintTextAppearance="@style/til_hint">
+
+            <simplifii.framework.widgets.CustomFontEditText
+                style="@style/et_signup"
+                android:hint="@string/first_name" />
+        </android.support.design.widget.TextInputLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_1dp"
+            android:background="@color/bg_gray" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_lname_of_user"
+            style="@style/text_input_signup"
+            android:layout_marginTop="@dimen/margin_10dp"
+            app:hintTextAppearance="@style/til_hint">
+
+            <simplifii.framework.widgets.CustomFontEditText
+                style="@style/et_signup"
+                android:hint="@string/last_name" />
+        </android.support.design.widget.TextInputLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_1dp"
+            android:background="@color/bg_gray" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_email_of_user"
+            style="@style/text_input_signup"
+            android:layout_marginTop="@dimen/margin_10dp"
+            app:hintTextAppearance="@style/til_hint">
+
+            <simplifii.framework.widgets.CustomFontEditText
+                style="@style/et_signup"
+                android:hint="@string/email_address"
+                android:inputType="textEmailAddress" />
+
+        </android.support.design.widget.TextInputLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_1dp"
+            android:background="@color/bg_gray" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_pass_of_user"
+            style="@style/text_input_signup"
+            android:layout_marginTop="@dimen/margin_10dp"
+            app:hintTextAppearance="@style/til_hint">
+
+            <simplifii.framework.widgets.CustomFontEditText
+                style="@style/et_signup"
+                android:hint="@string/tv_password"
+                android:inputType="textPassword" />
+        </android.support.design.widget.TextInputLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_1dp"
+            android:background="@color/bg_gray" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_cpass_of_user"
+            style="@style/text_input_signup"
+            android:layout_marginTop="@dimen/margin_10dp"
+            app:hintTextAppearance="@style/til_hint">
+
+            <simplifii.framework.widgets.CustomFontEditText
+                style="@style/et_signup"
+                android:hint="@string/confirm_pass"
+                android:inputType="textPassword" />
+        </android.support.design.widget.TextInputLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_1dp"
+            android:background="@color/bg_gray" />
+
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/til_mob_num_of_user"
+            style="@style/text_input_signup"
+            android:layout_marginTop="@dimen/margin_10dp"
+            app:hintTextAppearance="@style/til_hint">
+
+            <simplifii.framework.widgets.CustomFontEditText
+                style="@style/et_signup"
+                android:hint="@string/tv_mobile_num"
+                android:inputType="number"
+                android:maxLength="10" />
+        </android.support.design.widget.TextInputLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_1dp"
+            android:background="@color/bg_gray" />
+
+
+        <Button
+            android:id="@+id/btn_next"
+            style="@style/login_btn"
+            android:layout_marginTop="@dimen/margin_32dp"
+            android:background="@drawable/rectangle"
+            android:text="@string/next"
+            android:textSize="@dimen/text_14dp" />
+
+        <RelativeLayout
+            android:id="@+id/ll_already_acc"
+            style="@style/tv_signup_saving"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/margin_32dp">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_already_account"
+                style="@style/tv_signup_saving"
+                android:layout_centerVertical="true"
+                android:text="@string/already_account"
+                android:textColor="@color/off_black"
+                android:textSize="@dimen/text_14dp"
+                android:textStyle="bold" />
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_signin"
+                style="@style/tv_signup_saving"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/margin_4dp"
+                android:layout_toRightOf="@+id/tv_already_account"
+                android:text="@string/tv_sign_in"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_16dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+    </LinearLayout>
+</ScrollView>

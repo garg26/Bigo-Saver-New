@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar style="@style/toolbar"></android.support.v7.widget.Toolbar>
+    <include
+        android:id="@+id/ll_empty"
+        layout="@layout/empty_view"
+        android:visibility="gone"></include>
+
+    <ListView
+        android:id="@+id/lv_merchants"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_4dp"
+        android:scrollbars="none"></ListView>
+
+
+
+</LinearLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        style="@style/toolbar" />
+
+    <!--<View-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="@dimen/height_1dp"-->
+    <!--android:background="@color/et_gray"/>-->
+
+    <LinearLayout
+        android:id="@+id/ll_searh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/margin_4dp"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/lv_search_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/padding_4dp"
+            android:visibility="visible"></ListView>
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:id="@+id/empty_tv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:text="@string/no_merchant_found"
+            android:visibility="gone" />
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,2 @@
+include ':app', ':framework', ':PayU-release', ':CustomBrowser-release', ':sdkui'
+include ':customBrowser'

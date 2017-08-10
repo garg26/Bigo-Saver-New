@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_app_home_page"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/background1"
+    tools:context="com.bigosaver.neerajyadav.bigosaver.activity.AppHomePageActivity">
+
+
+    <ImageView
+        android:id="@+id/tv_app_name"
+        android:layout_width="@dimen/width_140dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/bigo_logo_head" />
+
+    <simplifii.framework.widgets.CustomFontTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_app_name"
+        android:gravity="center"
+        android:text="@string/tv_subtitle_app_home"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_18dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_160dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/black_tab">
+
+        <LinearLayout
+            android:id="@+id/ll_signup"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_above="@+id/ll_already_acc"
+            android:layout_marginBottom="@dimen/margin_20dp"
+            android:layout_marginTop="@dimen/margin_4dp"
+            android:background="@mipmap/home_bottom">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center">
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_home_signup"
+                    style="@style/tv_signup_saving"
+                    android:text="@string/text_signup_saving"
+                    android:textSize="@dimen/text_22dp" />
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_text"
+                    style="@style/tv_signup_saving"
+                    android:layout_toRightOf="@+id/tv_home_signup"
+                    android:text=" AND START SAVING"
+                    android:textSize="@dimen/text_22dp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_already_acc"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_above="@+id/ll_take"
+            android:layout_marginBottom="@dimen/margin_20dp"
+            android:background="@mipmap/home_bottom">
+
+            <RelativeLayout
+                style="@style/tv_signup_saving"
+                android:layout_width="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/margin_4dp"
+                android:layout_marginTop="@dimen/margin_4dp"
+                android:gravity="center">
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_already_account"
+                    style="@style/tv_signup_saving"
+                    android:layout_centerVertical="true"
+                    android:text="@string/already_account"
+                    android:textSize="@dimen/text_16dp"
+                    android:textStyle="bold" />
+
+                <simplifii.framework.widgets.CustomFontTextView
+                    android:id="@+id/tv_signin_home"
+                    style="@style/tv_signup_saving"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/margin_4dp"
+                    android:layout_toRightOf="@+id/tv_already_account"
+                    android:text="@string/tv_sign_in"
+                    android:textSize="@dimen/text_16dp" />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <!--<View-->
+        <!--android:id="@+id/view_underline"-->
+        <!--android:layout_width="88dp"-->
+        <!--android:layout_height="2dp"-->
+        <!--android:layout_alignParentBottom="true"-->
+        <!--android:layout_centerHorizontal="true"-->
+        <!--android:layout_marginBottom="@dimen/margin_12dp"-->
+        <!--android:background="@color/white" />-->
+
+        <LinearLayout
+            android:id="@+id/ll_take"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:background="@mipmap/home_bottom"
+            android:gravity="center">
+
+            <simplifii.framework.widgets.CustomFontTextView
+                android:id="@+id/tv_take_tour"
+                style="@style/tv_signup_saving"
+                android:layout_centerHorizontal="true"
+                android:text="@string/take_a_tour"
+                android:textSize="@dimen/text_16dp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</RelativeLayout>

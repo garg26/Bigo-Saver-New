@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_my_information"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context="com.bigosaver.neerajyadav.bigosaver.activity.MyInformationActivity">
+
+    <android.support.v7.widget.Toolbar style="@style/toolbar"></android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8dp">
+
+        <simplifii.framework.widgets.CustomFontTextView
+            style="@style/tv_my_info"
+            android:text="@string/first_name" />
+
+        <ImageView
+            android:id="@+id/iv_fname"
+            android:visibility="gone"
+            style="@style/iv_lock_info" />
+
+        <simplifii.framework.widgets.CustomFontEditText
+            android:id="@+id/et_fname"
+            style="@style/et_info"
+            android:layout_width="96dp"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+    <View style="@style/view_my_info" />
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8dp">
+
+        <simplifii.framework.widgets.CustomFontTextView
+            style="@style/tv_my_info"
+            android:text="@string/last_name" />
+
+        <ImageView
+            android:id="@+id/iv_lname"
+            android:visibility="gone"
+            style="@style/iv_lock_info" />
+
+        <simplifii.framework.widgets.CustomFontEditText
+            android:id="@+id/et_lname"
+            style="@style/et_info"
+            android:layout_width="96dp"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+    <View style="@style/view_my_info" />
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8dp">
+
+        <simplifii.framework.widgets.CustomFontTextView
+            style="@style/tv_my_info"
+            android:text="@string/mobile" />
+
+        <ImageView
+            android:id="@+id/iv_mobile_info"
+            style="@style/iv_lock_info"
+            android:visibility="gone" />
+
+        <simplifii.framework.widgets.CustomFontEditText
+            android:id="@+id/et_m_num"
+            style="@style/et_info"
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:enabled="false"
+            android:inputType="phone" />
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:id="@+id/tv_update_num"
+            style="@style/et_info"
+            android:enabled="true"
+            android:layout_toLeftOf="@+id/et_m_num"
+            android:text="Update"
+            android:textColor="@color/tab_blue" />
+    </RelativeLayout>
+
+    <View style="@style/view_my_info" />
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8dp">
+
+        <simplifii.framework.widgets.CustomFontTextView
+            style="@style/tv_my_info"
+            android:text="@string/email_add" />
+
+        <ImageView
+            android:id="@+id/iv_email_info"
+            android:visibility="gone"
+            style="@style/iv_lock_info" />
+
+        <simplifii.framework.widgets.CustomFontEditText
+            android:id="@+id/et_email_info"
+            style="@style/et_info"
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:enabled="false"
+            android:inputType="textEmailAddress" />
+    </RelativeLayout>
+
+    <View style="@style/view_my_info" />
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8dp">
+
+        <simplifii.framework.widgets.CustomFontTextView
+            style="@style/tv_my_info"
+            android:text="@string/date_of_birth" />
+
+        <ImageView
+            android:id="@+id/iv_dob_info"
+            android:visibility="gone"
+            style="@style/iv_lock_info" />
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:id="@+id/et_dob_info"
+            style="@style/et_info"
+            android:layout_width="96dp"
+            android:layout_alignParentRight="true"
+            android:hint="Date of Birth" />
+    </RelativeLayout>
+
+    <View
+        style="@style/view_my_info"
+        android:visibility="visible" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8dp">
+
+        <simplifii.framework.widgets.CustomFontTextView
+            style="@style/tv_my_info"
+            android:text="@string/nationality" />
+
+        <ImageView
+            android:id="@+id/iv_nationality"
+            android:visibility="gone"
+            style="@style/iv_lock_info" />
+
+        <simplifii.framework.widgets.CustomFontEditText
+            android:id="@+id/et_nationality"
+            style="@style/et_info"
+            android:layout_alignParentRight="true"
+            android:hint="@string/nationality" />
+    </RelativeLayout>
+
+    <View style="@style/view_my_info" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:visibility="gone">
+
+        <simplifii.framework.widgets.CustomFontTextView
+            style="@style/tv_my_info"
+            android:text="@string/receive_entertainer_emails" />
+
+        <Switch
+            android:id="@+id/switch_get_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:enabled="false" />
+    </RelativeLayout>
+
+    <View
+        style="@style/view_my_info"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8dp"
+        android:visibility="gone">
+
+        <simplifii.framework.widgets.CustomFontTextView
+            style="@style/tv_my_info"
+            android:text="@string/re_push_notification" />
+
+        <Switch
+            android:id="@+id/switch_get_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:enabled="false" />
+    </RelativeLayout>
+
+    <View
+        style="@style/view_my_info"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8dp">
+
+        <simplifii.framework.widgets.CustomFontTextView
+            style="@style/tv_my_info"
+            android:text="About me" />
+
+        <ImageView
+            android:id="@+id/iv_about_me"
+            android:visibility="gone"
+            style="@style/iv_lock_info" />
+
+        <simplifii.framework.widgets.CustomFontEditText
+            android:id="@+id/et_aboutme"
+            style="@style/et_info"
+            android:layout_width="96dp"
+            android:layout_alignParentRight="true"
+            android:enabled="true" />
+    </RelativeLayout>
+
+    <View style="@style/view_my_info" />
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8dp">
+
+        <simplifii.framework.widgets.CustomFontTextView
+            style="@style/tv_my_info"
+            android:text="@string/membership_valid_to" />
+
+        <ImageView
+            android:id="@+id/iv_membership_valid"
+            style="@style/iv_lock_info" />
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:id="@+id/tv_member_validity"
+            style="@style/et_info"
+            android:layout_width="96dp"
+            android:layout_toLeftOf="@id/iv_membership_valid"
+            android:enabled="true"
+            android:hint="@string/NA" />
+    </RelativeLayout>
+
+    <View style="@style/view_my_info" />
+
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8dp">
+
+        <simplifii.framework.widgets.CustomFontTextView
+            style="@style/tv_my_info"
+            android:text="@string/bigo_drinks_activated" />
+
+        <ImageView
+            android:id="@+id/iv_bigo_drink"
+            style="@style/iv_lock_info" />
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:id="@+id/tv_bigo_drink"
+            style="@style/et_info"
+            android:layout_width="wrap_content"
+            android:layout_toLeftOf="@id/iv_bigo_drink"
+            android:enabled="true"
+            android:hint="No" />
+    </RelativeLayout>
+
+    <View style="@style/view_my_info" />
+
+
+</LinearLayout>

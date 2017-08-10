@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rl_primary">
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:id="@+id/tv_day"
+            style="@style/style_timing"
+            android:layout_marginRight="4dp"
+            />
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:id="@+id/tv_primary_ot"
+            android:layout_toRightOf="@id/tv_day"
+            style="@style/style_timing" />
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:id="@+id/tv_primary_ct"
+            style="@style/style_timing"
+            android:layout_toRightOf="@id/tv_primary_ot" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/rl_secondary"
+        android:layout_toRightOf="@+id/rl_primary">
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:id="@+id/tv_secondary_ot"
+            style="@style/style_timing"
+            />
+
+        <simplifii.framework.widgets.CustomFontTextView
+            android:id="@+id/tv_secondary_ct"
+            style="@style/style_timing"
+            android:layout_toRightOf="@id/tv_secondary_ot"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>
